@@ -1,0 +1,10 @@
+machine:
+  xcode:
+    version: 7.3
+  environment:
+    XCODE_WORKSPACE: SMASH.xcworkspace
+    XCODE_SCHEME: SMASH
+
+dependencies:
+  override:   
+   - pod install

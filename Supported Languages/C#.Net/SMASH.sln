@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMASH.PCL", "SMASH.PCL/SMASH.PCL.csproj", "{f83fbd93-8415-46b4-b28d-5e75e7f8d42c}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMASH.Tests", "SMASH.Tests/SMASH.Tests.csproj", "{e92b423c-a6dc-4f05-b027-66b66a8359f3}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Any CPU = Debug|Any CPU
+        Release|Any CPU = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {f83fbd93-8415-46b4-b28d-5e75e7f8d42c}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {f83fbd93-8415-46b4-b28d-5e75e7f8d42c}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {f83fbd93-8415-46b4-b28d-5e75e7f8d42c}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {f83fbd93-8415-46b4-b28d-5e75e7f8d42c}.Release|Any CPU.Build.0 = Release|Any CPU
+        {e92b423c-a6dc-4f05-b027-66b66a8359f3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {e92b423c-a6dc-4f05-b027-66b66a8359f3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {e92b423c-a6dc-4f05-b027-66b66a8359f3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {e92b423c-a6dc-4f05-b027-66b66a8359f3}.Release|Any CPU.Build.0 = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal

@@ -1,0 +1,3765 @@
+﻿FORMAT: 1A
+HOST: https://api.rest.sh/api
+
+# SMASH - API
+# Introduction
+
+* ## Multi-use Flexible API for: 
+
+  * **User**:
+
+    * Login 
+
+    * Registration
+
+    * User Management
+
+    * Profile Updates
+
+    * Two Factor Authentication
+
+     
+
+  * **Verifcation**:
+
+    * Identity Verification
+
+    * Address Verifcation
+
+    * Cell Phone Verification 
+
+
+
+  * **Image**:
+
+    * Manipulation
+
+    * Compression
+
+    * Moderation
+
+     
+
+  * **Data**:
+
+    * Manipulation
+
+    * Compression
+
+    * Conversion
+
+    * Sorting
+
+
+
+  * **Services**:
+
+    * Node Application Hosting
+
+    * DNS Management
+
+    * CDN (Content Delivery Network)
+
+
+
+  * **Security**:
+
+    * Encryption
+
+    * Code Obfuscation
+
+    * Platform Identification
+
+    * WAF and DDOS Protection (Web Application Firewall)
+
+      * Advanced Logging
+
+
+
+# Overview
+
+
+
+*  **API Domain: api.rest.sh, api.restful.sh**
+
+
+
+This API supports both GET and POST API requests with a JSON or XML output.
+
+
+
+*~ You can post to this API via a direct body response in JSON/XML, or using URL variables/requests.*
+
+
+
+# Authentication
+
+Be sure to include your User API KEY, and UID when sending a POST or GET request to our API.
+
+
+
+*~ If domain restriction is enabled in your dashboard, please include your domain in the request and redirect headers for your API calls.*
+
+
+
+# Status Codes
+
+* ## Success Codes:
+
+  *   **200**: Information Recieved
+
+  *   **201**: Success, Resource Created, or Updated
+
+  *   **202**: Proccessing
+
+
+
+* ## Information Codes:
+
+  *   **400**: Bad Request
+
+  *   **401**: Incorrect Credentials
+
+  *   **403**: Forbidden
+
+  *   **406**: Not Acceptable Input
+
+  *   **409**: Data Conflict
+
+  *   **413**: Payload Too Large
+
+  *   **415**: Un-Supported Content Type
+
+  *   **451**: Un-Available For Legal Reasons
+
+
+
+* ## Error Codes:
+
+  *   **500**: Internal API Error
+
+  *   **501**: Not Implemented
+
+  *   **503**: API Unavailable
+
+  *   **504**: Request Timeout
+
+  *   **511**: Authentication Required
+
+
+
+# Rate Pricing
+
+* **Verification requests:** 
+
+  * per/1000 Requests: **$50.00**
+
+
+
+* **User requests:** 
+
+  * per/1000 Requests: **$0.0072**
+
+
+
+* **Image requests:** 
+
+  * per/1000 Requests: **$11.87**
+
+
+
+* Data requests: 
+
+  * per/1MB: **$0.00024**
+
+
+
+* **Service requests:** 
+
+  * **DNS Pricing Per Month:**
+
+    * Per Hosted Zone: **$1.00**
+
+    * Per Traffic Flow Record: **$100.00**
+
+    * Per 1 Million Queries: **$0.80**
+
+    * Per 1 Million Latency Based Queries: **$1.20**
+
+    * Per 1 Million GEO Queries: **$1.40**
+
+    * Per Health Check: **$1.00**
+
+
+
+  * **Hosting Per Month:**
+
+    * Per APP: **$5.00**
+
+
+
+  * **CDN Pricing per/1GB:**
+
+    * North America: **$0.17**
+
+    * Europe: **$0.17**
+
+    * Australia: **$0.28**
+
+    * Asia: **$0.28**
+
+    * India: **$0.34**
+
+    * South America: **$0.5**
+
+
+
+* **Security requests:** 
+
+  * **WAF and DDOS Pricing Per Month:**
+
+    * per/1000 Web Requests: **$0.0012**
+
+    * Per Web Access Control List: **$10.00**
+
+    * Per Custom Domain Configuration: **$2.00**
+
+  
+
+  * **Encryption:**
+
+    * per/1000 data sets: **$0.0144**
+
+    * per/1MB per file: **$0.00048**
+
+
+
+  * **Code Obfuscation Per Month:**
+
+    * per/APP (300 files per app): **$102.00**
+
+
+
+  * **Code Obfuscation Per Month:**
+
+    * per/APP (300 files per app): **$102.00**
+
+
+
+  * **Advanced Logging:**
+
+    * per/1000 Log Entries: **$0.0072**
+
+## Authentication
+This API uses Custom Authentication for its authentication.
+
+The parameters that are needed to be sent for this type of authentication are as follows:
++ `uid`: UID - Your user ID
++ `secret`: SECRET - Your Private API Key
++ `key`: KEY - Your Public API Key
+
+# Group Advanced Logging
+
+## S L [/s/l{?name,origin,activate}]
+
+### Logging Configuration [GET]
+WAF Log Configuration
++ Parameters
+    + name (string, required)
+
+        Name of the WAF zone
+
+        + Sample: origin-name
+    + origin (string, required)
+
+        IP Address of the Web Application you wish to configure logging on
+
+        + Sample: origin.yourdomain.tld
+    + activate (string, required)
+
+        Activate or Disable
+
+
++ Response 200 (application/json)
+    + Attributes (Logging Setup Model Response)
+
+    + Body
+
+            {
+              "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## S L I [/s/l/i{?name,origin,time}]
+
+### Logging Info [GET]
+WAF Log Info
++ Parameters
+    + name (string, required)
+
+        Name of your WAF zone
+
+        + Sample: origin-name
+    + origin (string, required)
+
+        IP Address of the Web Application
+
+        + Sample: origin.yourdomain.tld
+    + time (string, optional)
+
+        Specific times or dates to lookup separated by a comma in MMDDYYHHMMSS Format ( Month Month Day Day Year Year Year Hour Hour Minute Minute Second Second [01/01/0101;24:59:01])
+
+        + Sample: 01/01/0101;24:59:01
+
++ Response 200 (application/json)
+    + Attributes (Logging Logs Model Response)
+
+    + Body
+
+            {
+                "log": {
+                    "01010101245901": {
+                        "data": {
+                            "result": "INFO",
+                            "content": "LOG: CONTENT AND ACTIONS PERFORMED",
+                            "id": "FUNCTION ID"
+                        }
+                    },
+                    "01010101245902": {
+                        "data": {
+                            "result": "ERROR",
+                            "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
+                            "id": "FUNCTION ID"
+                        }
+                    }
+                }
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group WAF and DDOS Protection
+
+## S W C [/s/w/c{?name,rule}]
+
+### WAF Configuration [GET]
+WAF and DDOS Configuration
++ Parameters
+    + name (string, required)
+
+        Name of your WAF zone
+
+        + Sample: origin-name
+    + rule (string, required)
+
+        Rule or rules to add or update separated by a comma
+
+        + Sample: header:Access-Control-Allow-Origin;yourdomain.tld;seconddomain.tld,match:ip;127.0.0.1;does
+
++ Response 200 (application/json)
+    + Attributes (WAF Configuration Model Response)
+
+    + Body
+
+            {
+              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+              "rule": "RULES APPLIED TO WAF"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## S W [/s/w{?origin,cname}]
+
+### WAF Creation [GET]
+WAF and DDOS Creation
++ Parameters
+    + origin (string, required)
+
+        IP of the Web server you wish to protect
+
+        + Sample: origin.yourdomain.tld
+    + cname (string, required)
+
+        Domain or domain names separated by a comma you wish to allow CNAME access
+
+        + Sample: yourdomain.tld,www.yourdomain.tld
+
++ Response 200 (application/json)
+    + Attributes (WAF Creation Model Response)
+
+    + Body
+
+            {
+              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group Encryption
+
+## S E [/s/e{?data,method,bit}]
+
+### Data and File Encryption [GET]
+Data and File Encryption API
++ Parameters
+    + data (string, required)
+
+        GIT URL, file URL, direct upload of file, or data as a query string
+
+        + Sample: DATA
+    + method (string, required)
+
+        Single or multiple encryption types to apply to data or files separated by a comma (DES, RSA, BLOWFISH, TWOFISH, AES, IDEA, PGP)
+
+        + Sample: DES,RSA
+    + bit (number, required)
+
+        Encryption key size (4096)
+
+        + Sample: 4096
+
++ Response 200 (application/json)
+    + Attributes (Encryption Model Response)
+
+    + Body
+
+            {
+                "data": "RETURNED ENCRYPTED DATA URL",
+                "file": "RETURNED ENCRYPTED FILE URL",
+                "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
+                "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
+                "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group CDN
+
+## S C Push [/s/c/push{?cname,file}]
+
+### CDN Push Zone [GET]
+CDN Push Zone API
++ Parameters
+    + cname (string, required)
+
+        Domain or domain names separated by a comma you wish to allow CNAME access
+
+        + Sample: cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld
+    + file (string, required)
+
+        GIT URL, file URL, or direct upload of file
+
+        + Sample: static.yourdomain.tld/file.type
+
++ Response 200 (application/json)
+    + Attributes (CDN Push Model Response)
+
+    + Body
+
+            {
+              "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
+              "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## S C Pull [/s/c/pull{?origin,cname}]
+
+### CDN Pull Zone [GET]
+CDN Pull Zone API
++ Parameters
+    + origin (string, required)
+
+        Domain or domain names separated by a comma
+
+        + Sample: origin.yourdomain.tld
+    + cname (string, required)
+
+        Domain or domain names separated by a comma you wish to allow CNAME access
+
+        + Sample: cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld
+
++ Response 200 (application/json)
+    + Attributes (CDN Pull Model Response)
+
+    + Body
+
+            {
+              "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group DNS
+
+## S D C [/s/d/c{?domain,records}]
+
+### DNS Configuration [GET]
+DNS Configuration API
++ Parameters
+    + domain (string, required)
+
+        Domain or domain names separated by a comma
+
+        + Sample: yourdomain.tld
+    + records (string, required)
+
+        Records to append to domain separated by a comma (a;www.mydomain.com;127.0.0.0,cname;mydomain.com;otherdomain.com)
+
+        + Sample: set:root:a:127.0.0.1,set:www:a:127.0.0.1,set:cdn:cname:cname.domain.com
+
++ Response 200 (application/json)
+    + Attributes (DNS Configuration Model Response)
+
+    + Body
+
+            {
+                "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
+                "domain": "DOMAIN",
+                "records": "RECORDS SET TO DOMAIN"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## S D A [/s/d/a{?domain}]
+
+### DNS Creation [GET]
+DNS Creation API
++ Parameters
+    + domain (string, required)
+
+        Domain or domain names separated by a comma
+
+        + Sample: yourdomain.tld,seconddomain.tld
+
++ Response 200 (application/json)
+    + Attributes (DNS Creation Model Response)
+
+    + Body
+
+            {
+                "domain": "LIST OF DOMAINS ADDED",
+                "nameservers": {
+                    "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
+                    "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
+                    "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
+                    "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
+                }
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group Code Obfuscation
+
+## S O [/s/o{?app}]
+
+### Obfuscation and AntiTampering [GET]
+Javascript and Node.JS Obfuscation and Anti-Tampering API
++ Parameters
+    + app (string, required)
+
+        GIT URL or ZIP package containing your APP
+
+        + Sample: git://app.git
+
++ Response 200 (application/json)
+    + Attributes (Code Protection Model Response)
+
+    + Body
+
+            {
+              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
+              "app": "OBFUSCATED APP URL"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group Hosting
+
+## S H [/s/h{?app,domain}]
+
+### Hosting Setup [GET]
+Node.JS and Static Web APP Hosting
++ Parameters
+    + app (string, required)
+
+        GIT URL or ZIP package containing your APP
+
+        + Sample: git://app.git
+    + domain (string, required)
+
+        Domain or domain names separated by a comma
+
+        + Sample: yourdomain.tld,seconddomain.tld
+
++ Response 200 (application/json)
+    + Attributes (Hosting Model Response)
+
+    + Body
+
+            {
+              "request": "REQUEST TYPE",
+              "url": "RETURNED APP HOSTING URL",
+              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
+              "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group Data Manipulation
+
+## D [/d{?data,transform}]
+
+### httpsapi.rest.shapid [GET]
+Data Manipulation API
++ Parameters
+    + data (string, required)
+
+        Data URL, data as a query string, or direct upload
+
+        + Sample: https://static.yourcdn.com/data.file
+    + transform (string, required)
+
+        Transformations to perform
+
+
++ Response 200 (application/json)
+    + Attributes (Data Manipulation Model Response)
+
+    + Body
+
+            {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED DATA URL",
+                "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
+                "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group Image Manipulation
+
+## I [/i{?image,transform}]
+
+### Image Manipulation [GET]
+Image Manipulation API
++ Parameters
+    + image (string, required)
+
+        Image URL or direct upload
+
+        + Sample: https://img.yourdomain.tld/image.type
+    + transform (string, required)
+
+        Transformations to perform
+
+        + Sample: x:flip,y:flip,grayscale:true,compress:true;80,convert:png
+
++ Response 200 (application/json)
+    + Attributes (Image Manipulation Model Response)
+
+    + Body
+
+            {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED IMAGE URL AND DATA",
+                "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
+                "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
+                "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group Verification
+
+## V A [/v/a{?user,a,sa,c,s,z,address}]
+
+### User Address Verification [GET]
+User Address Verification API
++ Parameters
+    + user (string, required)
+
+        Users UID, Username, or Email
+
+        + Sample: UID
+    + a (string, required)
+
+        Address Line One
+
+        + Sample: 3301 South Greenfield Rd
+    + sa (string, required)
+
+        Address Line Two
+
+        + Sample: Address Line Two
+    + c (string, required)
+
+        Address City
+
+        + Sample: Gilbert
+    + s (string, required)
+
+        Address State or Province
+
+        + Sample: AZ
+    + z (number, required)
+
+        Address Zipcode
+
+        + Sample: 85297
+    + address (string, optional)
+
+        Address as a one line input separated by commas
+
+
++ Response 200 (application/json)
+    + Attributes (Verify Address Response)
+
+    + Body
+
+            {
+              "request": "REQUEST TYPE",
+              "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
+              "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## V U [/v/u{?user,code}]
+
+### User Verification Response [GET]
+Users Verification Response API
++ Parameters
+    + user (string, required)
+
+        Users UID, Username, Or Email
+
+        + Sample: UID
+    + code (string, required)
+
+        Verification code entered by the user
+
+        + Sample: CODE
+
++ Response 200 (application/json)
+    + Attributes (Verify User Model Response)
+
+    + Body
+
+            {
+              "request": "REQUEST TYPE",
+              "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+              "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## V [/v{?user}]
+
+### User Verification [GET]
+User Verification API
++ Parameters
+    + user (string, required)
+
+        Users UID, Username, Or Email
+
+        + Sample: UID
+
++ Response 200 (application/json)
+    + Attributes (Verify Model Response)
+
+    + Body
+
+            {
+                "request": "REQUEST TYPE",
+                "to": "USER BEING VERIFIED",
+                "verified": "RETURNS TRUE OR FALSE",
+                "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group Two Factor Authentication API
+
+## 2fa T [/2fa/t{?user,code}]
+
+### 2FA Token Response [GET]
+Two Factor Authentication Token Reply
++ Parameters
+    + user (string, required)
+
+        Users UID, Username or Email
+
+        + Sample: UID
+    + code (string, required)
+
+        Response From User Containing 2FA Code
+
+        + Sample: CODE
+
++ Response 200 (application/json)
+    + Attributes (Two Factor Authentication Token Model Response)
+
+    + Body
+
+            {
+              "request": "REQUEST TYPE",
+              "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+              "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## 2fa [/2fa{?to}]
+
+### Two Factor Authentication [GET]
+Two Factor Authentication API
++ Parameters
+    + to (string, required)
+
+        Users UID, Username, Email, Or Cellphone number
+
+        + Sample: UID
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept-Ranges:bytes
+            Connection:keep-alive
+            Content-Length:57
+            Date:Wed, 01 Nov 2017 22:38:42 GMT
+            Server:nginx
+            Vary:X-HTTP-Method-Override, Accept-Encoding, Authorization, Cookie
+            Via:1.1 varnish
+            X-Cache:MISS
+            X-Cache-Hits:0
+            X-Served-By:cache-den6026-DEN
+            X-Timer:S1509575913.139081,VS0,VE9297
+            access-control-allow-origin:*
+            cache-control:private
+            etag:W/"39-/Uq7JVts9Z0DW2A8HCd/mHAMZx0"
+            function-execution-id:5at6n190lken
+            strict-transport-security:max-age=15552000; includeSubDomains
+            x-cloud-trace-context:87d5c606647bdcb494caafb92a85cb73;o=1
+            x-content-type-options:nosniff
+            x-dns-prefetch-control:off
+            x-download-options:noopen
+            x-frame-options:SAMEORIGIN
+            x-powered-by:Fatality-Web-Server
+            x-xss-protection:1; mode=block
+
+    + Attributes (Two Factor Authentication Model Response)
+
+    + Body
+
+            {
+                "request": "REQUEST TYPE",
+                "to": "USER BEING VERIFIED",
+                "verified": "RETURNS TRUE OR FALSE",
+                "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group User Management
+
+## U I [/u/i{?user}]
+
+### Get User Info [GET]
+Get User Info API
++ Parameters
+    + user (string, required)
+
+        Users User ID
+
+        + Sample: UID
+
++ Response 200 (application/json)
+    + Attributes (User Information Model Response)
+
+    + Body
+
+            {
+                "request": "REQUEST TYPE",
+                "uid": "Users UID",
+                "apiuid": "API SIDE USER ID",
+                "verified": "RETURNS TRUE IF USER IS VERIFIED",
+                "id": "TRANSACTION ID",
+                "info": {
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "avatar": "USER AVATAR URL",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+                    "address1": "USERS ADDRESS LINE ONE",
+                    "address2": "USERS ADDRESS LINE TWO",
+                    "city": "USERS ADDRESS CITY",
+                    "state": "USERS ADDRESS STATE",
+                    "zipcode": "USERS ADDRESS ZIPCODE",
+                    "phone": "USERS CELL PHONE NUMBER",
+                    "lastlogin": "USERS LAST LOGIN",
+                    "ip": "USERS IP",
+                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                }
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## U U [/u/u{?user,avatar,custom input}]
+
+### Update User [GET]
+Update User API
++ Parameters
+    + user (string, required)
+
+        Users UID, Username, Or Email
+
+        + Sample: UID
+    + avatar (string, required)
+
+        Avatar Image URL
+
+        + Sample: https://img.cdnurl.com/UID/image
+    + custom input (string, required)
+
+        Custom input variable for users profile
+
+        + Sample: custom input
+
++ Response 200 (application/json)
+    + Attributes (User Update Model Response)
+
+    + Body
+
+            {
+              "request": "REQUEST TYPE",
+              "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
+              "id": "TRANSACTION ID",
+              "info": {
+                "uid": "USERS ID",
+                "apiuid": "API SIDE USER ID",
+                "avatar": "INPUTTED AVATAR URL",
+                "custom-input": "CUSTOM INPUTTED PROFILE DATA"
+              }
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## U D [/u/d{?user}]
+
+### Delete User [GET]
+Delete User API
++ Parameters
+    + user (string, required)
+
+        Users UID, Username, or Email
+
+        + Sample: UID
+
++ Response 200 (application/json)
+    + Attributes (User Deletion Response Model)
+
+    + Body
+
+            {
+              "request": "REQUEST TYPE",
+              "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
+              "id": "TRANSACTION ID"
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Group Login and Registration
+
+## A U R [/a/u/r{?email,user,password,name,phone,countrycode,address}]
+
+### User Registration [GET]
+User Registration API
++ Parameters
+    + email (string, required)
+
+        Users Email
+
+        + Sample: email@email.com
+    + user (string, required)
+
+        Users Username
+
+        + Sample: UID
+    + password (string, required)
+
+        Users Password
+
+        + Sample: Password
+    + name (string, optional)
+
+        Users Name
+
+        + Sample: John Doe
+    + phone (number, optional)
+
+        Users Cellphone Number
+
+        + Sample: 1234567890
+    + countrycode (number, optional)
+
+        Users Country Code (US = 1)
+
+        + Sample: 1
+    + address (string, optional)
+
+        Users Address
+
+        + Sample: 3301 South Greenfield Rd, Gilbert, AZ 85297
+
++ Response 200 (application/json)
+    + Attributes (User Registration Model Response)
+
+    + Body
+
+            {
+                "request": "REQUEST TYPE",
+                "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
+                "id": "TRANSACTION ID",
+                "info": {
+                    "uid": "USERS ID",
+                    "apiuid": "API SIDE USER ID",
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS",
+                    "phone": "USERS CELL PHONE NUMBER"
+                }
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+## A U L [/a/u/l{?user,password}]
+
+### User Authentication [GET]
+User Authentication API
++ Parameters
+    + user (string, required)
+
+        Users Username or Email
+
+        + Sample: Username
+    + password (string, required)
+
+        Users Password
+
+        + Sample: Password
+
++ Response 200 (application/json)
+    + Attributes (User Authentication Model Response)
+
+    + Body
+
+            {
+                "request": "REQUEST TYPE",
+                "uid": "Users UID",
+                "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
+                "id": "TRANSACTION ID",
+                "info": {
+                    "uid": "USERS ID",
+                    "apiuid": "API SIDE USER ID",
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "avatar": "USER AVATAR URL",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS",
+                    "phone": "USERS CELL PHONE NUMBER",
+                    "lastlogin": "USERS LAST LOGIN",
+                    "ip": "USERS IP",
+                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                }
+            }
+
+
++ Response 400 
+
+        Bad Request
+
+
+
+
++ Response 401 
+
+        Incorrect Credentials
+
+
+
+
++ Response 403 
+
+        Forbidden
+
+
+
+
++ Response 406 
+
+        Not Acceptable Input
+
+
+
+
++ Response 409 
+
+        Data Conflict
+
+
+
+
++ Response 413 
+
+        Payload Too Large
+
+
+
+
++ Response 415 
+
+        Un-Supported Content Type
+
+
+
+
++ Response 451 
+
+        Un-Available For Legal Reasons
+
+
+
+
++ Response 500 
+
+        Internal API Error
+
+
+
+
++ Response 501 
+
+        Not Implemented
+
+
+
+
++ Response 503 
+
+        API Unavailable
+
+
+
+
++ Response 504 
+
+        Request Timeout
+
+
+
+
++ Response 511 
+
+        Authentication Required
+
+
+
+
+
+
+# Data Structures
+
+## MMDDYYYYHHMMSS Model (object)
+
+
+### Properties
++ `data` (Data Model, required) 
+
+
+## Logging Logs Model Response (object)
+
+
+### Properties
++ `log` (Log Model, required) 
+
+
+## Logging Setup Model Response (object)
+
+
+### Properties
++ `success` (string, required) 
+
+
+## Data Manipulation Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `apiuid` (string, required) 
++ `url` (string, required) 
++ `manipulation` (string, required) 
++ `conversion` (string, required) 
++ `sorting` (string, required) 
++ `compression` (string, required) 
+
+
+## Verify Address (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `address` (string, required) 
++ `a` (string, required) 
++ `sa` (string, required) 
++ `c` (string, required) 
++ `s` (string, required) 
++ `z` (string, required) 
+
+
+## User Information Model (object)
+
+
+### Properties
++ `realname` (string, required) 
++ `displayname` (string, required) 
++ `avatar` (string, required) 
++ `email` (string, required) 
++ `address` (string, required) 
++ `address1` (string, required) 
++ `address2` (string, required) 
++ `city` (string, required) 
++ `state` (string, required) 
++ `zipcode` (string, required) 
++ `phone` (string, required) 
++ `lastlogin` (string, required) 
++ `ip` (string, required) 
++ `2fa` (string, required) 
++ `iplock` (string, required) 
+
+
+## User Update Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `apiuid` (string, required) 
++ `oldpassword` (string, required) 
++ `newpassword` (string, required) 
++ `name` (string, required) 
++ `email` (string, required) 
++ `phone` (string, required) 
++ `avatar` (string, required) 
++ `countrycode` (string, required) 
++ `address` (string, required) 
++ `a` (string, required) 
++ `sa` (string, required) 
++ `c` (string, required) 
++ `s` (string, required) 
++ `z` (string, required) 
++ `custom-input` (string, required) 
+
+
+## User Registration Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `password` (string, required) 
++ `name` (string, required) 
++ `email` (string, required) 
++ `phone` (string, required) 
++ `countrycode` (string, required) 
++ `address` (string, required) 
++ `a` (string, required) 
++ `sa` (string, required) 
++ `c` (string, required) 
++ `s` (string, required) 
++ `z` (string, required) 
+
+
+## Info Model (object)
+
+
+### Properties
++ `uid` (string, required) 
++ `apiuid` (string, required) 
++ `realname` (string, required) 
++ `displayname` (string, required) 
++ `avatar` (string, required) 
++ `email` (string, required) 
++ `address` (string, required) 
++ `phone` (string, required) 
++ `lastlogin` (string, required) 
++ `ip` (string, required) 
++ `2fa` (string, required) 
++ `iplock` (string, required) 
+
+
+## Logging Logs Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `name` (string, required) 
++ `origin` (string, required) 
++ `time` (string, required) 
+
+
+## Logging Setup Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `name` (string, required) 
++ `origin` (string, required) 
++ `activate` (string, required) 
+
+
+## WAF Configuration Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `name` (string, required) 
++ `origin` (string, required) 
++ `cname` (string, required) 
+
+
+## WAF Creation Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `origin` (string, required) 
++ `cname` (string, required) 
+
+
+## Encryption Model Response (object)
+
+
+### Properties
++ `data` (string, required) 
++ `file` (string, required) 
++ `success` (string, required) 
++ `public` (string, required) 
++ `private` (string, required) 
+
+
+## Encryption Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `data` (string, required) 
++ `file` (string, required) 
++ `method` (string, required) 
++ `bit` (string, required) 
+
+
+## CDN Push Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `cname` (string, required) 
++ `file` (string, required) 
+
+
+## CDN Pull Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `origin` (string, required) 
++ `cname` (string, required) 
+
+
+## DNS Configuration Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `domain` (string, required) 
++ `records` (string, required) 
+
+
+## Nameservers Model (object)
+
+
+### Properties
++ `ns1` (string, required) 
++ `ns2` (string, required) 
++ `ns3` (string, required) 
++ `ns4` (string, required) 
+
+
+## Hosting Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `url` (string, required) 
++ `success` (string, required) 
++ `id` (string, required) 
+
+
+## Hosting Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `app` (string, required) 
++ `domain` (string, required) 
+
+
+## Data Manipulation Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `url` (string, required) 
++ `success` (string, required) 
++ `id` (string, required) 
+
+
+## Image Manipulation Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `url` (string, required) 
++ `success` (string, required) 
++ `moderated` (string, required) 
++ `id` (string, required) 
+
+
+## Image Manipulation Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `image` (string, required) 
++ `transform` (string, required) 
++ `moderate` (string, required) 
+
+
+## Two Factor Authentication Token Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `code` (string, required) 
+
+
+## Two Factor Authentication Model (object)
+
+
+### Properties
++ `request` (string, required) 
++ `to` (string, required) 
++ `verified` (string, required) 
++ `id` (string, required) 
+
+
+## Verify User Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `code` (string, required) 
+
+
+## Verify Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `to` (string, required) 
++ `verified` (string, required) 
++ `id` (string, required) 
+
+
+## User Deletion Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `apiuid` (string, required) 
+
+
+## User Information Model Response (object)
+
+
+### Properties
++ `user` (string, required) 
++ `key` (string, required) - Users API Private Key
++ `api` (string, required) - Users API Public Key
++ `info` (User Information Secondary Model, required) - Users Profile Information
+
+
+## User Information Secondary Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `apiuid` (string, required) 
+
+
+## User Custom Update Model (object)
+
+
+### Properties
++ `uid` (string, required) 
++ `apiuid` (string, required) 
++ `avatar` (string, required) 
++ `custom-input` (string, required) 
+
+
+## User Update Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `updated` (string, required) 
++ `id` (string, required) 
++ `info` (User Custom Update Model, required) 
+
+
+## User Profile Information Model (object)
+
+
+### Properties
++ `uid` (string, required) 
++ `apiuid` (string, required) 
++ `realname` (string, required) 
++ `displayname` (string, required) 
++ `email` (string, required) 
++ `address` (string, required) 
++ `phone` (string, required) 
+
+
+## User Registration Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `active` (string, required) 
++ `id` (string, required) 
++ `info` (User Profile Information Model, required) 
+
+
+## User Authentication Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `uid` (string, required) 
++ `valid` (string, required) 
++ `id` (string, required) 
++ `info` (Info Model, required) 
+
+
+## User Authentication Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `user` (string, required) 
++ `password` (string, required) 
+
+
+## Data Model (object)
+
+
+### Properties
++ `result` (string, required) 
++ `content` (string, required) 
++ `id` (string, required) 
+
+
+## Log Model (object)
+
+
+### Properties
++ `MMDDYYYYHHMMSSX` (MMDDYYYYHHMMSS Model, required) 
++ `MMDDYYYYHHMMSSY` (MMDDYYYYHHMMSS Model, required) 
+
+
+## WAF Configuration Model Response (object)
+
+
+### Properties
++ `success` (string, required) 
++ `rule` (string, required) 
+
+
+## WAF Creation Model Response (object)
+
+
+### Properties
++ `success` (string, required) 
++ `cname` (string, required) 
+
+
+## Code Protection Model Response (object)
+
+
+### Properties
++ `success` (string, required) 
++ `app` (string, required) 
+
+
+## Code Protection Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `app` (string, required) 
+
+
+## CDN Push Model Response (object)
+
+
+### Properties
++ `success` (string, required) 
++ `upload` (string, required) 
++ `cname` (string, required) 
+
+
+## CDN Pull Model Response (object)
+
+
+### Properties
++ `success` (string, required) 
++ `cname` (string, required) 
+
+
+## DNS Configuration Model Response (object)
+
+
+### Properties
++ `success` (string, required) 
++ `domain` (string, required) 
++ `records` (string, required) 
+
+
+## DNS Creation Model Response (object)
+
+
+### Properties
++ `domain` (string, required) 
++ `nameservers` (Nameservers Model, required) 
+
+
+## DNS Creation Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `domain` (string, required) 
+
+
+## Two Factor Authentication Token Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `correct` (string, required) 
++ `id` (string, required) 
+
+
+## Two Factor Authentication Model Response (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `to` (string, required) 
+
+
+## Verify Address Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `active` (string, required) 
++ `id` (string, required) 
+
+
+## Verify User Model Response (object)
+
+
+### Properties
++ `request` (string, required) 
++ `correct` (string, required) 
++ `id` (string, required) 
+
+
+## Verify Model (object)
+
+
+### Properties
++ `key` (string, required) 
++ `uid` (string, required) 
++ `to` (string, required) 
+
+
+## User Deletion Response Model (object)
+
+
+### Properties
++ `request` (string, required) 
++ `deleted` (string, required) 
++ `id` (string, required) 
+

@@ -1,0 +1,6187 @@
+﻿{
+  "Name": "SMASH - API",
+  "BaseUri": "https://api.rest.sh/api",
+  "ServerConfiguration": {
+    "DefaultEnvironment": "Production",
+    "DefaultServer": "PATH",
+    "Environments": [
+      {
+        "Name": "Production",
+        "Description": "Production Enviroment",
+        "Servers": [
+          {
+            "Name": "PATH",
+            "Url": "https://api.rest.sh/api"
+          }
+        ]
+      },
+      {
+        "Name": "Sandbox",
+        "Description": "Testing and Debugging",
+        "Servers": [
+          {
+            "Name": "PATH",
+            "Url": "https://sb.rest.sh/api"
+          }
+        ]
+      },
+      {
+        "Name": "Beta",
+        "Description": "Updated Nightly (May Contain Bugs)",
+        "Servers": [
+          {
+            "Name": "PATH",
+            "Url": "https://b.rest.sh/api"
+          }
+        ]
+      }
+    ],
+    "Parameters": []
+  },
+  "ImageUri": "https://smashlabs.io/images/smash_icon.png",
+  "Description": "# Introduction\n* ## Multi-use Flexible API for: \n  * **User**:\n    * Login \n    * Registration\n    * User Management\n    * Profile Updates\n    * Two Factor Authentication\n     \n  * **Verifcation**:\n    * Identity Verification\n    * Address Verifcation\n    * Cell Phone Verification \n\n  * **Image**:\n    * Manipulation\n    * Compression\n    * Moderation\n     \n  * **Data**:\n    * Manipulation\n    * Compression\n    * Conversion\n    * Sorting\n\n  * **Services**:\n    * Node Application Hosting\n    * DNS Management\n    * CDN (Content Delivery Network)\n\n  * **Security**:\n    * Encryption\n    * Code Obfuscation\n    * Platform Identification\n    * WAF and DDOS Protection (Web Application Firewall)\n      * Advanced Logging\n\n# Overview\n\n*  **API Domain: api.rest.sh, api.restful.sh**\n\nThis API supports both GET and POST API requests with a JSON or XML output.\n\n*~ You can post to this API via a direct body response in JSON/XML, or using URL variables/requests.*\n\n# Authentication\nBe sure to include your User API KEY, and UID when sending a POST or GET request to our API.\n\n*~ If domain restriction is enabled in your dashboard, please include your domain in the request and redirect headers for your API calls.*\n\n# Status Codes\n* ## Success Codes:\n  *   **200**: Information Recieved\n  *   **201**: Success, Resource Created, or Updated\n  *   **202**: Proccessing\n\n* ## Information Codes:\n  *   **400**: Bad Request\n  *   **401**: Incorrect Credentials\n  *   **403**: Forbidden\n  *   **406**: Not Acceptable Input\n  *   **409**: Data Conflict\n  *   **413**: Payload Too Large\n  *   **415**: Un-Supported Content Type\n  *   **451**: Un-Available For Legal Reasons\n\n* ## Error Codes:\n  *   **500**: Internal API Error\n  *   **501**: Not Implemented\n  *   **503**: API Unavailable\n  *   **504**: Request Timeout\n  *   **511**: Authentication Required\n\n# Rate Pricing\n* **Verification requests:** \n  * per/1000 Requests: **$50.00**\n\n* **User requests:** \n  * per/1000 Requests: **$0.0072**\n\n* **Image requests:** \n  * per/1000 Requests: **$11.87**\n\n* Data requests: \n  * per/1MB: **$0.00024**\n\n* **Service requests:** \n  * **DNS Pricing Per Month:**\n    * Per Hosted Zone: **$1.00**\n    * Per Traffic Flow Record: **$100.00**\n    * Per 1 Million Queries: **$0.80**\n    * Per 1 Million Latency Based Queries: **$1.20**\n    * Per 1 Million GEO Queries: **$1.40**\n    * Per Health Check: **$1.00**\n\n  * **Hosting Per Month:**\n    * Per APP: **$5.00**\n\n  * **CDN Pricing per/1GB:**\n    * North America: **$0.17**\n    * Europe: **$0.17**\n    * Australia: **$0.28**\n    * Asia: **$0.28**\n    * India: **$0.34**\n    * South America: **$0.5**\n\n* **Security requests:** \n  * **WAF and DDOS Pricing Per Month:**\n    * per/1000 Web Requests: **$0.0012**\n    * Per Web Access Control List: **$10.00**\n    * Per Custom Domain Configuration: **$2.00**\n  \n  * **Encryption:**\n    * per/1000 data sets: **$0.0144**\n    * per/1MB per file: **$0.00048**\n\n  * **Code Obfuscation Per Month:**\n    * per/APP (300 files per app): **$102.00**\n\n  * **Code Obfuscation Per Month:**\n    * per/APP (300 files per app): **$102.00**\n\n  * **Advanced Logging:**\n    * per/1000 Log Entries: **$0.0072**",
+  "Version": "1.19",
+  "AdditionalHeaders": [],
+  "Authentication": {
+    "Type": "CustomAuth",
+    "AuthType": "CustomAuth",
+    "Parameters": [
+      {
+        "Name": "uid",
+        "Description": "Your user ID",
+        "DefaultValue": "UID"
+      },
+      {
+        "Name": "secret",
+        "Description": "Your Private API Key",
+        "DefaultValue": "SECRET"
+      },
+      {
+        "Name": "key",
+        "Description": "Your Public API Key",
+        "DefaultValue": "KEY"
+      }
+    ],
+    "AuthorizationUrl": "",
+    "AccessTokenUrl": "",
+    "OAuth2Server": "",
+    "OAuth2AuthorizationServer": "",
+    "AuthGrantTypes": [],
+    "AuthScopes": [],
+    "Scopes": []
+  },
+  "Endpoints": [
+    {
+      "Name": "Logging Configuration",
+      "Description": "WAF Log Configuration",
+      "HTTPMethod": "GET",
+      "Group": "Advanced Logging",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/l",
+      "Response": {
+        "Optional": false,
+        "Type": "Logging Setup Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"success\": \"RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "origin-name",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "Name of the WAF zone",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "origin.yourdomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "IP Address of the Web Application you wish to configure logging on",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "activate",
+          "Description": "Activate or Disable",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/l",
+          "Description": "Advanced logging configuration test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "name",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "origin",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "activate",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"success\": \"RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Logging Info",
+      "Description": "WAF Log Info",
+      "HTTPMethod": "GET",
+      "Group": "Advanced Logging",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/l/i",
+      "Response": {
+        "Optional": false,
+        "Type": "Logging Logs Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "origin-name",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "Name of your WAF zone",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "origin.yourdomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "IP Address of the Web Application",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "01/01/0101;24:59:01",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "time",
+          "Description": "Specific times or dates to lookup separated by a comma in MMDDYYHHMMSS Format ( Month Month Day Day Year Year Year Hour Hour Minute Minute Second Second [01/01/0101;24:59:01])",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/l/i",
+          "Description": "Advanced logging info test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "name",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "origin",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "time",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"log\": {\n        \"01010101245901\": {\n            \"data\": {\n                \"result\": \"INFO\",\n                \"content\": \"LOG: CONTENT AND ACTIONS PERFORMED\",\n                \"id\": \"FUNCTION ID\"\n            }\n        },\n        \"01010101245902\": {\n            \"data\": {\n                \"result\": \"ERROR\",\n                \"content\": \"LOG: ERROR CONTENT AND ACTIONS PERFORMED\",\n                \"id\": \"FUNCTION ID\"\n            }\n        }\n    }\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "WAF Configuration",
+      "Description": "WAF and DDOS Configuration",
+      "HTTPMethod": "GET",
+      "Group": "WAF and DDOS Protection",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/w/c",
+      "Response": {
+        "Optional": false,
+        "Type": "WAF Configuration Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"success\": \"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY\",\r\n  \"rule\": \"RULES APPLIED TO WAF\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "origin-name",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "Name of your WAF zone",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "header:Access-Control-Allow-Origin;yourdomain.tld;seconddomain.tld,match:ip;127.0.0.1;does",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "rule",
+          "Description": "Rule or rules to add or update separated by a comma",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "WAF Configuration",
+          "Description": "WAF and DDOS configuration test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "name",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "rule",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"success\": \"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY\",\r\n  \"rule\": \"RULES APPLIED TO WAF\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "WAF Creation",
+      "Description": "WAF and DDOS Creation",
+      "HTTPMethod": "GET",
+      "Group": "WAF and DDOS Protection",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/w",
+      "Response": {
+        "Optional": false,
+        "Type": "WAF Creation Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"success\": \"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "origin.yourdomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "IP of the Web server you wish to protect",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "yourdomain.tld,www.yourdomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "Domain or domain names separated by a comma you wish to allow CNAME access",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "WAF Creation",
+          "Description": "WAF and DDOS test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "origin",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "cname",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"success\": \"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Data and File Encryption",
+      "Description": "Data and File Encryption API",
+      "HTTPMethod": "GET",
+      "Group": "Encryption",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/e",
+      "Response": {
+        "Optional": false,
+        "Type": "Encryption Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"data\": \"RETURNED ENCRYPTED DATA URL\",\n    \"file\": \"RETURNED ENCRYPTED FILE URL\",\n    \"success\": \"SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL\",\n    \"public\": \"PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES\",\n    \"private\": \"PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES\"\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "DATA",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "data",
+          "Description": "GIT URL, file URL, direct upload of file, or data as a query string",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "DES,RSA",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "method",
+          "Description": "Single or multiple encryption types to apply to data or files separated by a comma (DES, RSA, BLOWFISH, TWOFISH, AES, IDEA, PGP)",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "Number",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "4096",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "bit",
+          "Description": "Encryption key size (4096)",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/e",
+          "Description": "File and Data encryption test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "data",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "method",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "bit",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"data\": \"RETURNED ENCRYPTED DATA URL\",\n    \"file\": \"RETURNED ENCRYPTED FILE URL\",\n    \"success\": \"SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL\",\n    \"public\": \"PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES\",\n    \"private\": \"PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES\"\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "CDN Push Zone",
+      "Description": "CDN Push Zone API",
+      "HTTPMethod": "GET",
+      "Group": "CDN",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/c/push",
+      "Response": {
+        "Optional": false,
+        "Type": "CDN Push Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"success\": \"SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY\",\r\n  \"upload\": \"LIST OF FILES UPLOADED TO YOUR PUSH ZONE\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "Domain or domain names separated by a comma you wish to allow CNAME access",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "static.yourdomain.tld/file.type",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "file",
+          "Description": "GIT URL, file URL, or direct upload of file",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/c/push",
+          "Description": "CDN push zone creation and configuration test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "cname",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "file",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"success\": \"SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY\",\r\n  \"upload\": \"LIST OF FILES UPLOADED TO YOUR PUSH ZONE\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "CDN Pull Zone",
+      "Description": "CDN Pull Zone API",
+      "HTTPMethod": "GET",
+      "Group": "CDN",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/c/pull",
+      "Response": {
+        "Optional": false,
+        "Type": "CDN Pull Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"success\": \"SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "origin.yourdomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "Domain or domain names separated by a comma",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "Domain or domain names separated by a comma you wish to allow CNAME access",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/c/pull",
+          "Description": "CDN pull zone creation and configuration test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "origin",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "cname",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"success\": \"SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "DNS Configuration",
+      "Description": "DNS Configuration API",
+      "HTTPMethod": "GET",
+      "Group": "DNS",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/d/c",
+      "Response": {
+        "Optional": false,
+        "Type": "DNS Configuration Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"success\": \"SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET\",\n    \"domain\": \"DOMAIN\",\n    \"records\": \"RECORDS SET TO DOMAIN\"\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "yourdomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "domain",
+          "Description": "Domain or domain names separated by a comma",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "set:root:a:127.0.0.1,set:www:a:127.0.0.1,set:cdn:cname:cname.domain.com",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "records",
+          "Description": "Records to append to domain separated by a comma (a;www.mydomain.com;127.0.0.0,cname;mydomain.com;otherdomain.com)",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/d/c",
+          "Description": "DNS configuration test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "domain",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "records",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"success\": \"SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET\",\n    \"domain\": \"DOMAIN\",\n    \"records\": \"RECORDS SET TO DOMAIN\"\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Obfuscation and Anti-Tampering",
+      "Description": "Javascript and Node.JS Obfuscation and Anti-Tampering API",
+      "HTTPMethod": "GET",
+      "Group": "Code Obfuscation",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/o",
+      "Response": {
+        "Optional": false,
+        "Type": "Code Protection Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"success\": \"RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED\",\r\n  \"app\": \"OBFUSCATED APP URL\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "git://app.git",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "app",
+          "Description": "GIT URL or ZIP package containing your APP",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/o",
+          "Description": "Code obfuscation test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "app",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"success\": \"RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED\",\r\n  \"app\": \"OBFUSCATED APP URL\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Hosting Setup",
+      "Description": "Node.JS and Static Web APP Hosting",
+      "HTTPMethod": "GET",
+      "Group": "Hosting",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/h",
+      "Response": {
+        "Optional": false,
+        "Type": "Hosting Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"url\": \"RETURNED APP HOSTING URL\",\r\n  \"success\": \"RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "git://app.git",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "app",
+          "Description": "GIT URL or ZIP package containing your APP",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "yourdomain.tld,seconddomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "domain",
+          "Description": "Domain or domain names separated by a comma",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/h",
+          "Description": "Web hosting testing case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "app",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "domain",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"url\": \"RETURNED APP HOSTING URL\",\r\n  \"success\": \"RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "DNS Creation",
+      "Description": "DNS Creation API",
+      "HTTPMethod": "GET",
+      "Group": "DNS",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/s/d/a",
+      "Response": {
+        "Optional": false,
+        "Type": "DNS Creation Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"domain\": \"LIST OF DOMAINS ADDED\",\n    \"nameservers\": {\n        \"ns1\": \"NAME SERVER ONE TO POINT YOUR DOMAIN AT\",\n        \"ns2\": \"NAME SERVER TWO TO POINT YOUR DOMAIN AT\",\n        \"ns3\": \"NAME SERVER THREE TO POINT YOUR DOMAIN AT\",\n        \"ns4\": \"NAME SERVER FOUR TO POINT YOUR DOMAIN AT\"\n    }\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "yourdomain.tld,seconddomain.tld",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "domain",
+          "Description": "Domain or domain names separated by a comma",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/s/d/a",
+          "Description": "DNS addition test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "domain",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"domain\": \"LIST OF DOMAINS ADDED\",\n    \"nameservers\": {\n        \"ns1\": \"NAME SERVER ONE TO POINT YOUR DOMAIN AT\",\n        \"ns2\": \"NAME SERVER TWO TO POINT YOUR DOMAIN AT\",\n        \"ns3\": \"NAME SERVER THREE TO POINT YOUR DOMAIN AT\",\n        \"ns4\": \"NAME SERVER FOUR TO POINT YOUR DOMAIN AT\"\n    }\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "https://api.rest.sh/api/d",
+      "Description": "Data Manipulation API",
+      "HTTPMethod": "GET",
+      "Group": "Data Manipulation",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/d",
+      "Response": {
+        "Optional": false,
+        "Type": "Data Manipulation Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"request\": \"REQUEST TYPE\",\n    \"url\": \"RETURNED DATA URL\",\n    \"success\": \"RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL\",\n    \"id\": \"TRANSACTION ID\"\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "https://static.yourcdn.com/data.file",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "data",
+          "Description": "Data URL, data as a query string, or direct upload",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "transform",
+          "Description": "Transformations to perform",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/d",
+          "Description": "Data Manipulation test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "data",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "transform",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"request\": \"REQUEST TYPE\",\n    \"url\": \"RETURNED DATA URL\",\n    \"success\": \"RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL\",\n    \"id\": \"TRANSACTION ID\"\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Image Manipulation",
+      "Description": "Image Manipulation API",
+      "HTTPMethod": "GET",
+      "Group": "Image Manipulation",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/i",
+      "Response": {
+        "Optional": false,
+        "Type": "Image Manipulation Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"request\": \"REQUEST TYPE\",\n    \"url\": \"RETURNED IMAGE URL AND DATA\",\n    \"success\": \"RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL\",\n    \"moderated\": \"RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY\",\n    \"id\": \"TRANSACTION ID\"\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "https://img.yourdomain.tld/image.type",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "image",
+          "Description": "Image URL or direct upload",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "x:flip,y:flip,grayscale:true,compress:true;80,convert:png",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "transform",
+          "Description": "Transformations to perform",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/i",
+          "Description": "Image manipulation test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "image",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "transform",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"request\": \"REQUEST TYPE\",\n    \"url\": \"RETURNED IMAGE URL AND DATA\",\n    \"success\": \"RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL\",\n    \"moderated\": \"RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY\",\n    \"id\": \"TRANSACTION ID\"\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "User Address Verification",
+      "Description": "User Address Verification API",
+      "HTTPMethod": "GET",
+      "Group": "Verification",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/v/a",
+      "Response": {
+        "Optional": false,
+        "Type": "Verify Address Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"active\": \"RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users UID, Username, or Email",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "3301 South Greenfield Rd",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "a",
+          "Description": "Address Line One",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "Address Line Two",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "sa",
+          "Description": "Address Line Two",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "Gilbert",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "c",
+          "Description": "Address City",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "AZ",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "s",
+          "Description": "Address State or Province",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "Number",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "85297",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "z",
+          "Description": "Address Zipcode",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "Address as a one line input separated by commas",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/v/a",
+          "Description": "User address verification test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "user",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "a",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "sa",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "c",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "s",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "z",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "address",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"active\": \"RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "2FA Token Response",
+      "Description": "Two Factor Authentication Token Reply",
+      "HTTPMethod": "GET",
+      "Group": "Two Factor Authentication API",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/2fa/t",
+      "Response": {
+        "Optional": false,
+        "Type": "Two Factor Authentication Token Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"correct\": \"RETURNS IF 2FA TOKEN IS CORRECT\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users UID, Username or Email",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "CODE",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "code",
+          "Description": "Response From User Containing 2FA Code",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/2fa/t",
+          "Description": "User 2FA response test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "user",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "code",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"correct\": \"RETURNS IF 2FA TOKEN IS CORRECT\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Get User Info",
+      "Description": "Get User Info API",
+      "HTTPMethod": "GET",
+      "Group": "User Management",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/u/i",
+      "Response": {
+        "Optional": false,
+        "Type": "User Information Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"request\": \"REQUEST TYPE\",\n    \"uid\": \"Users UID\",\n    \"apiuid\": \"API SIDE USER ID\",\n    \"verified\": \"RETURNS TRUE IF USER IS VERIFIED\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"avatar\": \"USER AVATAR URL\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS\",\n        \"address1\": \"USERS ADDRESS LINE ONE\",\n        \"address2\": \"USERS ADDRESS LINE TWO\",\n        \"city\": \"USERS ADDRESS CITY\",\n        \"state\": \"USERS ADDRESS STATE\",\n        \"zipcode\": \"USERS ADDRESS ZIPCODE\",\n        \"phone\": \"USERS CELL PHONE NUMBER\",\n        \"lastlogin\": \"USERS LAST LOGIN\",\n        \"ip\": \"USERS IP\",\n        \"2fa\": \"RETURNS TRUE IF 2FA IS ENABLED\",\n        \"iplock\": \"RETURNS TRUE IF IP LOCK IS ENABLED\"\n    }\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users User ID",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/u/i",
+          "Description": "User information test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "user"
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"request\": \"REQUEST TYPE\",\n    \"uid\": \"Users UID\",\n    \"apiuid\": \"API SIDE USER ID\",\n    \"verified\": \"RETURNS TRUE IF USER IS VERIFIED\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"avatar\": \"USER AVATAR URL\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS\",\n        \"address1\": \"USERS ADDRESS LINE ONE\",\n        \"address2\": \"USERS ADDRESS LINE TWO\",\n        \"city\": \"USERS ADDRESS CITY\",\n        \"state\": \"USERS ADDRESS STATE\",\n        \"zipcode\": \"USERS ADDRESS ZIPCODE\",\n        \"phone\": \"USERS CELL PHONE NUMBER\",\n        \"lastlogin\": \"USERS LAST LOGIN\",\n        \"ip\": \"USERS IP\",\n        \"2fa\": \"RETURNS TRUE IF 2FA IS ENABLED\",\n        \"iplock\": \"RETURNS TRUE IF IP LOCK IS ENABLED\"\n    }\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Two Factor Authentication",
+      "Description": "Two Factor Authentication API",
+      "HTTPMethod": "GET",
+      "Group": "Two Factor Authentication API",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/2fa",
+      "Response": {
+        "Optional": false,
+        "Type": "Two Factor Authentication Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "Users UID, Username, Email, Or Cellphone number",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/2fa",
+          "Description": "2FA test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "to",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [
+            {
+              "CheckValue": false,
+              "Name": "Accept-Ranges",
+              "Value": "bytes"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Connection",
+              "Value": "keep-alive"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Content-Length",
+              "Value": "57"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Content-Type",
+              "Value": "application/json; charset=utf-8"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Date",
+              "Value": "Wed, 01 Nov 2017 22:38:42 GMT"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Server",
+              "Value": "nginx"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Vary",
+              "Value": "X-HTTP-Method-Override, Accept-Encoding, Authorization, Cookie"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Via",
+              "Value": "1.1 varnish"
+            },
+            {
+              "CheckValue": false,
+              "Name": "X-Cache",
+              "Value": "MISS"
+            },
+            {
+              "CheckValue": false,
+              "Name": "X-Cache-Hits",
+              "Value": "0"
+            },
+            {
+              "CheckValue": false,
+              "Name": "X-Served-By",
+              "Value": "cache-den6026-DEN"
+            },
+            {
+              "CheckValue": false,
+              "Name": "X-Timer",
+              "Value": "S1509575913.139081,VS0,VE9297"
+            },
+            {
+              "CheckValue": false,
+              "Name": "access-control-allow-origin",
+              "Value": "*"
+            },
+            {
+              "CheckValue": false,
+              "Name": "cache-control",
+              "Value": "private"
+            },
+            {
+              "CheckValue": false,
+              "Name": "etag",
+              "Value": "W/\"39-/Uq7JVts9Z0DW2A8HCd/mHAMZx0\""
+            },
+            {
+              "CheckValue": false,
+              "Name": "function-execution-id",
+              "Value": "5at6n190lken"
+            },
+            {
+              "CheckValue": false,
+              "Name": "strict-transport-security",
+              "Value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-cloud-trace-context",
+              "Value": "87d5c606647bdcb494caafb92a85cb73;o=1"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-content-type-options",
+              "Value": "nosniff"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-dns-prefetch-control",
+              "Value": "off"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-download-options",
+              "Value": "noopen"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-frame-options",
+              "Value": "SAMEORIGIN"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-powered-by",
+              "Value": "Fatality-Web-Server"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-xss-protection",
+              "Value": "1; mode=block"
+            }
+          ],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"request\": \"REQUEST TYPE\",\n    \"to\": \"USER BEING VERIFIED\",\n    \"verified\": \"RETURNS TRUE OR FALSE\",\n    \"id\": \"TRANSACTION ID\"\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Update User",
+      "Description": "Update User API",
+      "HTTPMethod": "GET",
+      "Group": "User Management",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/u/u",
+      "Response": {
+        "Optional": false,
+        "Type": "User Update Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"updated\": \"RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED\",\r\n  \"id\": \"TRANSACTION ID\",\r\n  \"info\": {\r\n    \"uid\": \"USERS ID\",\r\n    \"apiuid\": \"API SIDE USER ID\",\r\n    \"avatar\": \"INPUTTED AVATAR URL\",\r\n    \"custom-input\": \"CUSTOM INPUTTED PROFILE DATA\"\r\n  }\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": true,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users UID, Username, Or Email",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "https://img.cdnurl.com/UID/image",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "avatar",
+          "Description": "Avatar Image URL",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "custom input",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "custom input",
+          "Description": "Custom input variable for users profile",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/u/u",
+          "Description": "User update test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "user",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "avatar",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "custom input",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"updated\": \"RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED\",\r\n  \"id\": \"TRANSACTION ID\",\r\n  \"info\": {\r\n    \"uid\": \"USERS ID\",\r\n    \"apiuid\": \"API SIDE USER ID\",\r\n    \"avatar\": \"INPUTTED AVATAR URL\",\r\n    \"custom-input\": \"CUSTOM INPUTTED PROFILE DATA\"\r\n  }\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "User Verification Response",
+      "Description": "Users Verification Response API",
+      "HTTPMethod": "GET",
+      "Group": "Verification",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/v/u",
+      "Response": {
+        "Optional": false,
+        "Type": "Verify User Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"correct\": \"RETURNS IF 2FA TOKEN IS CORRECT\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users UID, Username, Or Email",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "CODE",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "code",
+          "Description": "Verification code entered by the user",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/v/u",
+          "Description": "User verification response test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "user",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "code",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"correct\": \"RETURNS IF 2FA TOKEN IS CORRECT\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "User Verification",
+      "Description": "User Verification API",
+      "HTTPMethod": "GET",
+      "Group": "Verification",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/v",
+      "Response": {
+        "Optional": false,
+        "Type": "Verify Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"request\": \"REQUEST TYPE\",\n    \"to\": \"USER BEING VERIFIED\",\n    \"verified\": \"RETURNS TRUE OR FALSE\",\n    \"id\": \"TRANSACTION ID\"\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users UID, Username, Or Email",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/v",
+          "Description": "User verification test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "user",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [
+            {
+              "CheckValue": false,
+              "Name": "Accept-Ranges",
+              "Value": "bytes"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Connection",
+              "Value": "keep-alive"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Content-Length",
+              "Value": "57"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Content-Type",
+              "Value": "application/json; charset=utf-8"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Date",
+              "Value": "Wed, 01 Nov 2017 22:38:42 GMT"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Server",
+              "Value": "nginx"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Vary",
+              "Value": "X-HTTP-Method-Override, Accept-Encoding, Authorization, Cookie"
+            },
+            {
+              "CheckValue": false,
+              "Name": "Via",
+              "Value": "1.1 varnish"
+            },
+            {
+              "CheckValue": false,
+              "Name": "X-Cache",
+              "Value": "MISS"
+            },
+            {
+              "CheckValue": false,
+              "Name": "X-Cache-Hits",
+              "Value": "0"
+            },
+            {
+              "CheckValue": false,
+              "Name": "X-Served-By",
+              "Value": "cache-den6026-DEN"
+            },
+            {
+              "CheckValue": false,
+              "Name": "X-Timer",
+              "Value": "S1509575913.139081,VS0,VE9297"
+            },
+            {
+              "CheckValue": false,
+              "Name": "access-control-allow-origin",
+              "Value": "*"
+            },
+            {
+              "CheckValue": false,
+              "Name": "cache-control",
+              "Value": "private"
+            },
+            {
+              "CheckValue": false,
+              "Name": "etag",
+              "Value": "W/\"39-/Uq7JVts9Z0DW2A8HCd/mHAMZx0\""
+            },
+            {
+              "CheckValue": false,
+              "Name": "function-execution-id",
+              "Value": "5at6n190lken"
+            },
+            {
+              "CheckValue": false,
+              "Name": "strict-transport-security",
+              "Value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-cloud-trace-context",
+              "Value": "87d5c606647bdcb494caafb92a85cb73;o=1"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-content-type-options",
+              "Value": "nosniff"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-dns-prefetch-control",
+              "Value": "off"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-download-options",
+              "Value": "noopen"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-frame-options",
+              "Value": "SAMEORIGIN"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-powered-by",
+              "Value": "Fatality-Web-Server"
+            },
+            {
+              "CheckValue": false,
+              "Name": "x-xss-protection",
+              "Value": "1; mode=block"
+            }
+          ],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"request\": \"REQUEST TYPE\",\n    \"to\": \"USER BEING VERIFIED\",\n    \"verified\": \"RETURNS TRUE OR FALSE\",\n    \"id\": \"TRANSACTION ID\"\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "User Registration",
+      "Description": "User Registration API",
+      "HTTPMethod": "GET",
+      "Group": "Login and Registration",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/a/u/r",
+      "Response": {
+        "Optional": false,
+        "Type": "User Registration Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"request\": \"REQUEST TYPE\",\n    \"active\": \"RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n        \"uid\": \"USERS ID\",\n        \"apiuid\": \"API SIDE USER ID\",\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS\",\n        \"phone\": \"USERS CELL PHONE NUMBER\"\n    }\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": true,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "email@email.com",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "email",
+          "Description": "Users Email",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users Username",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "Password",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "password",
+          "Description": "Users Password",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "John Doe",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "Users Name",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": true,
+          "Type": "Number",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "1234567890",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "phone",
+          "Description": "Users Cellphone Number",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": true,
+          "Type": "Number",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "1",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "countrycode",
+          "Description": "Users Country Code (US = 1)",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "3301 South Greenfield Rd, Gilbert, AZ 85297",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "Users Address",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/a/u/r",
+          "Description": "User registration test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "email",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "user",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "password",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "name",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "phone",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "countrycode",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "address",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"request\": \"REQUEST TYPE\",\n    \"active\": \"RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n        \"uid\": \"USERS ID\",\n        \"apiuid\": \"API SIDE USER ID\",\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS\",\n        \"phone\": \"USERS CELL PHONE NUMBER\"\n    }\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Delete User",
+      "Description": "Delete User API",
+      "HTTPMethod": "GET",
+      "Group": "User Management",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/u/d",
+      "Response": {
+        "Optional": false,
+        "Type": "User Deletion Response Model",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"deleted\": \"RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "UID",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users UID, Username, or Email",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/u/d",
+          "Description": "User deletion test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "user",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"deleted\": \"RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "User Authentication",
+      "Description": "User Authentication API",
+      "HTTPMethod": "GET",
+      "Group": "Login and Registration",
+      "RequiresAuthentication": true,
+      "Server": "PATH",
+      "Route": "/a/u/l",
+      "Response": {
+        "Optional": false,
+        "Type": "User Authentication Model Response",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n    \"request\": \"REQUEST TYPE\",\n    \"uid\": \"Users UID\",\n    \"valid\": \"RETURNS TRUE IF USER LOGIN DETAILS ARE VALID\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n    \t\"uid\": \"USERS ID\",\n    \t\"apiuid\": \"API SIDE USER ID\",\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"avatar\": \"USER AVATAR URL\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS\",\n        \"phone\": \"USERS CELL PHONE NUMBER\",\n        \"lastlogin\": \"USERS LAST LOGIN\",\n        \"ip\": \"USERS IP\",\n        \"2fa\": \"RETURNS TRUE IF 2FA IS ENABLED\",\n        \"iplock\": \"RETURNS TRUE IF IP LOCK IS ENABLED\"\n    }\n}",
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "Response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "Username",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "Users Username or Email",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Query",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Example": "Password",
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "password",
+          "Description": "Users Password",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [],
+      "TestCases": [
+        {
+          "Name": "https://api.rest.sh/api/a/u/l",
+          "Description": "User authentication test case",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": true,
+              "Name": "user",
+              "Value": ""
+            },
+            {
+              "IsNull": true,
+              "Name": "password",
+              "Value": ""
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{\n    \"request\": \"REQUEST TYPE\",\n    \"uid\": \"Users UID\",\n    \"valid\": \"RETURNS TRUE IF USER LOGIN DETAILS ARE VALID\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n    \t\"uid\": \"USERS ID\",\n    \t\"apiuid\": \"API SIDE USER ID\",\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"avatar\": \"USER AVATAR URL\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS\",\n        \"phone\": \"USERS CELL PHONE NUMBER\",\n        \"lastlogin\": \"USERS LAST LOGIN\",\n        \"ip\": \"USERS IP\",\n        \"2fa\": \"RETURNS TRUE IF 2FA IS ENABLED\",\n        \"iplock\": \"RETURNS TRUE IF IP LOCK IS ENABLED\"\n    }\n}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    }
+  ],
+  "CustomTypes": [
+    {
+      "Name": "MMDDYYYYHHMMSS Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "Data Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "data",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Logging Logs Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "Log Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "log",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Logging Setup Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Data Manipulation Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "apiuid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "url",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "manipulation",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "conversion",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "sorting",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "compression",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Verify Address",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "a",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "sa",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "c",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "s",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "z",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Information Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "realname",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "displayname",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "avatar",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "email",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address1",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address2",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "city",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "state",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "zipcode",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "phone",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "lastlogin",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "ip",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "2fa",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "iplock",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Update Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "apiuid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "oldpassword",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "newpassword",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "email",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "phone",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "avatar",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "countrycode",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "a",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "sa",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "c",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "s",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "z",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "custom-input",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Registration Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "password",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "email",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "phone",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "countrycode",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "a",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "sa",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "c",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "s",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "z",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Info Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "apiuid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "realname",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "displayname",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "avatar",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "email",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "phone",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "lastlogin",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "ip",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "2fa",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "iplock",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Logging Logs Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "time",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Logging Setup Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "activate",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "WAF Configuration Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "WAF Creation Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Encryption Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "data",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "file",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "public",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "private",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Encryption Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "data",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "file",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "method",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "bit",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "CDN Push Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "file",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "CDN Pull Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "origin",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "DNS Configuration Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "domain",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "records",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Nameservers Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "ns1",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "ns2",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "ns3",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "ns4",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Hosting Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "url",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Hosting Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "app",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "domain",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Data Manipulation Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "url",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Image Manipulation Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "url",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "moderated",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Image Manipulation Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "image",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "transform",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "moderate",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Two Factor Authentication Token Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "code",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Two Factor Authentication Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "verified",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Verify User Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "code",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Verify Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "verified",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Deletion Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "apiuid",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Information Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "Users API Private Key"
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "api",
+          "Description": "Users API Public Key"
+        },
+        {
+          "Optional": false,
+          "Type": "User Information Secondary Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "info",
+          "Description": "Users Profile Information",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Information Secondary Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "apiuid",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Custom Update Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "apiuid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "avatar",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "custom-input",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Update Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "updated",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "User Custom Update Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "info",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Profile Information Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "apiuid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "realname",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "displayname",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "email",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "phone",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Registration Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "active",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "User Profile Information Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "info",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Authentication Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "valid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Info Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "info",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Authentication Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "user",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "password",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Data Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "result",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "content",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Log Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "MMDDYYYYHHMMSS Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "MMDDYYYYHHMMSSX",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "MMDDYYYYHHMMSS Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "MMDDYYYYHHMMSSY",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "WAF Configuration Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "rule",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "WAF Creation Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Code Protection Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "app",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Code Protection Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "app",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "CDN Push Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "upload",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "CDN Pull Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "cname",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "DNS Configuration Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "success",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "domain",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "records",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "DNS Creation Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "domain",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Nameservers Model",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "nameservers",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "DNS Creation Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "domain",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Two Factor Authentication Token Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "correct",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Two Factor Authentication Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Verify Address Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "active",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Verify User Model Response",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "correct",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Verify Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "key",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "uid",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "User Deletion Response Model",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "request",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "deleted",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "id",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    }
+  ],
+  "CodeGenSettings": {
+    "SynchronyMode": 0,
+    "ModelSerializationScheme": "Json",
+    "ArraySerialization": "Indexed",
+    "Nullify404": true,
+    "UseHttpMethodPrefix": false,
+    "UseModelPrefix": false,
+    "UseExceptionPrefix": true,
+    "UseEnumPrefix": false,
+    "UseControllerPrefix": false,
+    "UseConstructorsForConfig": false,
+    "Timeout": 5.0,
+    "AndroidUseAppManifest": true,
+    "iOSUseAppInfoPlist": true,
+    "iOSGenerateCoreData": true,
+    "CollapseParamsToArray": true,
+    "RunscopeEnabled": false,
+    "AndroidHttpClient": "UNIREST",
+    "ObjCHttpClient": "UNIREST",
+    "CSharpHttpClient": "UNIREST",
+    "NodeHttpClient": "NODE_REQUEST",
+    "CSharpNamespace": "SMASH",
+    "JavaPackageName": "SMASH",
+    "JavaUsePropertiesConfig": false,
+    "PHPHttpClient": "UNIREST",
+    "EnablePHPComposerVersionString": true,
+    "PHPComposerPackageName": "SMASH/API",
+    "BrandLabel": "SMASH",
+    "UserAgent": "SMASH",
+    "ProjectName": "SMASH",
+    "ClientInterfaceName": "SMASH",
+    "EnableAdditionalModelProperties": true,
+    "PreserveParameterOrder": true,
+    "ValidateRequiredParameters": true,
+    "AppendContentHeaders": false,
+    "GenerateInterfaces": true,
+    "UseCommonSDKLibrary": true,
+    "ParameterArrayFormat": 2,
+    "SecurityProtocols": [
+      "Ssl3",
+      "Tls",
+      "Ssl3",
+      "Tls",
+      "Ssl3",
+      "Tls"
+    ],
+    "GenerateTravisConfig": true,
+    "GenerateCircleConfig": true,
+    "GenerateAppveyorConfig": true,
+    "GenerateJenkinsConfig": true,
+    "EnableLogging": true,
+    "EnableHttpCache": false,
+    "Retries": 0,
+    "RetryInterval": 1.0,
+    "GenerateAdvancedDocs": true,
+    "StoreTimezoneInformation": false,
+    "UnderscoreNumbers": false
+  },
+  "Errors": [
+    {
+      "ErrorCode": 400,
+      "ErrorMessage": "Bad Request",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 401,
+      "ErrorMessage": "Incorrect Credentials",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 403,
+      "ErrorMessage": "Forbidden",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 406,
+      "ErrorMessage": "Not Acceptable Input",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 409,
+      "ErrorMessage": "Data Conflict",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 413,
+      "ErrorMessage": "Payload Too Large",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 415,
+      "ErrorMessage": "Un-Supported Content Type",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 451,
+      "ErrorMessage": "Un-Available For Legal Reasons",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 500,
+      "ErrorMessage": "Internal API Error",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 501,
+      "ErrorMessage": "Not Implemented",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 503,
+      "ErrorMessage": "API Unavailable",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 504,
+      "ErrorMessage": "Request Timeout",
+      "ErrorTypeName": ""
+    },
+    {
+      "ErrorCode": 511,
+      "ErrorMessage": "Authentication Required",
+      "ErrorTypeName": ""
+    }
+  ],
+  "TestGenSettings": {
+    "Configuration": {},
+    "TestTimeout": 30,
+    "PrecisionDelta": 0.01,
+    "Environment": "Production"
+  }
+}

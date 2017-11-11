@@ -1,0 +1,4707 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.19",
+    "title": "SMASH - API",
+    "description": "# Introduction\n* ## Multi-use Flexible API for: \n  * **User**:\n    * Login \n    * Registration\n    * User Management\n    * Profile Updates\n    * Two Factor Authentication\n     \n  * **Verifcation**:\n    * Identity Verification\n    * Address Verifcation\n    * Cell Phone Verification \n\n  * **Image**:\n    * Manipulation\n    * Compression\n    * Moderation\n     \n  * **Data**:\n    * Manipulation\n    * Compression\n    * Conversion\n    * Sorting\n\n  * **Services**:\n    * Node Application Hosting\n    * DNS Management\n    * CDN (Content Delivery Network)\n\n  * **Security**:\n    * Encryption\n    * Code Obfuscation\n    * Platform Identification\n    * WAF and DDOS Protection (Web Application Firewall)\n      * Advanced Logging\n\n# Overview\n\n*  **API Domain: api.rest.sh, api.restful.sh**\n\nThis API supports both GET and POST API requests with a JSON or XML output.\n\n*~ You can post to this API via a direct body response in JSON/XML, or using URL variables/requests.*\n\n# Authentication\nBe sure to include your User API KEY, and UID when sending a POST or GET request to our API.\n\n*~ If domain restriction is enabled in your dashboard, please include your domain in the request and redirect headers for your API calls.*\n\n# Status Codes\n* ## Success Codes:\n  *   **200**: Information Recieved\n  *   **201**: Success, Resource Created, or Updated\n  *   **202**: Proccessing\n\n* ## Information Codes:\n  *   **400**: Bad Request\n  *   **401**: Incorrect Credentials\n  *   **403**: Forbidden\n  *   **406**: Not Acceptable Input\n  *   **409**: Data Conflict\n  *   **413**: Payload Too Large\n  *   **415**: Un-Supported Content Type\n  *   **451**: Un-Available For Legal Reasons\n\n* ## Error Codes:\n  *   **500**: Internal API Error\n  *   **501**: Not Implemented\n  *   **503**: API Unavailable\n  *   **504**: Request Timeout\n  *   **511**: Authentication Required\n\n# Rate Pricing\n* **Verification requests:** \n  * per/1000 Requests: **$50.00**\n\n* **User requests:** \n  * per/1000 Requests: **$0.0072**\n\n* **Image requests:** \n  * per/1000 Requests: **$11.87**\n\n* Data requests: \n  * per/1MB: **$0.00024**\n\n* **Service requests:** \n  * **DNS Pricing Per Month:**\n    * Per Hosted Zone: **$1.00**\n    * Per Traffic Flow Record: **$100.00**\n    * Per 1 Million Queries: **$0.80**\n    * Per 1 Million Latency Based Queries: **$1.20**\n    * Per 1 Million GEO Queries: **$1.40**\n    * Per Health Check: **$1.00**\n\n  * **Hosting Per Month:**\n    * Per APP: **$5.00**\n\n  * **CDN Pricing per/1GB:**\n    * North America: **$0.17**\n    * Europe: **$0.17**\n    * Australia: **$0.28**\n    * Asia: **$0.28**\n    * India: **$0.34**\n    * South America: **$0.5**\n\n* **Security requests:** \n  * **WAF and DDOS Pricing Per Month:**\n    * per/1000 Web Requests: **$0.0012**\n    * Per Web Access Control List: **$10.00**\n    * Per Custom Domain Configuration: **$2.00**\n  \n  * **Encryption:**\n    * per/1000 data sets: **$0.0144**\n    * per/1MB per file: **$0.00048**\n\n  * **Code Obfuscation Per Month:**\n    * per/APP (300 files per app): **$102.00**\n\n  * **Code Obfuscation Per Month:**\n    * per/APP (300 files per app): **$102.00**\n\n  * **Advanced Logging:**\n    * per/1000 Log Entries: **$0.0072**",
+    "license": {
+      "name": "MIT",
+      "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
+    }
+  },
+  "host": "api.rest.sh",
+  "basePath": "/api",
+  "securityDefinitions": {
+    "auth": {
+      "type": "oauth2",
+      "scopes": {}
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/s/l": {
+      "get": {
+        "description": "WAF Log Configuration",
+        "summary": "Logging Configuration",
+        "tags": [
+          "Advanced Logging"
+        ],
+        "operationId": "Logging Configuration",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Name of the WAF zone"
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "IP Address of the Web Application you wish to configure logging on"
+          },
+          {
+            "name": "activate",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Activate or Disable"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoggingSetupModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/l?name=&origin=&activate="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"success\": \"RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/l",
+            "x-testDescription": "Advanced logging configuration test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/l/i": {
+      "get": {
+        "description": "WAF Log Info",
+        "summary": "Logging Info",
+        "tags": [
+          "Advanced Logging"
+        ],
+        "operationId": "Logging Info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Name of your WAF zone"
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "IP Address of the Web Application"
+          },
+          {
+            "name": "time",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Specific times or dates to lookup separated by a comma in MMDDYYHHMMSS Format ( Month Month Day Day Year Year Year Hour Hour Minute Minute Second Second [01/01/0101;24:59:01])"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoggingLogsModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "log": {
+                  "01010101245901": {
+                    "data": {
+                      "result": "INFO",
+                      "content": "LOG: CONTENT AND ACTIONS PERFORMED",
+                      "id": "FUNCTION ID"
+                    }
+                  },
+                  "01010101245902": {
+                    "data": {
+                      "result": "ERROR",
+                      "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
+                      "id": "FUNCTION ID"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/l/i?name=&origin=&time="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"log\": {\n        \"01010101245901\": {\n            \"data\": {\n                \"result\": \"INFO\",\n                \"content\": \"LOG: CONTENT AND ACTIONS PERFORMED\",\n                \"id\": \"FUNCTION ID\"\n            }\n        },\n        \"01010101245902\": {\n            \"data\": {\n                \"result\": \"ERROR\",\n                \"content\": \"LOG: ERROR CONTENT AND ACTIONS PERFORMED\",\n                \"id\": \"FUNCTION ID\"\n            }\n        }\n    }\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/l/i",
+            "x-testDescription": "Advanced logging info test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/w/c": {
+      "get": {
+        "description": "WAF and DDOS Configuration",
+        "summary": "WAF Configuration",
+        "tags": [
+          "WAF and DDOS Protection"
+        ],
+        "operationId": "WAF Configuration",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Name of your WAF zone"
+          },
+          {
+            "name": "rule",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Rule or rules to add or update separated by a comma"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WafConfigurationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+                "rule": "RULES APPLIED TO WAF"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/w/c?name=&rule="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"success\": \"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY\",\r\n  \"rule\": \"RULES APPLIED TO WAF\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "WAF Configuration",
+            "x-testDescription": "WAF and DDOS configuration test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/w": {
+      "get": {
+        "description": "WAF and DDOS Creation",
+        "summary": "WAF Creation",
+        "tags": [
+          "WAF and DDOS Protection"
+        ],
+        "operationId": "WAF Creation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "IP of the Web server you wish to protect"
+          },
+          {
+            "name": "cname",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Domain or domain names separated by a comma you wish to allow CNAME access"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WafCreationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+                "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/w?origin=&cname="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"success\": \"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "WAF Creation",
+            "x-testDescription": "WAF and DDOS test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/e": {
+      "get": {
+        "description": "Data and File Encryption API",
+        "summary": "Data and File Encryption",
+        "tags": [
+          "Encryption"
+        ],
+        "operationId": "Data and File Encryption",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "data",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "GIT URL, file URL, direct upload of file, or data as a query string"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Single or multiple encryption types to apply to data or files separated by a comma (DES, RSA, BLOWFISH, TWOFISH, AES, IDEA, PGP)"
+          },
+          {
+            "name": "bit",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "Encryption key size (4096)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EncryptionModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "data": "RETURNED ENCRYPTED DATA URL",
+                "file": "RETURNED ENCRYPTED FILE URL",
+                "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
+                "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
+                "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/e?data=&method=&bit="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"data\": \"RETURNED ENCRYPTED DATA URL\",\n    \"file\": \"RETURNED ENCRYPTED FILE URL\",\n    \"success\": \"SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL\",\n    \"public\": \"PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES\",\n    \"private\": \"PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES\"\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/e",
+            "x-testDescription": "File and Data encryption test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/c/push": {
+      "get": {
+        "description": "CDN Push Zone API",
+        "summary": "CDN Push Zone",
+        "tags": [
+          "CDN"
+        ],
+        "operationId": "CDN Push Zone",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cname",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Domain or domain names separated by a comma you wish to allow CNAME access"
+          },
+          {
+            "name": "file",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "GIT URL, file URL, or direct upload of file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CdnPushModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
+                "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
+                "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/c/push?cname=&file="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"success\": \"SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY\",\r\n  \"upload\": \"LIST OF FILES UPLOADED TO YOUR PUSH ZONE\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/c/push",
+            "x-testDescription": "CDN push zone creation and configuration test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/c/pull": {
+      "get": {
+        "description": "CDN Pull Zone API",
+        "summary": "CDN Pull Zone",
+        "tags": [
+          "CDN"
+        ],
+        "operationId": "CDN Pull Zone",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Domain or domain names separated by a comma"
+          },
+          {
+            "name": "cname",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Domain or domain names separated by a comma you wish to allow CNAME access"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CdnPullModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
+                "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/c/pull?origin=&cname="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"success\": \"SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY\",\r\n  \"cname\": \"RECORD TO APPEND YOUR URLS TO VIA A CNAME\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/c/pull",
+            "x-testDescription": "CDN pull zone creation and configuration test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/d/c": {
+      "get": {
+        "description": "DNS Configuration API",
+        "summary": "DNS Configuration",
+        "tags": [
+          "DNS"
+        ],
+        "operationId": "DNS Configuration",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Domain or domain names separated by a comma"
+          },
+          {
+            "name": "records",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Records to append to domain separated by a comma (a;www.mydomain.com;127.0.0.0,cname;mydomain.com;otherdomain.com)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DnsConfigurationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
+                "domain": "DOMAIN",
+                "records": "RECORDS SET TO DOMAIN"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/d/c?domain=&records="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"success\": \"SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET\",\n    \"domain\": \"DOMAIN\",\n    \"records\": \"RECORDS SET TO DOMAIN\"\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/d/c",
+            "x-testDescription": "DNS configuration test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/o": {
+      "get": {
+        "description": "Javascript and Node.JS Obfuscation and Anti-Tampering API",
+        "summary": "Obfuscation and Anti-Tampering",
+        "tags": [
+          "Code Obfuscation"
+        ],
+        "operationId": "Obfuscation and Anti-Tampering",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "GIT URL or ZIP package containing your APP"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CodeProtectionModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
+                "app": "OBFUSCATED APP URL"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/o?app="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"success\": \"RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED\",\r\n  \"app\": \"OBFUSCATED APP URL\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/o",
+            "x-testDescription": "Code obfuscation test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/h": {
+      "get": {
+        "description": "Node.JS and Static Web APP Hosting",
+        "summary": "Hosting Setup",
+        "tags": [
+          "Hosting"
+        ],
+        "operationId": "Hosting Setup",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "GIT URL or ZIP package containing your APP"
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Domain or domain names separated by a comma"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/HostingModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED APP HOSTING URL",
+                "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/h?app=&domain="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"url\": \"RETURNED APP HOSTING URL\",\r\n  \"success\": \"RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/h",
+            "x-testDescription": "Web hosting testing case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/d/a": {
+      "get": {
+        "description": "DNS Creation API",
+        "summary": "DNS Creation",
+        "tags": [
+          "DNS"
+        ],
+        "operationId": "DNS Creation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Domain or domain names separated by a comma"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DnsCreationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "domain": "LIST OF DOMAINS ADDED",
+                "nameservers": {
+                  "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
+                  "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
+                  "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
+                  "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/s/d/a?domain="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"domain\": \"LIST OF DOMAINS ADDED\",\n    \"nameservers\": {\n        \"ns1\": \"NAME SERVER ONE TO POINT YOUR DOMAIN AT\",\n        \"ns2\": \"NAME SERVER TWO TO POINT YOUR DOMAIN AT\",\n        \"ns3\": \"NAME SERVER THREE TO POINT YOUR DOMAIN AT\",\n        \"ns4\": \"NAME SERVER FOUR TO POINT YOUR DOMAIN AT\"\n    }\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/s/d/a",
+            "x-testDescription": "DNS addition test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/d": {
+      "get": {
+        "description": "Data Manipulation API",
+        "summary": "https://api.rest.sh/api/d",
+        "tags": [
+          "Data Manipulation"
+        ],
+        "operationId": "https://api.rest.sh/api/d",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "data",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Data URL, data as a query string, or direct upload"
+          },
+          {
+            "name": "transform",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Transformations to perform"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DataManipulationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED DATA URL",
+                "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/d?data=&transform="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"request\": \"REQUEST TYPE\",\n    \"url\": \"RETURNED DATA URL\",\n    \"success\": \"RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL\",\n    \"id\": \"TRANSACTION ID\"\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/d",
+            "x-testDescription": "Data Manipulation test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/i": {
+      "get": {
+        "description": "Image Manipulation API",
+        "summary": "Image Manipulation",
+        "tags": [
+          "Image Manipulation"
+        ],
+        "operationId": "Image Manipulation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Image URL or direct upload"
+          },
+          {
+            "name": "transform",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Transformations to perform"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ImageManipulationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED IMAGE URL AND DATA",
+                "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
+                "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/i?image=&transform="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"request\": \"REQUEST TYPE\",\n    \"url\": \"RETURNED IMAGE URL AND DATA\",\n    \"success\": \"RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL\",\n    \"moderated\": \"RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY\",\n    \"id\": \"TRANSACTION ID\"\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/i",
+            "x-testDescription": "Image manipulation test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/v/a": {
+      "get": {
+        "description": "User Address Verification API",
+        "summary": "User Address Verification",
+        "tags": [
+          "Verification"
+        ],
+        "operationId": "User Address Verification",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users UID, Username, or Email"
+          },
+          {
+            "name": "a",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Address Line One"
+          },
+          {
+            "name": "sa",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Address Line Two"
+          },
+          {
+            "name": "c",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Address City"
+          },
+          {
+            "name": "s",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Address State or Province"
+          },
+          {
+            "name": "z",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "Address Zipcode"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Address as a one line input separated by commas"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VerifyAddressResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/v/a?user=&a=&sa=&c=&s=&z=&address="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"active\": \"RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/v/a",
+            "x-testDescription": "User address verification test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/2fa/t": {
+      "get": {
+        "description": "Two Factor Authentication Token Reply",
+        "summary": "2FA Token Response",
+        "tags": [
+          "Two Factor Authentication API"
+        ],
+        "operationId": "2FA Token Response",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users UID, Username or Email"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Response From User Containing 2FA Code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TwoFactorAuthenticationTokenModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/2fa/t?user=&code="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"correct\": \"RETURNS IF 2FA TOKEN IS CORRECT\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/2fa/t",
+            "x-testDescription": "User 2FA response test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/u/i": {
+      "get": {
+        "description": "Get User Info API",
+        "summary": "Get User Info",
+        "tags": [
+          "User Management"
+        ],
+        "operationId": "Get User Info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users User ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserInformationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "uid": "Users UID",
+                "apiuid": "API SIDE USER ID",
+                "verified": "RETURNS TRUE IF USER IS VERIFIED",
+                "id": "TRANSACTION ID",
+                "info": {
+                  "realname": "USERS REAL NAME",
+                  "displayname": "USERS USERNAME",
+                  "avatar": "USER AVATAR URL",
+                  "email": "USERS EMAIL",
+                  "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+                  "address1": "USERS ADDRESS LINE ONE",
+                  "address2": "USERS ADDRESS LINE TWO",
+                  "city": "USERS ADDRESS CITY",
+                  "state": "USERS ADDRESS STATE",
+                  "zipcode": "USERS ADDRESS ZIPCODE",
+                  "phone": "USERS CELL PHONE NUMBER",
+                  "lastlogin": "USERS LAST LOGIN",
+                  "ip": "USERS IP",
+                  "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                  "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/u/i?user="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"request\": \"REQUEST TYPE\",\n    \"uid\": \"Users UID\",\n    \"apiuid\": \"API SIDE USER ID\",\n    \"verified\": \"RETURNS TRUE IF USER IS VERIFIED\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"avatar\": \"USER AVATAR URL\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS\",\n        \"address1\": \"USERS ADDRESS LINE ONE\",\n        \"address2\": \"USERS ADDRESS LINE TWO\",\n        \"city\": \"USERS ADDRESS CITY\",\n        \"state\": \"USERS ADDRESS STATE\",\n        \"zipcode\": \"USERS ADDRESS ZIPCODE\",\n        \"phone\": \"USERS CELL PHONE NUMBER\",\n        \"lastlogin\": \"USERS LAST LOGIN\",\n        \"ip\": \"USERS IP\",\n        \"2fa\": \"RETURNS TRUE IF 2FA IS ENABLED\",\n        \"iplock\": \"RETURNS TRUE IF IP LOCK IS ENABLED\"\n    }\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/u/i",
+            "x-testDescription": "User information test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/2fa": {
+      "get": {
+        "description": "Two Factor Authentication API",
+        "summary": "Two Factor Authentication",
+        "tags": [
+          "Two Factor Authentication API"
+        ],
+        "operationId": "Two Factor Authentication",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users UID, Username, Email, Or Cellphone number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TwoFactorAuthenticationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "to": "USER BEING VERIFIED",
+                "verified": "RETURNS TRUE OR FALSE",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/2fa?to="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {
+                "Accept-Ranges": "bytes",
+                "Connection": "keep-alive",
+                "Content-Length": "57",
+                "Content-Type": "application/json; charset=utf-8",
+                "Date": "Wed, 01 Nov 2017 22:38:42 GMT",
+                "Server": "nginx",
+                "Vary": "X-HTTP-Method-Override, Accept-Encoding, Authorization, Cookie",
+                "Via": "1.1 varnish",
+                "X-Cache": "MISS",
+                "X-Cache-Hits": "0",
+                "X-Served-By": "cache-den6026-DEN",
+                "X-Timer": "S1509575913.139081,VS0,VE9297",
+                "access-control-allow-origin": "*",
+                "cache-control": "private",
+                "etag": "W/\"39-/Uq7JVts9Z0DW2A8HCd/mHAMZx0\"",
+                "function-execution-id": "5at6n190lken",
+                "strict-transport-security": "max-age=15552000; includeSubDomains",
+                "x-cloud-trace-context": "87d5c606647bdcb494caafb92a85cb73;o=1",
+                "x-content-type-options": "nosniff",
+                "x-dns-prefetch-control": "off",
+                "x-download-options": "noopen",
+                "x-frame-options": "SAMEORIGIN",
+                "x-powered-by": "Fatality-Web-Server",
+                "x-xss-protection": "1; mode=block"
+              },
+              "body": "{\n    \"request\": \"REQUEST TYPE\",\n    \"to\": \"USER BEING VERIFIED\",\n    \"verified\": \"RETURNS TRUE OR FALSE\",\n    \"id\": \"TRANSACTION ID\"\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/2fa",
+            "x-testDescription": "2FA test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/u/u": {
+      "get": {
+        "description": "Update User API",
+        "summary": "Update User",
+        "tags": [
+          "User Management"
+        ],
+        "operationId": "Update User",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users UID, Username, Or Email"
+          },
+          {
+            "name": "avatar",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Avatar Image URL"
+          },
+          {
+            "name": "custom input",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Custom input variable for users profile"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserUpdateModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
+                "id": "TRANSACTION ID",
+                "info": {
+                  "uid": "USERS ID",
+                  "apiuid": "API SIDE USER ID",
+                  "avatar": "INPUTTED AVATAR URL",
+                  "custom-input": "CUSTOM INPUTTED PROFILE DATA"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/u/u?user=&avatar=&custom input="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"updated\": \"RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED\",\r\n  \"id\": \"TRANSACTION ID\",\r\n  \"info\": {\r\n    \"uid\": \"USERS ID\",\r\n    \"apiuid\": \"API SIDE USER ID\",\r\n    \"avatar\": \"INPUTTED AVATAR URL\",\r\n    \"custom-input\": \"CUSTOM INPUTTED PROFILE DATA\"\r\n  }\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/u/u",
+            "x-testDescription": "User update test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": true,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/v/u": {
+      "get": {
+        "description": "Users Verification Response API",
+        "summary": "User Verification Response",
+        "tags": [
+          "Verification"
+        ],
+        "operationId": "User Verification Response",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users UID, Username, Or Email"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Verification code entered by the user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VerifyUserModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/v/u?user=&code="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"correct\": \"RETURNS IF 2FA TOKEN IS CORRECT\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/v/u",
+            "x-testDescription": "User verification response test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/v": {
+      "get": {
+        "description": "User Verification API",
+        "summary": "User Verification",
+        "tags": [
+          "Verification"
+        ],
+        "operationId": "User Verification",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users UID, Username, Or Email"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VerifyModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "to": "USER BEING VERIFIED",
+                "verified": "RETURNS TRUE OR FALSE",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/v?user="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {
+                "Accept-Ranges": "bytes",
+                "Connection": "keep-alive",
+                "Content-Length": "57",
+                "Content-Type": "application/json; charset=utf-8",
+                "Date": "Wed, 01 Nov 2017 22:38:42 GMT",
+                "Server": "nginx",
+                "Vary": "X-HTTP-Method-Override, Accept-Encoding, Authorization, Cookie",
+                "Via": "1.1 varnish",
+                "X-Cache": "MISS",
+                "X-Cache-Hits": "0",
+                "X-Served-By": "cache-den6026-DEN",
+                "X-Timer": "S1509575913.139081,VS0,VE9297",
+                "access-control-allow-origin": "*",
+                "cache-control": "private",
+                "etag": "W/\"39-/Uq7JVts9Z0DW2A8HCd/mHAMZx0\"",
+                "function-execution-id": "5at6n190lken",
+                "strict-transport-security": "max-age=15552000; includeSubDomains",
+                "x-cloud-trace-context": "87d5c606647bdcb494caafb92a85cb73;o=1",
+                "x-content-type-options": "nosniff",
+                "x-dns-prefetch-control": "off",
+                "x-download-options": "noopen",
+                "x-frame-options": "SAMEORIGIN",
+                "x-powered-by": "Fatality-Web-Server",
+                "x-xss-protection": "1; mode=block"
+              },
+              "body": "{\n    \"request\": \"REQUEST TYPE\",\n    \"to\": \"USER BEING VERIFIED\",\n    \"verified\": \"RETURNS TRUE OR FALSE\",\n    \"id\": \"TRANSACTION ID\"\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/v",
+            "x-testDescription": "User verification test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/a/u/r": {
+      "get": {
+        "description": "User Registration API",
+        "summary": "User Registration",
+        "tags": [
+          "Login and Registration"
+        ],
+        "operationId": "User Registration",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users Email"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users Username"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users Password"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Users Name"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Users Cellphone Number"
+          },
+          {
+            "name": "countrycode",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "description": "Users Country Code (US = 1)"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Users Address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserRegistrationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
+                "id": "TRANSACTION ID",
+                "info": {
+                  "uid": "USERS ID",
+                  "apiuid": "API SIDE USER ID",
+                  "realname": "USERS REAL NAME",
+                  "displayname": "USERS USERNAME",
+                  "email": "USERS EMAIL",
+                  "address": "USERS ADDRESS",
+                  "phone": "USERS CELL PHONE NUMBER"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/a/u/r?email=&user=&password=&name=&phone=&countrycode=&address="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"request\": \"REQUEST TYPE\",\n    \"active\": \"RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n        \"uid\": \"USERS ID\",\n        \"apiuid\": \"API SIDE USER ID\",\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS\",\n        \"phone\": \"USERS CELL PHONE NUMBER\"\n    }\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/a/u/r",
+            "x-testDescription": "User registration test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": true,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/u/d": {
+      "get": {
+        "description": "Delete User API",
+        "summary": "Delete User",
+        "tags": [
+          "User Management"
+        ],
+        "operationId": "Delete User",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users UID, Username, or Email"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserDeletionResponseModel"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
+                "id": "TRANSACTION ID"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/u/d?user="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\r\n  \"request\": \"REQUEST TYPE\",\r\n  \"deleted\": \"RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED\",\r\n  \"id\": \"TRANSACTION ID\"\r\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/u/d",
+            "x-testDescription": "User deletion test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/a/u/l": {
+      "get": {
+        "description": "User Authentication API",
+        "summary": "User Authentication",
+        "tags": [
+          "Login and Registration"
+        ],
+        "operationId": "User Authentication",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users Username or Email"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Users Password"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserAuthenticationModelResponse"
+            },
+            "examples": {
+              "application/json": {
+                "request": "REQUEST TYPE",
+                "uid": "Users UID",
+                "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
+                "id": "TRANSACTION ID",
+                "info": {
+                  "uid": "USERS ID",
+                  "apiuid": "API SIDE USER ID",
+                  "realname": "USERS REAL NAME",
+                  "displayname": "USERS USERNAME",
+                  "avatar": "USER AVATAR URL",
+                  "email": "USERS EMAIL",
+                  "address": "USERS ADDRESS",
+                  "phone": "USERS CELL PHONE NUMBER",
+                  "lastlogin": "USERS LAST LOGIN",
+                  "ip": "USERS IP",
+                  "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                  "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Incorrect Credentials"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "Not Acceptable Input"
+          },
+          "409": {
+            "description": "Data Conflict"
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "415": {
+            "description": "Un-Supported Content Type"
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons"
+          },
+          "default": {
+            "description": "Internal API Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          },
+          "503": {
+            "description": "API Unavailable"
+          },
+          "504": {
+            "description": "Request Timeout"
+          },
+          "511": {
+            "description": "Authentication Required"
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/a/u/l?user=&password="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\n    \"request\": \"REQUEST TYPE\",\n    \"uid\": \"Users UID\",\n    \"valid\": \"RETURNS TRUE IF USER LOGIN DETAILS ARE VALID\",\n    \"id\": \"TRANSACTION ID\",\n    \"info\": {\n    \t\"uid\": \"USERS ID\",\n    \t\"apiuid\": \"API SIDE USER ID\",\n        \"realname\": \"USERS REAL NAME\",\n        \"displayname\": \"USERS USERNAME\",\n        \"avatar\": \"USER AVATAR URL\",\n        \"email\": \"USERS EMAIL\",\n        \"address\": \"USERS ADDRESS\",\n        \"phone\": \"USERS CELL PHONE NUMBER\",\n        \"lastlogin\": \"USERS LAST LOGIN\",\n        \"ip\": \"USERS IP\",\n        \"2fa\": \"RETURNS TRUE IF 2FA IS ENABLED\",\n        \"iplock\": \"RETURNS TRUE IF IP LOCK IS ENABLED\"\n    }\n}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "https://api.rest.sh/api/a/u/l",
+            "x-testDescription": "User authentication test case"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MmddyyyyhhmmssModel": {
+      "title": "MMDDYYYYHHMMSS Model",
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/DataModel"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "LoggingLogsModelResponse": {
+      "title": "Logging Logs Model Response",
+      "example": {
+        "log": {
+          "01010101245901": {
+            "data": {
+              "result": "INFO",
+              "content": "LOG: CONTENT AND ACTIONS PERFORMED",
+              "id": "FUNCTION ID"
+            }
+          },
+          "01010101245902": {
+            "data": {
+              "result": "ERROR",
+              "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
+              "id": "FUNCTION ID"
+            }
+          }
+        }
+      },
+      "type": "object",
+      "properties": {
+        "log": {
+          "$ref": "#/definitions/LogModel"
+        }
+      },
+      "required": [
+        "log"
+      ]
+    },
+    "LoggingSetupModelResponse": {
+      "title": "Logging Setup Model Response",
+      "example": {
+        "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
+      },
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "success"
+      ]
+    },
+    "DataManipulationModel": {
+      "title": "Data Manipulation Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "apiuid": {
+          "description": "",
+          "type": "string"
+        },
+        "url": {
+          "description": "",
+          "type": "string"
+        },
+        "manipulation": {
+          "description": "",
+          "type": "string"
+        },
+        "conversion": {
+          "description": "",
+          "type": "string"
+        },
+        "sorting": {
+          "description": "",
+          "type": "string"
+        },
+        "compression": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "apiuid",
+        "url",
+        "manipulation",
+        "conversion",
+        "sorting",
+        "compression"
+      ]
+    },
+    "VerifyAddress": {
+      "title": "Verify Address",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "address": {
+          "description": "",
+          "type": "string"
+        },
+        "a": {
+          "description": "",
+          "type": "string"
+        },
+        "sa": {
+          "description": "",
+          "type": "string"
+        },
+        "c": {
+          "description": "",
+          "type": "string"
+        },
+        "s": {
+          "description": "",
+          "type": "string"
+        },
+        "z": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "address",
+        "a",
+        "sa",
+        "c",
+        "s",
+        "z"
+      ]
+    },
+    "UserInformationModel": {
+      "title": "User Information Model",
+      "type": "object",
+      "properties": {
+        "realname": {
+          "description": "",
+          "type": "string"
+        },
+        "displayname": {
+          "description": "",
+          "type": "string"
+        },
+        "avatar": {
+          "description": "",
+          "type": "string"
+        },
+        "email": {
+          "description": "",
+          "type": "string"
+        },
+        "address": {
+          "description": "",
+          "type": "string"
+        },
+        "address1": {
+          "description": "",
+          "type": "string"
+        },
+        "address2": {
+          "description": "",
+          "type": "string"
+        },
+        "city": {
+          "description": "",
+          "type": "string"
+        },
+        "state": {
+          "description": "",
+          "type": "string"
+        },
+        "zipcode": {
+          "description": "",
+          "type": "string"
+        },
+        "phone": {
+          "description": "",
+          "type": "string"
+        },
+        "lastlogin": {
+          "description": "",
+          "type": "string"
+        },
+        "ip": {
+          "description": "",
+          "type": "string"
+        },
+        "2fa": {
+          "description": "",
+          "type": "string"
+        },
+        "iplock": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "realname",
+        "displayname",
+        "avatar",
+        "email",
+        "address",
+        "address1",
+        "address2",
+        "city",
+        "state",
+        "zipcode",
+        "phone",
+        "lastlogin",
+        "ip",
+        "2fa",
+        "iplock"
+      ]
+    },
+    "UserUpdateModel": {
+      "title": "User Update Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "apiuid": {
+          "description": "",
+          "type": "string"
+        },
+        "oldpassword": {
+          "description": "",
+          "type": "string"
+        },
+        "newpassword": {
+          "description": "",
+          "type": "string"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "email": {
+          "description": "",
+          "type": "string"
+        },
+        "phone": {
+          "description": "",
+          "type": "string"
+        },
+        "avatar": {
+          "description": "",
+          "type": "string"
+        },
+        "countrycode": {
+          "description": "",
+          "type": "string"
+        },
+        "address": {
+          "description": "",
+          "type": "string"
+        },
+        "a": {
+          "description": "",
+          "type": "string"
+        },
+        "sa": {
+          "description": "",
+          "type": "string"
+        },
+        "c": {
+          "description": "",
+          "type": "string"
+        },
+        "s": {
+          "description": "",
+          "type": "string"
+        },
+        "z": {
+          "description": "",
+          "type": "string"
+        },
+        "custom-input": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "apiuid",
+        "oldpassword",
+        "newpassword",
+        "name",
+        "email",
+        "phone",
+        "avatar",
+        "countrycode",
+        "address",
+        "a",
+        "sa",
+        "c",
+        "s",
+        "z",
+        "custom-input"
+      ]
+    },
+    "UserRegistrationModel": {
+      "title": "User Registration Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "password": {
+          "description": "",
+          "type": "string"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "email": {
+          "description": "",
+          "type": "string"
+        },
+        "phone": {
+          "description": "",
+          "type": "string"
+        },
+        "countrycode": {
+          "description": "",
+          "type": "string"
+        },
+        "address": {
+          "description": "",
+          "type": "string"
+        },
+        "a": {
+          "description": "",
+          "type": "string"
+        },
+        "sa": {
+          "description": "",
+          "type": "string"
+        },
+        "c": {
+          "description": "",
+          "type": "string"
+        },
+        "s": {
+          "description": "",
+          "type": "string"
+        },
+        "z": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "password",
+        "name",
+        "email",
+        "phone",
+        "countrycode",
+        "address",
+        "a",
+        "sa",
+        "c",
+        "s",
+        "z"
+      ]
+    },
+    "InfoModel": {
+      "title": "Info Model",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "apiuid": {
+          "description": "",
+          "type": "string"
+        },
+        "realname": {
+          "description": "",
+          "type": "string"
+        },
+        "displayname": {
+          "description": "",
+          "type": "string"
+        },
+        "avatar": {
+          "description": "",
+          "type": "string"
+        },
+        "email": {
+          "description": "",
+          "type": "string"
+        },
+        "address": {
+          "description": "",
+          "type": "string"
+        },
+        "phone": {
+          "description": "",
+          "type": "string"
+        },
+        "lastlogin": {
+          "description": "",
+          "type": "string"
+        },
+        "ip": {
+          "description": "",
+          "type": "string"
+        },
+        "2fa": {
+          "description": "",
+          "type": "string"
+        },
+        "iplock": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uid",
+        "apiuid",
+        "realname",
+        "displayname",
+        "avatar",
+        "email",
+        "address",
+        "phone",
+        "lastlogin",
+        "ip",
+        "2fa",
+        "iplock"
+      ]
+    },
+    "LoggingLogsModel": {
+      "title": "Logging Logs Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "origin": {
+          "description": "",
+          "type": "string"
+        },
+        "time": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "name",
+        "origin",
+        "time"
+      ]
+    },
+    "LoggingSetupModel": {
+      "title": "Logging Setup Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "origin": {
+          "description": "",
+          "type": "string"
+        },
+        "activate": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "name",
+        "origin",
+        "activate"
+      ]
+    },
+    "WafConfigurationModel": {
+      "title": "WAF Configuration Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "name": {
+          "description": "",
+          "type": "string"
+        },
+        "origin": {
+          "description": "",
+          "type": "string"
+        },
+        "cname": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "name",
+        "origin",
+        "cname"
+      ]
+    },
+    "WafCreationModel": {
+      "title": "WAF Creation Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "origin": {
+          "description": "",
+          "type": "string"
+        },
+        "cname": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "origin",
+        "cname"
+      ]
+    },
+    "EncryptionModelResponse": {
+      "title": "Encryption Model Response",
+      "example": {
+        "data": "RETURNED ENCRYPTED DATA URL",
+        "file": "RETURNED ENCRYPTED FILE URL",
+        "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
+        "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
+        "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
+      },
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "",
+          "type": "string"
+        },
+        "file": {
+          "description": "",
+          "type": "string"
+        },
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "public": {
+          "description": "",
+          "type": "string"
+        },
+        "private": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data",
+        "file",
+        "success",
+        "public",
+        "private"
+      ]
+    },
+    "EncryptionModel": {
+      "title": "Encryption Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "data": {
+          "description": "",
+          "type": "string"
+        },
+        "file": {
+          "description": "",
+          "type": "string"
+        },
+        "method": {
+          "description": "",
+          "type": "string"
+        },
+        "bit": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "data",
+        "file",
+        "method",
+        "bit"
+      ]
+    },
+    "CdnPushModel": {
+      "title": "CDN Push Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "cname": {
+          "description": "",
+          "type": "string"
+        },
+        "file": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "cname",
+        "file"
+      ]
+    },
+    "CdnPullModel": {
+      "title": "CDN Pull Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "origin": {
+          "description": "",
+          "type": "string"
+        },
+        "cname": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "origin",
+        "cname"
+      ]
+    },
+    "DnsConfigurationModel": {
+      "title": "DNS Configuration Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "domain": {
+          "description": "",
+          "type": "string"
+        },
+        "records": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "domain",
+        "records"
+      ]
+    },
+    "NameserversModel": {
+      "title": "Nameservers Model",
+      "type": "object",
+      "properties": {
+        "ns1": {
+          "description": "",
+          "type": "string"
+        },
+        "ns2": {
+          "description": "",
+          "type": "string"
+        },
+        "ns3": {
+          "description": "",
+          "type": "string"
+        },
+        "ns4": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ns1",
+        "ns2",
+        "ns3",
+        "ns4"
+      ]
+    },
+    "HostingModelResponse": {
+      "title": "Hosting Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "url": "RETURNED APP HOSTING URL",
+        "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "url": {
+          "description": "",
+          "type": "string"
+        },
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "url",
+        "success",
+        "id"
+      ]
+    },
+    "HostingModel": {
+      "title": "Hosting Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "app": {
+          "description": "",
+          "type": "string"
+        },
+        "domain": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "app",
+        "domain"
+      ]
+    },
+    "DataManipulationModelResponse": {
+      "title": "Data Manipulation Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "url": "RETURNED DATA URL",
+        "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "url": {
+          "description": "",
+          "type": "string"
+        },
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "url",
+        "success",
+        "id"
+      ]
+    },
+    "ImageManipulationModelResponse": {
+      "title": "Image Manipulation Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "url": "RETURNED IMAGE URL AND DATA",
+        "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
+        "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "url": {
+          "description": "",
+          "type": "string"
+        },
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "moderated": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "url",
+        "success",
+        "moderated",
+        "id"
+      ]
+    },
+    "ImageManipulationModel": {
+      "title": "Image Manipulation Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "image": {
+          "description": "",
+          "type": "string"
+        },
+        "transform": {
+          "description": "",
+          "type": "string"
+        },
+        "moderate": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "image",
+        "transform",
+        "moderate"
+      ]
+    },
+    "TwoFactorAuthenticationTokenModel": {
+      "title": "Two Factor Authentication Token Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "code": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "code"
+      ]
+    },
+    "TwoFactorAuthenticationModel": {
+      "title": "Two Factor Authentication Model",
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "to": {
+          "description": "",
+          "type": "string"
+        },
+        "verified": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "to",
+        "verified",
+        "id"
+      ]
+    },
+    "VerifyUserModel": {
+      "title": "Verify User Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "code": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "code"
+      ]
+    },
+    "VerifyModelResponse": {
+      "title": "Verify Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "to": "USER BEING VERIFIED",
+        "verified": "RETURNS TRUE OR FALSE",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "to": {
+          "description": "",
+          "type": "string"
+        },
+        "verified": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "to",
+        "verified",
+        "id"
+      ]
+    },
+    "UserDeletionModel": {
+      "title": "User Deletion Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "apiuid": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "apiuid"
+      ]
+    },
+    "UserInformationModelResponse": {
+      "title": "User Information Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "uid": "Users UID",
+        "apiuid": "API SIDE USER ID",
+        "verified": "RETURNS TRUE IF USER IS VERIFIED",
+        "id": "TRANSACTION ID",
+        "info": {
+          "realname": "USERS REAL NAME",
+          "displayname": "USERS USERNAME",
+          "avatar": "USER AVATAR URL",
+          "email": "USERS EMAIL",
+          "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+          "address1": "USERS ADDRESS LINE ONE",
+          "address2": "USERS ADDRESS LINE TWO",
+          "city": "USERS ADDRESS CITY",
+          "state": "USERS ADDRESS STATE",
+          "zipcode": "USERS ADDRESS ZIPCODE",
+          "phone": "USERS CELL PHONE NUMBER",
+          "lastlogin": "USERS LAST LOGIN",
+          "ip": "USERS IP",
+          "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+          "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "key": {
+          "description": "Users API Private Key",
+          "type": "string"
+        },
+        "api": {
+          "description": "Users API Public Key",
+          "type": "string"
+        },
+        "info": {
+          "$ref": "#/definitions/UserInformationSecondaryModel"
+        }
+      },
+      "required": [
+        "user",
+        "key",
+        "api",
+        "info"
+      ]
+    },
+    "UserInformationSecondaryModel": {
+      "title": "User Information Secondary Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "apiuid": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "apiuid"
+      ]
+    },
+    "UserCustomUpdateModel": {
+      "title": "User Custom Update Model",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "apiuid": {
+          "description": "",
+          "type": "string"
+        },
+        "avatar": {
+          "description": "",
+          "type": "string"
+        },
+        "custom-input": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uid",
+        "apiuid",
+        "avatar",
+        "custom-input"
+      ]
+    },
+    "UserUpdateModelResponse": {
+      "title": "User Update Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
+        "id": "TRANSACTION ID",
+        "info": {
+          "uid": "USERS ID",
+          "apiuid": "API SIDE USER ID",
+          "avatar": "INPUTTED AVATAR URL",
+          "custom-input": "CUSTOM INPUTTED PROFILE DATA"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "updated": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "info": {
+          "$ref": "#/definitions/UserCustomUpdateModel"
+        }
+      },
+      "required": [
+        "request",
+        "updated",
+        "id",
+        "info"
+      ]
+    },
+    "UserProfileInformationModel": {
+      "title": "User Profile Information Model",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "apiuid": {
+          "description": "",
+          "type": "string"
+        },
+        "realname": {
+          "description": "",
+          "type": "string"
+        },
+        "displayname": {
+          "description": "",
+          "type": "string"
+        },
+        "email": {
+          "description": "",
+          "type": "string"
+        },
+        "address": {
+          "description": "",
+          "type": "string"
+        },
+        "phone": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uid",
+        "apiuid",
+        "realname",
+        "displayname",
+        "email",
+        "address",
+        "phone"
+      ]
+    },
+    "UserRegistrationModelResponse": {
+      "title": "User Registration Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
+        "id": "TRANSACTION ID",
+        "info": {
+          "uid": "USERS ID",
+          "apiuid": "API SIDE USER ID",
+          "realname": "USERS REAL NAME",
+          "displayname": "USERS USERNAME",
+          "email": "USERS EMAIL",
+          "address": "USERS ADDRESS",
+          "phone": "USERS CELL PHONE NUMBER"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "active": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "info": {
+          "$ref": "#/definitions/UserProfileInformationModel"
+        }
+      },
+      "required": [
+        "request",
+        "active",
+        "id",
+        "info"
+      ]
+    },
+    "UserAuthenticationModelResponse": {
+      "title": "User Authentication Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "uid": "Users UID",
+        "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
+        "id": "TRANSACTION ID",
+        "info": {
+          "uid": "USERS ID",
+          "apiuid": "API SIDE USER ID",
+          "realname": "USERS REAL NAME",
+          "displayname": "USERS USERNAME",
+          "avatar": "USER AVATAR URL",
+          "email": "USERS EMAIL",
+          "address": "USERS ADDRESS",
+          "phone": "USERS CELL PHONE NUMBER",
+          "lastlogin": "USERS LAST LOGIN",
+          "ip": "USERS IP",
+          "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+          "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "valid": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        },
+        "info": {
+          "$ref": "#/definitions/InfoModel"
+        }
+      },
+      "required": [
+        "request",
+        "uid",
+        "valid",
+        "id",
+        "info"
+      ]
+    },
+    "UserAuthenticationModel": {
+      "title": "User Authentication Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "user": {
+          "description": "",
+          "type": "string"
+        },
+        "password": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "user",
+        "password"
+      ]
+    },
+    "DataModel": {
+      "title": "Data Model",
+      "type": "object",
+      "properties": {
+        "result": {
+          "description": "",
+          "type": "string"
+        },
+        "content": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "result",
+        "content",
+        "id"
+      ]
+    },
+    "LogModel": {
+      "title": "Log Model",
+      "type": "object",
+      "properties": {
+        "MMDDYYYYHHMMSSX": {
+          "$ref": "#/definitions/MmddyyyyhhmmssModel"
+        },
+        "MMDDYYYYHHMMSSY": {
+          "$ref": "#/definitions/MmddyyyyhhmmssModel"
+        }
+      },
+      "required": [
+        "MMDDYYYYHHMMSSX",
+        "MMDDYYYYHHMMSSY"
+      ]
+    },
+    "WafConfigurationModelResponse": {
+      "title": "WAF Configuration Model Response",
+      "example": {
+        "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+        "rule": "RULES APPLIED TO WAF"
+      },
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "rule": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "success",
+        "rule"
+      ]
+    },
+    "WafCreationModelResponse": {
+      "title": "WAF Creation Model Response",
+      "example": {
+        "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+        "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+      },
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "cname": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "success",
+        "cname"
+      ]
+    },
+    "CodeProtectionModelResponse": {
+      "title": "Code Protection Model Response",
+      "example": {
+        "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
+        "app": "OBFUSCATED APP URL"
+      },
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "app": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "success",
+        "app"
+      ]
+    },
+    "CodeProtectionModel": {
+      "title": "Code Protection Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "app": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "app"
+      ]
+    },
+    "CdnPushModelResponse": {
+      "title": "CDN Push Model Response",
+      "example": {
+        "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
+        "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
+        "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+      },
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "upload": {
+          "description": "",
+          "type": "string"
+        },
+        "cname": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "success",
+        "upload",
+        "cname"
+      ]
+    },
+    "CdnPullModelResponse": {
+      "title": "CDN Pull Model Response",
+      "example": {
+        "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
+        "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+      },
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "cname": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "success",
+        "cname"
+      ]
+    },
+    "DnsConfigurationModelResponse": {
+      "title": "DNS Configuration Model Response",
+      "example": {
+        "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
+        "domain": "DOMAIN",
+        "records": "RECORDS SET TO DOMAIN"
+      },
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "",
+          "type": "string"
+        },
+        "domain": {
+          "description": "",
+          "type": "string"
+        },
+        "records": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "success",
+        "domain",
+        "records"
+      ]
+    },
+    "DnsCreationModelResponse": {
+      "title": "DNS Creation Model Response",
+      "example": {
+        "domain": "LIST OF DOMAINS ADDED",
+        "nameservers": {
+          "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
+          "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
+          "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
+          "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "domain": {
+          "description": "",
+          "type": "string"
+        },
+        "nameservers": {
+          "$ref": "#/definitions/NameserversModel"
+        }
+      },
+      "required": [
+        "domain",
+        "nameservers"
+      ]
+    },
+    "DnsCreationModel": {
+      "title": "DNS Creation Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "domain": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "domain"
+      ]
+    },
+    "TwoFactorAuthenticationTokenModelResponse": {
+      "title": "Two Factor Authentication Token Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "correct": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "correct",
+        "id"
+      ]
+    },
+    "TwoFactorAuthenticationModelResponse": {
+      "title": "Two Factor Authentication Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "to": "USER BEING VERIFIED",
+        "verified": "RETURNS TRUE OR FALSE",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "to": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "to"
+      ]
+    },
+    "VerifyAddressResponse": {
+      "title": "Verify Address Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "active": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "active",
+        "id"
+      ]
+    },
+    "VerifyUserModelResponse": {
+      "title": "Verify User Model Response",
+      "example": {
+        "request": "REQUEST TYPE",
+        "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "correct": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "correct",
+        "id"
+      ]
+    },
+    "VerifyModel": {
+      "title": "Verify Model",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "",
+          "type": "string"
+        },
+        "uid": {
+          "description": "",
+          "type": "string"
+        },
+        "to": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "uid",
+        "to"
+      ]
+    },
+    "UserDeletionResponseModel": {
+      "title": "User Deletion Response Model",
+      "example": {
+        "request": "REQUEST TYPE",
+        "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
+        "id": "TRANSACTION ID"
+      },
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "",
+          "type": "string"
+        },
+        "deleted": {
+          "description": "",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "deleted",
+        "id"
+      ]
+    }
+  }
+}

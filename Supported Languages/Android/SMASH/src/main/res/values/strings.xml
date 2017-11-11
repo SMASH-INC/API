@@ -1,0 +1,9 @@
+<!--
+ - SMASH
+ -
+ - This file was automatically generated for SMASH by SMASH v2.0 ( https://smashlabs.io ).
+-->
+<resources>
+    <string name="app_name">SMASH</string>
+    <string name="preference_file_key">smash_prefs</string>
+</resources>

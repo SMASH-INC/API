@@ -1,0 +1,6363 @@
+﻿{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SMASH - API",
+    "description": "# Introduction\n* ## Multi-use Flexible API for: \n  * **User**:\n    * Login \n    * Registration\n    * User Management\n    * Profile Updates\n    * Two Factor Authentication\n     \n  * **Verifcation**:\n    * Identity Verification\n    * Address Verifcation\n    * Cell Phone Verification \n\n  * **Image**:\n    * Manipulation\n    * Compression\n    * Moderation\n     \n  * **Data**:\n    * Manipulation\n    * Compression\n    * Conversion\n    * Sorting\n\n  * **Services**:\n    * Node Application Hosting\n    * DNS Management\n    * CDN (Content Delivery Network)\n\n  * **Security**:\n    * Encryption\n    * Code Obfuscation\n    * Platform Identification\n    * WAF and DDOS Protection (Web Application Firewall)\n      * Advanced Logging\n\n# Overview\n\n*  **API Domain: api.rest.sh, api.restful.sh**\n\nThis API supports both GET and POST API requests with a JSON or XML output.\n\n*~ You can post to this API via a direct body response in JSON/XML, or using URL variables/requests.*\n\n# Authentication\nBe sure to include your User API KEY, and UID when sending a POST or GET request to our API.\n\n*~ If domain restriction is enabled in your dashboard, please include your domain in the request and redirect headers for your API calls.*\n\n# Status Codes\n* ## Success Codes:\n  *   **200**: Information Recieved\n  *   **201**: Success, Resource Created, or Updated\n  *   **202**: Proccessing\n\n* ## Information Codes:\n  *   **400**: Bad Request\n  *   **401**: Incorrect Credentials\n  *   **403**: Forbidden\n  *   **406**: Not Acceptable Input\n  *   **409**: Data Conflict\n  *   **413**: Payload Too Large\n  *   **415**: Un-Supported Content Type\n  *   **451**: Un-Available For Legal Reasons\n\n* ## Error Codes:\n  *   **500**: Internal API Error\n  *   **501**: Not Implemented\n  *   **503**: API Unavailable\n  *   **504**: Request Timeout\n  *   **511**: Authentication Required\n\n# Rate Pricing\n* **Verification requests:** \n  * per/1000 Requests: **$50.00**\n\n* **User requests:** \n  * per/1000 Requests: **$0.0072**\n\n* **Image requests:** \n  * per/1000 Requests: **$11.87**\n\n* Data requests: \n  * per/1MB: **$0.00024**\n\n* **Service requests:** \n  * **DNS Pricing Per Month:**\n    * Per Hosted Zone: **$1.00**\n    * Per Traffic Flow Record: **$100.00**\n    * Per 1 Million Queries: **$0.80**\n    * Per 1 Million Latency Based Queries: **$1.20**\n    * Per 1 Million GEO Queries: **$1.40**\n    * Per Health Check: **$1.00**\n\n  * **Hosting Per Month:**\n    * Per APP: **$5.00**\n\n  * **CDN Pricing per/1GB:**\n    * North America: **$0.17**\n    * Europe: **$0.17**\n    * Australia: **$0.28**\n    * Asia: **$0.28**\n    * India: **$0.34**\n    * South America: **$0.5**\n\n* **Security requests:** \n  * **WAF and DDOS Pricing Per Month:**\n    * per/1000 Web Requests: **$0.0012**\n    * Per Web Access Control List: **$10.00**\n    * Per Custom Domain Configuration: **$2.00**\n  \n  * **Encryption:**\n    * per/1000 data sets: **$0.0144**\n    * per/1MB per file: **$0.00048**\n\n  * **Code Obfuscation Per Month:**\n    * per/APP (300 files per app): **$102.00**\n\n  * **Code Obfuscation Per Month:**\n    * per/APP (300 files per app): **$102.00**\n\n  * **Advanced Logging:**\n    * per/1000 Log Entries: **$0.0072**",
+    "version": "1.19"
+  },
+  "servers": [
+    {
+      "url": "https://api.rest.sh/api",
+      "description": "Production Enviroment",
+      "variables": {}
+    },
+    {
+      "url": "https://sb.rest.sh/api",
+      "description": "Testing and Debugging",
+      "variables": {}
+    },
+    {
+      "url": "https://b.rest.sh/api",
+      "description": "Updated Nightly (May Contain Bugs)",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/s/l": {
+      "get": {
+        "tags": [
+          "Advanced Logging"
+        ],
+        "summary": "Logging Configuration",
+        "description": "WAF Log Configuration",
+        "operationId": "LoggingConfiguration",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of the WAF zone",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "origin-name"
+            },
+            "example": "origin-name"
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "IP Address of the Web Application you wish to configure logging on",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "origin.yourdomain.tld"
+            },
+            "example": "origin.yourdomain.tld"
+          },
+          {
+            "name": "activate",
+            "in": "query",
+            "description": "Activate or Disable",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
+                  },
+                  "$ref": "#/components/schemas/LoggingSetupModelResponse"
+                },
+                "example": {
+                  "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/l/i": {
+      "get": {
+        "tags": [
+          "Advanced Logging"
+        ],
+        "summary": "Logging Info",
+        "description": "WAF Log Info",
+        "operationId": "LoggingInfo",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of your WAF zone",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "origin-name"
+            },
+            "example": "origin-name"
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "IP Address of the Web Application",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "origin.yourdomain.tld"
+            },
+            "example": "origin.yourdomain.tld"
+          },
+          {
+            "name": "time",
+            "in": "query",
+            "description": "Specific times or dates to lookup separated by a comma in MMDDYYHHMMSS Format ( Month Month Day Day Year Year Year Hour Hour Minute Minute Second Second [01/01/0101;24:59:01])",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "01/01/0101;24:59:01"
+            },
+            "example": "01/01/0101;24:59:01"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoggingLogsModelResponse"
+                },
+                "example": {
+                  "log": {
+                    "01010101245901": {
+                      "data": {
+                        "result": "INFO",
+                        "content": "LOG: CONTENT AND ACTIONS PERFORMED",
+                        "id": "FUNCTION ID"
+                      }
+                    },
+                    "01010101245902": {
+                      "data": {
+                        "result": "ERROR",
+                        "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
+                        "id": "FUNCTION ID"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/w/c": {
+      "get": {
+        "tags": [
+          "WAF and DDOS Protection"
+        ],
+        "summary": "WAF Configuration",
+        "description": "WAF and DDOS Configuration",
+        "operationId": "WafConfiguration",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of your WAF zone",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "origin-name"
+            },
+            "example": "origin-name"
+          },
+          {
+            "name": "rule",
+            "in": "query",
+            "description": "Rule or rules to add or update separated by a comma",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "header:Access-Control-Allow-Origin;yourdomain.tld;seconddomain.tld,match:ip;127.0.0.1;does"
+            },
+            "example": "header:Access-Control-Allow-Origin;yourdomain.tld;seconddomain.tld,match:ip;127.0.0.1;does"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+                    "rule": "RULES APPLIED TO WAF"
+                  },
+                  "$ref": "#/components/schemas/WafConfigurationModelResponse"
+                },
+                "example": {
+                  "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+                  "rule": "RULES APPLIED TO WAF"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/w": {
+      "get": {
+        "tags": [
+          "WAF and DDOS Protection"
+        ],
+        "summary": "WAF Creation",
+        "description": "WAF and DDOS Creation",
+        "operationId": "WafCreation",
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "IP of the Web server you wish to protect",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "origin.yourdomain.tld"
+            },
+            "example": "origin.yourdomain.tld"
+          },
+          {
+            "name": "cname",
+            "in": "query",
+            "description": "Domain or domain names separated by a comma you wish to allow CNAME access",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "yourdomain.tld,www.yourdomain.tld"
+            },
+            "example": "yourdomain.tld,www.yourdomain.tld"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+                    "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+                  },
+                  "$ref": "#/components/schemas/WafCreationModelResponse"
+                },
+                "example": {
+                  "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+                  "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/e": {
+      "get": {
+        "tags": [
+          "Encryption"
+        ],
+        "summary": "Data and File Encryption",
+        "description": "Data and File Encryption API",
+        "operationId": "DataAndFileEncryption",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "query",
+            "description": "GIT URL, file URL, direct upload of file, or data as a query string",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "DATA"
+            },
+            "example": "DATA"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "description": "Single or multiple encryption types to apply to data or files separated by a comma (DES, RSA, BLOWFISH, TWOFISH, AES, IDEA, PGP)",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "DES,RSA"
+            },
+            "example": "DES,RSA"
+          },
+          {
+            "name": "bit",
+            "in": "query",
+            "description": "Encryption key size (4096)",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 4096
+            },
+            "example": "4096"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "data": "RETURNED ENCRYPTED DATA URL",
+                    "file": "RETURNED ENCRYPTED FILE URL",
+                    "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
+                    "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
+                    "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
+                  },
+                  "$ref": "#/components/schemas/EncryptionModelResponse"
+                },
+                "example": {
+                  "data": "RETURNED ENCRYPTED DATA URL",
+                  "file": "RETURNED ENCRYPTED FILE URL",
+                  "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
+                  "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
+                  "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/c/push": {
+      "get": {
+        "tags": [
+          "CDN"
+        ],
+        "summary": "CDN Push Zone",
+        "description": "CDN Push Zone API",
+        "operationId": "CdnPushZone",
+        "parameters": [
+          {
+            "name": "cname",
+            "in": "query",
+            "description": "Domain or domain names separated by a comma you wish to allow CNAME access",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld"
+            },
+            "example": "cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld"
+          },
+          {
+            "name": "file",
+            "in": "query",
+            "description": "GIT URL, file URL, or direct upload of file",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "static.yourdomain.tld/file.type"
+            },
+            "example": "static.yourdomain.tld/file.type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
+                    "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
+                    "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+                  },
+                  "$ref": "#/components/schemas/CdnPushModelResponse"
+                },
+                "example": {
+                  "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
+                  "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
+                  "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/c/pull": {
+      "get": {
+        "tags": [
+          "CDN"
+        ],
+        "summary": "CDN Pull Zone",
+        "description": "CDN Pull Zone API",
+        "operationId": "CdnPullZone",
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "Domain or domain names separated by a comma",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "origin.yourdomain.tld"
+            },
+            "example": "origin.yourdomain.tld"
+          },
+          {
+            "name": "cname",
+            "in": "query",
+            "description": "Domain or domain names separated by a comma you wish to allow CNAME access",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld"
+            },
+            "example": "cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
+                    "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+                  },
+                  "$ref": "#/components/schemas/CdnPullModelResponse"
+                },
+                "example": {
+                  "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
+                  "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/d/c": {
+      "get": {
+        "tags": [
+          "DNS"
+        ],
+        "summary": "DNS Configuration",
+        "description": "DNS Configuration API",
+        "operationId": "DnsConfiguration",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Domain or domain names separated by a comma",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "yourdomain.tld"
+            },
+            "example": "yourdomain.tld"
+          },
+          {
+            "name": "records",
+            "in": "query",
+            "description": "Records to append to domain separated by a comma (a;www.mydomain.com;127.0.0.0,cname;mydomain.com;otherdomain.com)",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "set:root:a:127.0.0.1,set:www:a:127.0.0.1,set:cdn:cname:cname.domain.com"
+            },
+            "example": "set:root:a:127.0.0.1,set:www:a:127.0.0.1,set:cdn:cname:cname.domain.com"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
+                    "domain": "DOMAIN",
+                    "records": "RECORDS SET TO DOMAIN"
+                  },
+                  "$ref": "#/components/schemas/DnsConfigurationModelResponse"
+                },
+                "example": {
+                  "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
+                  "domain": "DOMAIN",
+                  "records": "RECORDS SET TO DOMAIN"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/o": {
+      "get": {
+        "tags": [
+          "Code Obfuscation"
+        ],
+        "summary": "Obfuscation and Anti-Tampering",
+        "description": "Javascript and Node.JS Obfuscation and Anti-Tampering API",
+        "operationId": "Obfuscation and antiTampering",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "description": "GIT URL or ZIP package containing your APP",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "git://app.git"
+            },
+            "example": "git://app.git"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
+                    "app": "OBFUSCATED APP URL"
+                  },
+                  "$ref": "#/components/schemas/CodeProtectionModelResponse"
+                },
+                "example": {
+                  "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
+                  "app": "OBFUSCATED APP URL"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/h": {
+      "get": {
+        "tags": [
+          "Hosting"
+        ],
+        "summary": "Hosting Setup",
+        "description": "Node.JS and Static Web APP Hosting",
+        "operationId": "HostingSetup",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "query",
+            "description": "GIT URL or ZIP package containing your APP",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "git://app.git"
+            },
+            "example": "git://app.git"
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Domain or domain names separated by a comma",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "yourdomain.tld,seconddomain.tld"
+            },
+            "example": "yourdomain.tld,seconddomain.tld"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "url": "RETURNED APP HOSTING URL",
+                    "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
+                    "id": "TRANSACTION ID"
+                  },
+                  "$ref": "#/components/schemas/HostingModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "url": "RETURNED APP HOSTING URL",
+                  "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/s/d/a": {
+      "get": {
+        "tags": [
+          "DNS"
+        ],
+        "summary": "DNS Creation",
+        "description": "DNS Creation API",
+        "operationId": "DnsCreation",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Domain or domain names separated by a comma",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "yourdomain.tld,seconddomain.tld"
+            },
+            "example": "yourdomain.tld,seconddomain.tld"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "domain": "LIST OF DOMAINS ADDED",
+                    "nameservers": {
+                      "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
+                      "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
+                      "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
+                      "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
+                    }
+                  },
+                  "$ref": "#/components/schemas/DnsCreationModelResponse"
+                },
+                "example": {
+                  "domain": "LIST OF DOMAINS ADDED",
+                  "nameservers": {
+                    "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
+                    "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
+                    "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
+                    "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/d": {
+      "get": {
+        "tags": [
+          "Data Manipulation"
+        ],
+        "summary": "https://api.rest.sh/api/d",
+        "description": "Data Manipulation API",
+        "operationId": "Https://api.rest.sh/api/d",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "query",
+            "description": "Data URL, data as a query string, or direct upload",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "https://static.yourcdn.com/data.file"
+            },
+            "example": "https://static.yourcdn.com/data.file"
+          },
+          {
+            "name": "transform",
+            "in": "query",
+            "description": "Transformations to perform",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "url": "RETURNED DATA URL",
+                    "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
+                    "id": "TRANSACTION ID"
+                  },
+                  "$ref": "#/components/schemas/DataManipulationModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "url": "RETURNED DATA URL",
+                  "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/i": {
+      "get": {
+        "tags": [
+          "Image Manipulation"
+        ],
+        "summary": "Image Manipulation",
+        "description": "Image Manipulation API",
+        "operationId": "ImageManipulation",
+        "parameters": [
+          {
+            "name": "image",
+            "in": "query",
+            "description": "Image URL or direct upload",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "https://img.yourdomain.tld/image.type"
+            },
+            "example": "https://img.yourdomain.tld/image.type"
+          },
+          {
+            "name": "transform",
+            "in": "query",
+            "description": "Transformations to perform",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "x:flip,y:flip,grayscale:true,compress:true;80,convert:png"
+            },
+            "example": "x:flip,y:flip,grayscale:true,compress:true;80,convert:png"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "url": "RETURNED IMAGE URL AND DATA",
+                    "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
+                    "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
+                    "id": "TRANSACTION ID"
+                  },
+                  "$ref": "#/components/schemas/ImageManipulationModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "url": "RETURNED IMAGE URL AND DATA",
+                  "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
+                  "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/v/a": {
+      "get": {
+        "tags": [
+          "Verification"
+        ],
+        "summary": "User Address Verification",
+        "description": "User Address Verification API",
+        "operationId": "UserAddressVerification",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users UID, Username, or Email",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          },
+          {
+            "name": "a",
+            "in": "query",
+            "description": "Address Line One",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "3301 South Greenfield Rd"
+            },
+            "example": "3301 South Greenfield Rd"
+          },
+          {
+            "name": "sa",
+            "in": "query",
+            "description": "Address Line Two",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "Address Line Two"
+            },
+            "example": "Address Line Two"
+          },
+          {
+            "name": "c",
+            "in": "query",
+            "description": "Address City",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "Gilbert"
+            },
+            "example": "Gilbert"
+          },
+          {
+            "name": "s",
+            "in": "query",
+            "description": "Address State or Province",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "AZ"
+            },
+            "example": "AZ"
+          },
+          {
+            "name": "z",
+            "in": "query",
+            "description": "Address Zipcode",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 85297
+            },
+            "example": "85297"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "Address as a one line input separated by commas",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
+                    "id": "TRANSACTION ID"
+                  },
+                  "$ref": "#/components/schemas/VerifyAddressResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/2fa/t": {
+      "get": {
+        "tags": [
+          "Two Factor Authentication API"
+        ],
+        "summary": "2FA Token Response",
+        "description": "Two Factor Authentication Token Reply",
+        "operationId": "2faTokenResponse",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users UID, Username or Email",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "description": "Response From User Containing 2FA Code",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "CODE"
+            },
+            "example": "CODE"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+                    "id": "TRANSACTION ID"
+                  },
+                  "$ref": "#/components/schemas/TwoFactorAuthenticationTokenModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/u/i": {
+      "get": {
+        "tags": [
+          "User Management"
+        ],
+        "summary": "Get User Info",
+        "description": "Get User Info API",
+        "operationId": "GetUserInfo",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users User ID",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInformationModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "uid": "Users UID",
+                  "apiuid": "API SIDE USER ID",
+                  "verified": "RETURNS TRUE IF USER IS VERIFIED",
+                  "id": "TRANSACTION ID",
+                  "info": {
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "avatar": "USER AVATAR URL",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+                    "address1": "USERS ADDRESS LINE ONE",
+                    "address2": "USERS ADDRESS LINE TWO",
+                    "city": "USERS ADDRESS CITY",
+                    "state": "USERS ADDRESS STATE",
+                    "zipcode": "USERS ADDRESS ZIPCODE",
+                    "phone": "USERS CELL PHONE NUMBER",
+                    "lastlogin": "USERS LAST LOGIN",
+                    "ip": "USERS IP",
+                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/2fa": {
+      "get": {
+        "tags": [
+          "Two Factor Authentication API"
+        ],
+        "summary": "Two Factor Authentication",
+        "description": "Two Factor Authentication API",
+        "operationId": "TwoFactorAuthentication",
+        "parameters": [
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Users UID, Username, Email, Or Cellphone number",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TwoFactorAuthenticationModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "to": "USER BEING VERIFIED",
+                  "verified": "RETURNS TRUE OR FALSE",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/u/u": {
+      "get": {
+        "tags": [
+          "User Management"
+        ],
+        "summary": "Update User",
+        "description": "Update User API",
+        "operationId": "UpdateUser",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users UID, Username, Or Email",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          },
+          {
+            "name": "avatar",
+            "in": "query",
+            "description": "Avatar Image URL",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "https://img.cdnurl.com/UID/image"
+            },
+            "example": "https://img.cdnurl.com/UID/image"
+          },
+          {
+            "name": "custom input",
+            "in": "query",
+            "description": "Custom input variable for users profile",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "custom input"
+            },
+            "example": "custom input"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
+                    "id": "TRANSACTION ID",
+                    "info": {
+                      "uid": "USERS ID",
+                      "apiuid": "API SIDE USER ID",
+                      "avatar": "INPUTTED AVATAR URL",
+                      "custom-input": "CUSTOM INPUTTED PROFILE DATA"
+                    }
+                  },
+                  "$ref": "#/components/schemas/UserUpdateModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
+                  "id": "TRANSACTION ID",
+                  "info": {
+                    "uid": "USERS ID",
+                    "apiuid": "API SIDE USER ID",
+                    "avatar": "INPUTTED AVATAR URL",
+                    "custom-input": "CUSTOM INPUTTED PROFILE DATA"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": true,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/v/u": {
+      "get": {
+        "tags": [
+          "Verification"
+        ],
+        "summary": "User Verification Response",
+        "description": "Users Verification Response API",
+        "operationId": "UserVerificationResponse",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users UID, Username, Or Email",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "description": "Verification code entered by the user",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "CODE"
+            },
+            "example": "CODE"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+                    "id": "TRANSACTION ID"
+                  },
+                  "$ref": "#/components/schemas/VerifyUserModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/v": {
+      "get": {
+        "tags": [
+          "Verification"
+        ],
+        "summary": "User Verification",
+        "description": "User Verification API",
+        "operationId": "UserVerification",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users UID, Username, Or Email",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "to": "USER BEING VERIFIED",
+                    "verified": "RETURNS TRUE OR FALSE",
+                    "id": "TRANSACTION ID"
+                  },
+                  "$ref": "#/components/schemas/VerifyModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "to": "USER BEING VERIFIED",
+                  "verified": "RETURNS TRUE OR FALSE",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/a/u/r": {
+      "get": {
+        "tags": [
+          "Login and Registration"
+        ],
+        "summary": "User Registration",
+        "description": "User Registration API",
+        "operationId": "UserRegistration",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Users Email",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "email@email.com"
+            },
+            "example": "email@email.com"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users Username",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Users Password",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "Password"
+            },
+            "example": "Password"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Users Name",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "John Doe"
+            },
+            "example": "John Doe"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "Users Cellphone Number",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1234567890
+            },
+            "example": "1234567890"
+          },
+          {
+            "name": "countrycode",
+            "in": "query",
+            "description": "Users Country Code (US = 1)",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            },
+            "example": "1"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "Users Address",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "3301 South Greenfield Rd, Gilbert, AZ 85297"
+            },
+            "example": "3301 South Greenfield Rd, Gilbert, AZ 85297"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
+                    "id": "TRANSACTION ID",
+                    "info": {
+                      "uid": "USERS ID",
+                      "apiuid": "API SIDE USER ID",
+                      "realname": "USERS REAL NAME",
+                      "displayname": "USERS USERNAME",
+                      "email": "USERS EMAIL",
+                      "address": "USERS ADDRESS",
+                      "phone": "USERS CELL PHONE NUMBER"
+                    }
+                  },
+                  "$ref": "#/components/schemas/UserRegistrationModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
+                  "id": "TRANSACTION ID",
+                  "info": {
+                    "uid": "USERS ID",
+                    "apiuid": "API SIDE USER ID",
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS",
+                    "phone": "USERS CELL PHONE NUMBER"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": true,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/u/d": {
+      "get": {
+        "tags": [
+          "User Management"
+        ],
+        "summary": "Delete User",
+        "description": "Delete User API",
+        "operationId": "DeleteUser",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users UID, Username, or Email",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "UID"
+            },
+            "example": "UID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
+                    "id": "TRANSACTION ID"
+                  },
+                  "$ref": "#/components/schemas/UserDeletionResponseModel"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
+                  "id": "TRANSACTION ID"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/a/u/l": {
+      "get": {
+        "tags": [
+          "Login and Registration"
+        ],
+        "summary": "User Authentication",
+        "description": "User Authentication API",
+        "operationId": "UserAuthentication",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Users Username or Email",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "Username"
+            },
+            "example": "Username"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Users Password",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "Password"
+            },
+            "example": "Password"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "request": "REQUEST TYPE",
+                    "uid": "Users UID",
+                    "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
+                    "id": "TRANSACTION ID",
+                    "info": {
+                      "uid": "USERS ID",
+                      "apiuid": "API SIDE USER ID",
+                      "realname": "USERS REAL NAME",
+                      "displayname": "USERS USERNAME",
+                      "avatar": "USER AVATAR URL",
+                      "email": "USERS EMAIL",
+                      "address": "USERS ADDRESS",
+                      "phone": "USERS CELL PHONE NUMBER",
+                      "lastlogin": "USERS LAST LOGIN",
+                      "ip": "USERS IP",
+                      "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                      "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                    }
+                  },
+                  "$ref": "#/components/schemas/UserAuthenticationModelResponse"
+                },
+                "example": {
+                  "request": "REQUEST TYPE",
+                  "uid": "Users UID",
+                  "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
+                  "id": "TRANSACTION ID",
+                  "info": {
+                    "uid": "USERS ID",
+                    "apiuid": "API SIDE USER ID",
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "avatar": "USER AVATAR URL",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS",
+                    "phone": "USERS CELL PHONE NUMBER",
+                    "lastlogin": "USERS LAST LOGIN",
+                    "ip": "USERS IP",
+                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Data Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Un-Supported Content Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "451": {
+            "description": "Un-Available For Legal Reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal API Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "API Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          },
+          "511": {
+            "description": "Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "none"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MmddyyyyhhmmssModel": {
+        "title": "MMDDYYYYHHMMSS Model",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DataModel"
+          }
+        }
+      },
+      "LoggingLogsModelResponse": {
+        "title": "Logging Logs Model Response",
+        "required": [
+          "log"
+        ],
+        "type": "object",
+        "properties": {
+          "log": {
+            "$ref": "#/components/schemas/LogModel"
+          }
+        },
+        "example": {
+          "log": {
+            "01010101245901": {
+              "data": {
+                "result": "INFO",
+                "content": "LOG: CONTENT AND ACTIONS PERFORMED",
+                "id": "FUNCTION ID"
+              }
+            },
+            "01010101245902": {
+              "data": {
+                "result": "ERROR",
+                "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
+                "id": "FUNCTION ID"
+              }
+            }
+          }
+        }
+      },
+      "LoggingSetupModelResponse": {
+        "title": "Logging Setup Model Response",
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
+        }
+      },
+      "DataManipulationModel": {
+        "title": "Data Manipulation Model",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "apiuid",
+          "url",
+          "manipulation",
+          "conversion",
+          "sorting",
+          "compression"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "apiuid": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "manipulation": {
+            "type": "string"
+          },
+          "conversion": {
+            "type": "string"
+          },
+          "sorting": {
+            "type": "string"
+          },
+          "compression": {
+            "type": "string"
+          }
+        }
+      },
+      "VerifyAddress": {
+        "title": "Verify Address",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "address",
+          "a",
+          "sa",
+          "c",
+          "s",
+          "z"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "a": {
+            "type": "string"
+          },
+          "sa": {
+            "type": "string"
+          },
+          "c": {
+            "type": "string"
+          },
+          "s": {
+            "type": "string"
+          },
+          "z": {
+            "type": "string"
+          }
+        }
+      },
+      "UserInformationModel": {
+        "title": "User Information Model",
+        "required": [
+          "realname",
+          "displayname",
+          "avatar",
+          "email",
+          "address",
+          "address1",
+          "address2",
+          "city",
+          "state",
+          "zipcode",
+          "phone",
+          "lastlogin",
+          "ip",
+          "2fa",
+          "iplock"
+        ],
+        "type": "object",
+        "properties": {
+          "realname": {
+            "type": "string"
+          },
+          "displayname": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "address1": {
+            "type": "string"
+          },
+          "address2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zipcode": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "lastlogin": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string"
+          },
+          "2fa": {
+            "type": "string"
+          },
+          "iplock": {
+            "type": "string"
+          }
+        }
+      },
+      "UserUpdateModel": {
+        "title": "User Update Model",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "apiuid",
+          "oldpassword",
+          "newpassword",
+          "name",
+          "email",
+          "phone",
+          "avatar",
+          "countrycode",
+          "address",
+          "a",
+          "sa",
+          "c",
+          "s",
+          "z",
+          "custom-input"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "apiuid": {
+            "type": "string"
+          },
+          "oldpassword": {
+            "type": "string"
+          },
+          "newpassword": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "countrycode": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "a": {
+            "type": "string"
+          },
+          "sa": {
+            "type": "string"
+          },
+          "c": {
+            "type": "string"
+          },
+          "s": {
+            "type": "string"
+          },
+          "z": {
+            "type": "string"
+          },
+          "custom-input": {
+            "type": "string"
+          }
+        }
+      },
+      "UserRegistrationModel": {
+        "title": "User Registration Model",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "password",
+          "name",
+          "email",
+          "phone",
+          "countrycode",
+          "address",
+          "a",
+          "sa",
+          "c",
+          "s",
+          "z"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "countrycode": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "a": {
+            "type": "string"
+          },
+          "sa": {
+            "type": "string"
+          },
+          "c": {
+            "type": "string"
+          },
+          "s": {
+            "type": "string"
+          },
+          "z": {
+            "type": "string"
+          }
+        }
+      },
+      "InfoModel": {
+        "title": "Info Model",
+        "required": [
+          "uid",
+          "apiuid",
+          "realname",
+          "displayname",
+          "avatar",
+          "email",
+          "address",
+          "phone",
+          "lastlogin",
+          "ip",
+          "2fa",
+          "iplock"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string"
+          },
+          "apiuid": {
+            "type": "string"
+          },
+          "realname": {
+            "type": "string"
+          },
+          "displayname": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "lastlogin": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string"
+          },
+          "2fa": {
+            "type": "string"
+          },
+          "iplock": {
+            "type": "string"
+          }
+        }
+      },
+      "LoggingLogsModel": {
+        "title": "Logging Logs Model",
+        "required": [
+          "key",
+          "uid",
+          "name",
+          "origin",
+          "time"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          }
+        }
+      },
+      "LoggingSetupModel": {
+        "title": "Logging Setup Model",
+        "required": [
+          "key",
+          "uid",
+          "name",
+          "origin",
+          "activate"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "activate": {
+            "type": "string"
+          }
+        }
+      },
+      "WafConfigurationModel": {
+        "title": "WAF Configuration Model",
+        "required": [
+          "key",
+          "uid",
+          "name",
+          "origin",
+          "cname"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "cname": {
+            "type": "string"
+          }
+        }
+      },
+      "WafCreationModel": {
+        "title": "WAF Creation Model",
+        "required": [
+          "key",
+          "uid",
+          "origin",
+          "cname"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "cname": {
+            "type": "string"
+          }
+        }
+      },
+      "EncryptionModelResponse": {
+        "title": "Encryption Model Response",
+        "required": [
+          "data",
+          "file",
+          "success",
+          "public",
+          "private"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "success": {
+            "type": "string"
+          },
+          "public": {
+            "type": "string"
+          },
+          "private": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "data": "RETURNED ENCRYPTED DATA URL",
+          "file": "RETURNED ENCRYPTED FILE URL",
+          "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
+          "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
+          "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
+        }
+      },
+      "EncryptionModel": {
+        "title": "Encryption Model",
+        "required": [
+          "key",
+          "uid",
+          "data",
+          "file",
+          "method",
+          "bit"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "bit": {
+            "type": "string"
+          }
+        }
+      },
+      "CdnPushModel": {
+        "title": "CDN Push Model",
+        "required": [
+          "key",
+          "uid",
+          "cname",
+          "file"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "cname": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          }
+        }
+      },
+      "CdnPullModel": {
+        "title": "CDN Pull Model",
+        "required": [
+          "key",
+          "uid",
+          "origin",
+          "cname"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "cname": {
+            "type": "string"
+          }
+        }
+      },
+      "DnsConfigurationModel": {
+        "title": "DNS Configuration Model",
+        "required": [
+          "key",
+          "uid",
+          "domain",
+          "records"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "records": {
+            "type": "string"
+          }
+        }
+      },
+      "NameserversModel": {
+        "title": "Nameservers Model",
+        "required": [
+          "ns1",
+          "ns2",
+          "ns3",
+          "ns4"
+        ],
+        "type": "object",
+        "properties": {
+          "ns1": {
+            "type": "string"
+          },
+          "ns2": {
+            "type": "string"
+          },
+          "ns3": {
+            "type": "string"
+          },
+          "ns4": {
+            "type": "string"
+          }
+        }
+      },
+      "HostingModelResponse": {
+        "title": "Hosting Model Response",
+        "required": [
+          "request",
+          "url",
+          "success",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "success": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "url": "RETURNED APP HOSTING URL",
+          "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
+          "id": "TRANSACTION ID"
+        }
+      },
+      "HostingModel": {
+        "title": "Hosting Model",
+        "required": [
+          "key",
+          "uid",
+          "app",
+          "domain"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "app": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          }
+        }
+      },
+      "DataManipulationModelResponse": {
+        "title": "Data Manipulation Model Response",
+        "required": [
+          "request",
+          "url",
+          "success",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "success": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "url": "RETURNED DATA URL",
+          "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
+          "id": "TRANSACTION ID"
+        }
+      },
+      "ImageManipulationModelResponse": {
+        "title": "Image Manipulation Model Response",
+        "required": [
+          "request",
+          "url",
+          "success",
+          "moderated",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "success": {
+            "type": "string"
+          },
+          "moderated": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "url": "RETURNED IMAGE URL AND DATA",
+          "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
+          "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
+          "id": "TRANSACTION ID"
+        }
+      },
+      "ImageManipulationModel": {
+        "title": "Image Manipulation Model",
+        "required": [
+          "key",
+          "uid",
+          "image",
+          "transform",
+          "moderate"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "transform": {
+            "type": "string"
+          },
+          "moderate": {
+            "type": "string"
+          }
+        }
+      },
+      "TwoFactorAuthenticationTokenModel": {
+        "title": "Two Factor Authentication Token Model",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "TwoFactorAuthenticationModel": {
+        "title": "Two Factor Authentication Model",
+        "required": [
+          "request",
+          "to",
+          "verified",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "VerifyUserModel": {
+        "title": "Verify User Model",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "VerifyModelResponse": {
+        "title": "Verify Model Response",
+        "required": [
+          "request",
+          "to",
+          "verified",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "to": "USER BEING VERIFIED",
+          "verified": "RETURNS TRUE OR FALSE",
+          "id": "TRANSACTION ID"
+        }
+      },
+      "UserDeletionModel": {
+        "title": "User Deletion Model",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "apiuid"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "apiuid": {
+            "type": "string"
+          }
+        }
+      },
+      "UserInformationModelResponse": {
+        "title": "User Information Model Response",
+        "required": [
+          "user",
+          "key",
+          "api",
+          "info"
+        ],
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string",
+            "description": "Users API Private Key"
+          },
+          "api": {
+            "type": "string",
+            "description": "Users API Public Key"
+          },
+          "info": {
+            "description": "Users Profile Information",
+            "$ref": "#/components/schemas/UserInformationSecondaryModel"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "uid": "Users UID",
+          "apiuid": "API SIDE USER ID",
+          "verified": "RETURNS TRUE IF USER IS VERIFIED",
+          "id": "TRANSACTION ID",
+          "info": {
+            "realname": "USERS REAL NAME",
+            "displayname": "USERS USERNAME",
+            "avatar": "USER AVATAR URL",
+            "email": "USERS EMAIL",
+            "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+            "address1": "USERS ADDRESS LINE ONE",
+            "address2": "USERS ADDRESS LINE TWO",
+            "city": "USERS ADDRESS CITY",
+            "state": "USERS ADDRESS STATE",
+            "zipcode": "USERS ADDRESS ZIPCODE",
+            "phone": "USERS CELL PHONE NUMBER",
+            "lastlogin": "USERS LAST LOGIN",
+            "ip": "USERS IP",
+            "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+            "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+          }
+        }
+      },
+      "UserInformationSecondaryModel": {
+        "title": "User Information Secondary Model",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "apiuid"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "apiuid": {
+            "type": "string"
+          }
+        }
+      },
+      "UserCustomUpdateModel": {
+        "title": "User Custom Update Model",
+        "required": [
+          "uid",
+          "apiuid",
+          "avatar",
+          "custom-input"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string"
+          },
+          "apiuid": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "custom-input": {
+            "type": "string"
+          }
+        }
+      },
+      "UserUpdateModelResponse": {
+        "title": "User Update Model Response",
+        "required": [
+          "request",
+          "updated",
+          "id",
+          "info"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "updated": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "info": {
+            "$ref": "#/components/schemas/UserCustomUpdateModel"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
+          "id": "TRANSACTION ID",
+          "info": {
+            "uid": "USERS ID",
+            "apiuid": "API SIDE USER ID",
+            "avatar": "INPUTTED AVATAR URL",
+            "custom-input": "CUSTOM INPUTTED PROFILE DATA"
+          }
+        }
+      },
+      "UserProfileInformationModel": {
+        "title": "User Profile Information Model",
+        "required": [
+          "uid",
+          "apiuid",
+          "realname",
+          "displayname",
+          "email",
+          "address",
+          "phone"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string"
+          },
+          "apiuid": {
+            "type": "string"
+          },
+          "realname": {
+            "type": "string"
+          },
+          "displayname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      },
+      "UserRegistrationModelResponse": {
+        "title": "User Registration Model Response",
+        "required": [
+          "request",
+          "active",
+          "id",
+          "info"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "active": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "info": {
+            "$ref": "#/components/schemas/UserProfileInformationModel"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
+          "id": "TRANSACTION ID",
+          "info": {
+            "uid": "USERS ID",
+            "apiuid": "API SIDE USER ID",
+            "realname": "USERS REAL NAME",
+            "displayname": "USERS USERNAME",
+            "email": "USERS EMAIL",
+            "address": "USERS ADDRESS",
+            "phone": "USERS CELL PHONE NUMBER"
+          }
+        }
+      },
+      "UserAuthenticationModelResponse": {
+        "title": "User Authentication Model Response",
+        "required": [
+          "request",
+          "uid",
+          "valid",
+          "id",
+          "info"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "valid": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "info": {
+            "$ref": "#/components/schemas/InfoModel"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "uid": "Users UID",
+          "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
+          "id": "TRANSACTION ID",
+          "info": {
+            "uid": "USERS ID",
+            "apiuid": "API SIDE USER ID",
+            "realname": "USERS REAL NAME",
+            "displayname": "USERS USERNAME",
+            "avatar": "USER AVATAR URL",
+            "email": "USERS EMAIL",
+            "address": "USERS ADDRESS",
+            "phone": "USERS CELL PHONE NUMBER",
+            "lastlogin": "USERS LAST LOGIN",
+            "ip": "USERS IP",
+            "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+            "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+          }
+        }
+      },
+      "UserAuthenticationModel": {
+        "title": "User Authentication Model",
+        "required": [
+          "key",
+          "uid",
+          "user",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "DataModel": {
+        "title": "Data Model",
+        "required": [
+          "result",
+          "content",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "LogModel": {
+        "title": "Log Model",
+        "required": [
+          "MMDDYYYYHHMMSSX",
+          "MMDDYYYYHHMMSSY"
+        ],
+        "type": "object",
+        "properties": {
+          "MMDDYYYYHHMMSSX": {
+            "$ref": "#/components/schemas/MmddyyyyhhmmssModel"
+          },
+          "MMDDYYYYHHMMSSY": {
+            "$ref": "#/components/schemas/MmddyyyyhhmmssModel"
+          }
+        }
+      },
+      "WafConfigurationModelResponse": {
+        "title": "WAF Configuration Model Response",
+        "required": [
+          "success",
+          "rule"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+          "rule": "RULES APPLIED TO WAF"
+        }
+      },
+      "WafCreationModelResponse": {
+        "title": "WAF Creation Model Response",
+        "required": [
+          "success",
+          "cname"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string"
+          },
+          "cname": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+          "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+        }
+      },
+      "CodeProtectionModelResponse": {
+        "title": "Code Protection Model Response",
+        "required": [
+          "success",
+          "app"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string"
+          },
+          "app": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
+          "app": "OBFUSCATED APP URL"
+        }
+      },
+      "CodeProtectionModel": {
+        "title": "Code Protection Model",
+        "required": [
+          "key",
+          "uid",
+          "app"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "app": {
+            "type": "string"
+          }
+        }
+      },
+      "CdnPushModelResponse": {
+        "title": "CDN Push Model Response",
+        "required": [
+          "success",
+          "upload",
+          "cname"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string"
+          },
+          "upload": {
+            "type": "string"
+          },
+          "cname": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
+          "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
+          "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+        }
+      },
+      "CdnPullModelResponse": {
+        "title": "CDN Pull Model Response",
+        "required": [
+          "success",
+          "cname"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string"
+          },
+          "cname": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
+          "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+        }
+      },
+      "DnsConfigurationModelResponse": {
+        "title": "DNS Configuration Model Response",
+        "required": [
+          "success",
+          "domain",
+          "records"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "records": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
+          "domain": "DOMAIN",
+          "records": "RECORDS SET TO DOMAIN"
+        }
+      },
+      "DnsCreationModelResponse": {
+        "title": "DNS Creation Model Response",
+        "required": [
+          "domain",
+          "nameservers"
+        ],
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "nameservers": {
+            "$ref": "#/components/schemas/NameserversModel"
+          }
+        },
+        "example": {
+          "domain": "LIST OF DOMAINS ADDED",
+          "nameservers": {
+            "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
+            "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
+            "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
+            "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
+          }
+        }
+      },
+      "DnsCreationModel": {
+        "title": "DNS Creation Model",
+        "required": [
+          "key",
+          "uid",
+          "domain"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          }
+        }
+      },
+      "TwoFactorAuthenticationTokenModelResponse": {
+        "title": "Two Factor Authentication Token Model Response",
+        "required": [
+          "request",
+          "correct",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "correct": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+          "id": "TRANSACTION ID"
+        }
+      },
+      "TwoFactorAuthenticationModelResponse": {
+        "title": "Two Factor Authentication Model Response",
+        "required": [
+          "key",
+          "uid",
+          "to"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "to": "USER BEING VERIFIED",
+          "verified": "RETURNS TRUE OR FALSE",
+          "id": "TRANSACTION ID"
+        }
+      },
+      "VerifyAddressResponse": {
+        "title": "Verify Address Response",
+        "required": [
+          "request",
+          "active",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "active": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
+          "id": "TRANSACTION ID"
+        }
+      },
+      "VerifyUserModelResponse": {
+        "title": "Verify User Model Response",
+        "required": [
+          "request",
+          "correct",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "correct": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+          "id": "TRANSACTION ID"
+        }
+      },
+      "VerifyModel": {
+        "title": "Verify Model",
+        "required": [
+          "key",
+          "uid",
+          "to"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        }
+      },
+      "UserDeletionResponseModel": {
+        "title": "User Deletion Response Model",
+        "required": [
+          "request",
+          "deleted",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string"
+          },
+          "deleted": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "request": "REQUEST TYPE",
+          "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
+          "id": "TRANSACTION ID"
+        }
+      }
+    }
+  },
+  "security": [
+    {}
+  ]
+}
