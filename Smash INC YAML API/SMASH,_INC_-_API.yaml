@@ -1,0 +1,5317 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: SMASH, INC - API
+  description: "# Introduction\n* ## Multi-use Flexible API for: \n  * **User**:\n    * Login \n    * Registration\n    * User Management\n    * Profile Updates\n    * Two Factor Authentication\n     \n  * **Verifcation**:\n    * Identity Verification\n    * Address Verifcation\n    * Cell Phone Verification \n\n  * **Image**:\n    * Manipulation\n    * Compression\n    * Moderation\n     \n  * **Data**:\n    * Manipulation\n    * Compression\n    * Conversion\n    * Sorting\n\n  * **Services**:\n    * Node Application Hosting\n    * DNS Management\n    * CDN (Content Delivery Network)\n\n  * **Security**:\n    * Encryption\n    * Code Obfuscation\n    * Platform Identification\n    * WAF & DDOS Protection (Web Application Firewall)\n      * Advanced Logging\n\n# Overview\n\n*  **API Domain: api.rest.sh, api.restful.sh**\n\nThis API supports both GET and POST API requests with a JSON or XML output.\n\n*~ You can post to this API via a direct body response in JSON/XML, or using URL variables/requests.*\n\n# Authentication\nBe sure to include your User API KEY, and UID when sending a POST or GET request to our API.\n\n*~ If domain restriction is enabled in your dashboard, please include your domain in the request and redirect headers for your API calls.*\n\n# Status Codes\n* ## Success Codes:\n  *   **200**: Information Recieved\n  *   **201**: Success, Resource Created, or Updated\n  *   **202**: Proccessing\n\n* ## Information Codes:\n  *   **400**: Bad Request\n  *   **401**: Incorrect Credentials\n  *   **403**: Forbidden\n  *   **406**: Not Acceptable Input\n  *   **409**: Data Conflict\n  *   **413**: Payload Too Large\n  *   **415**: Un-Supported Content Type\n  *   **451**: Un-Available For Legal Reasons\n\n* ## Error Codes:\n  *   **500**: Internal API Error\n  *   **501**: Not Implemented\n  *   **503**: API Unavailable\n  *   **504**: Request Timeout\n  *   **511**: Authentication Required\n\n# Rate Pricing\n* **Verification requests:** \n  * per/1000 Requests: **$50.00**\n\n* **User requests:** \n  * per/1000 Requests: **$0.0072**\n\n* **Image requests:** \n  * per/1000 Requests: **$11.87**\n\n* Data requests: \n  * per/1MB: **$0.00024**\n\n* **Service requests:** \n  * **DNS Pricing Per Month:**\n    * Per Hosted Zone: **$1.00**\n    * Per Traffic Flow Record: **$100.00**\n    * Per 1 Million Queries: **$0.80**\n    * Per 1 Million Latency Based Queries: **$1.20**\n    * Per 1 Million GEO Queries: **$1.40**\n    * Per Health Check: **$1.00**\n\n  * **Hosting Per Month:**\n    * Per APP: **$5.00**\n\n  * **CDN Pricing per/1GB:**\n    * North America: **$0.17**\n    * Europe: **$0.17**\n    * Australia: **$0.28**\n    * Asia: **$0.28**\n    * India: **$0.34**\n    * South America: **$0.5**\n\n* **Security requests:** \n  * **WAF and DDOS Pricing Per Month:**\n    * per/1000 Web Requests: **$0.0012**\n    * Per Web Access Control List: **$10.00**\n    * Per Custom Domain Configuration: **$2.00**\n  \n  * **Encryption:**\n    * per/1000 data sets: **$0.0144**\n    * per/1MB per file: **$0.00048**\n\n  * **Code Obfuscation Per Month:**\n    * per/APP (300 files per app): **$102.00**\n\n  * **Code Obfuscation Per Month:**\n    * per/APP (300 files per app): **$102.00**\n\n  * **Advanced Logging:**\n    * per/1000 Log Entries: **$0.0072**"
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: api.rest.sh
+basePath: /api
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /auth/user/login:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/auth/user/login
+      tags:
+      - Login and Registration
+      operationId: https://api.rest.sh/api/auth/user/login1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: user
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: password
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1loginresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              uid: Users UID
+              valid: RETURNS TRUE IF USER LOGIN DETAILS ARE VALID
+              id: TRANSACTION ID
+              info:
+                uid: USERS ID
+                apiuid: API SIDE USER ID
+                realname: USERS REAL NAME
+                displayname: USERS USERNAME
+                avatar: USER AVATAR URL
+                email: USERS EMAIL
+                address: USERS ADDRESS
+                phone: USERS CELL PHONE NUMBER
+                lastlogin: USERS LAST LOGIN
+                ip: USERS IP
+                2fa: RETURNS TRUE IF 2FA IS ENABLED
+                iplock: RETURNS TRUE IF IP LOCK IS ENABLED
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /auth/user/login?key=API&uid=UID&user=Username&password=Password
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "uid": "Users UID",
+                "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
+                "id": "TRANSACTION ID",
+                "info": {
+                	"uid": "USERS ID",
+                	"apiuid": "API SIDE USER ID",
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "avatar": "USER AVATAR URL",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS",
+                    "phone": "USERS CELL PHONE NUMBER",
+                    "lastlogin": "USERS LAST LOGIN",
+                    "ip": "USERS IP",
+                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/auth/user/login1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/auth/user/login
+      tags:
+      - Login and Registration
+      operationId: https://api.rest.sh/api/auth/user/login
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1loginrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1loginresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              uid: Users UID
+              valid: RETURNS TRUE IF USER LOGIN DETAILS ARE VALID
+              id: TRANSACTION ID
+              info:
+                uid: USERS ID
+                apiuid: API SIDE USER ID
+                realname: USERS REAL NAME
+                displayname: USERS USERNAME
+                avatar: USER AVATAR URL
+                email: USERS EMAIL
+                address: USERS ADDRESS
+                phone: USERS CELL PHONE NUMBER
+                lastlogin: USERS LAST LOGIN
+                ip: USERS IP
+                2fa: RETURNS TRUE IF 2FA IS ENABLED
+                iplock: RETURNS TRUE IF IP LOCK IS ENABLED
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /auth/user/login
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS EMAIL OR USERNAME",
+
+              "password": "SEND A ENCRYPTED VERSION OF YOUR USERS PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "uid": "Users UID",
+                "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
+                "id": "TRANSACTION ID",
+                "info": {
+                	"uid": "USERS ID",
+                	"apiuid": "API SIDE USER ID",
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "avatar": "USER AVATAR URL",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS",
+                    "phone": "USERS CELL PHONE NUMBER",
+                    "lastlogin": "USERS LAST LOGIN",
+                    "ip": "USERS IP",
+                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/auth/user/login
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /auth/user/register:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/auth/user/register
+      tags:
+      - Login and Registration
+      operationId: https://api.rest.sh/api/auth/user/register1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: user
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: password
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: name
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: email
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: phone
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: countrycode
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: address
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1registerresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              active: RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED
+              id: TRANSACTION ID
+              info:
+                uid: USERS ID
+                apiuid: API SIDE USER ID
+                realname: USERS REAL NAME
+                displayname: USERS USERNAME
+                email: USERS EMAIL
+                address: USERS ADDRESS
+                phone: USERS CELL PHONE NUMBER
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /auth/user/register?key=API&uid=UID&user=UID&password=Password&name=John Doe&email=email@email.com&phone=1234567890&countrycode=1&address=3301 South Greenfield Rd, Gilbert, AZ 85297
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
+                "id": "TRANSACTION ID",
+                "info": {
+                    "uid": "USERS ID",
+                    "apiuid": "API SIDE USER ID",
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS",
+                    "phone": "USERS CELL PHONE NUMBER"
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/auth/user/register1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/auth/user/register
+      tags:
+      - Login and Registration
+      operationId: https://api.rest.sh/api/auth/user/register
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1registerrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1registerresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              active: RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED
+              id: TRANSACTION ID
+              info:
+                uid: USERS ID
+                apiuid: API SIDE USER ID
+                realname: USERS REAL NAME
+                displayname: USERS USERNAME
+                email: USERS EMAIL
+                address: USERS ADDRESS
+                phone: USERS CELL PHONE NUMBER
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /auth/user/register
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS EMAIL OR USERNAME",
+
+              "password": "SEND A ENCRYPTED VERSION OF YOUR USERS PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD",
+
+              "name": "USERS REAL NAME",
+
+              "email": "USERS EMAIL",
+
+              "phone": "USERS CELL PHONE NUMBER",
+
+              "countrycode": "USERS CELL PHONE COUNTRY CODE",
+
+              "address": "ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+
+              "a": "ADDRESS LINE ONE",
+
+              "sa": "ADDRESS LINE TWO",
+
+              "c": "CITY OR PROVINCE",
+
+              "s": "STATE OR REGION",
+
+              "z": "ZIPCODE"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
+                "id": "TRANSACTION ID",
+                "info": {
+                    "uid": "USERS ID",
+                    "apiuid": "API SIDE USER ID",
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS",
+                    "phone": "USERS CELL PHONE NUMBER"
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/auth/user/register
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /user/update:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/user/update
+      tags:
+      - User Management
+      operationId: https://api.rest.sh/api/user/update1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: user
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: apiuid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: avatar
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: custom input
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1updateresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              updated: RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED
+              id: TRANSACTION ID
+              info:
+                uid: USERS ID
+                apiuid: API SIDE USER ID
+                avatar: INPUTTED AVATAR URL
+                custom-input: CUSTOM INPUTTED PROFILE DATA
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /user/update?key=API&uid=UID&user=UID&apiuid=apiUID&avatar=https://img.cdnurl.com/UID/image&custom input=custom input
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
+
+              "id": "TRANSACTION ID",
+
+              "info": {
+
+                "uid": "USERS ID",
+
+                "apiuid": "API SIDE USER ID",
+
+                "avatar": "INPUTTED AVATAR URL",
+
+                "custom-input": "CUSTOM INPUTTED PROFILE DATA"
+
+              }
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/user/update1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/user/update
+      tags:
+      - User Management
+      operationId: https://api.rest.sh/api/user/update
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1updaterequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1updateresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              updated: RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED
+              id: TRANSACTION ID
+              info:
+                uid: USERS ID
+                apiuid: API SIDE USER ID
+                avatar: INPUTTED AVATAR URL
+                custom-input: CUSTOM INPUTTED PROFILE DATA
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /user/update
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS EMAIL OR USERNAME",
+
+              "apiuid": "USERS API SIDE USER ID",
+
+              "oldpassword": "SEND A ENCRYPTED VERSION OF YOUR USERS CURRENT PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD",
+
+              "newpassword": "SEND A ENCRYPTED VERSION OF YOUR USERS NEW PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD",
+
+              "name": "USERS REAL NAME",
+
+              "email": "USERS EMAIL",
+
+              "phone": "USERS CELL PHONE NUMBER",
+
+              "avatar": "UPDATE USER AVATAR",
+
+              "countrycode": "USERS CELL PHONE COUNTRY CODE",
+
+              "address": "ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+
+              "a": "ADDRESS LINE ONE",
+
+              "sa": "ADDRESS LINE TWO",
+
+              "c": "CITY OR PROVINCE",
+
+              "s": "STATE OR REGION",
+
+              "z": "ZIPCODE",
+
+              "custom-input": "ADD CUSTOM DATA/INPUTS TO YOUR USERS PROFILE"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
+
+              "id": "TRANSACTION ID",
+
+              "info": {
+
+                "uid": "USERS ID",
+
+                "apiuid": "API SIDE USER ID",
+
+                "avatar": "INPUTTED AVATAR URL",
+
+                "custom-input": "CUSTOM INPUTTED PROFILE DATA"
+
+              }
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/user/update
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /user/info:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/user/info
+      tags:
+      - User Management
+      operationId: https://api.rest.sh/api/user/info1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: user
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: apiuid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1inforesponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              uid: Users UID
+              apiuid: API SIDE USER ID
+              verified: RETURNS TRUE IF USER IS VERIFIED
+              id: TRANSACTION ID
+              info:
+                realname: USERS REAL NAME
+                displayname: USERS USERNAME
+                avatar: USER AVATAR URL
+                email: USERS EMAIL
+                address: USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS
+                address1: USERS ADDRESS LINE ONE
+                address2: USERS ADDRESS LINE TWO
+                city: USERS ADDRESS CITY
+                state: USERS ADDRESS STATE
+                zipcode: USERS ADDRESS ZIPCODE
+                phone: USERS CELL PHONE NUMBER
+                lastlogin: USERS LAST LOGIN
+                ip: USERS IP
+                2fa: RETURNS TRUE IF 2FA IS ENABLED
+                iplock: RETURNS TRUE IF IP LOCK IS ENABLED
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /user/info?key=API&uid=UID&user=UID&apiuid=apiUID
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "uid": "Users UID",
+                "apiuid": "API SIDE USER ID",
+                "verified": "RETURNS TRUE IF USER IS VERIFIED",
+                "id": "TRANSACTION ID",
+                "info": {
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "avatar": "USER AVATAR URL",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+                    "address1": "USERS ADDRESS LINE ONE",
+                    "address2": "USERS ADDRESS LINE TWO",
+                    "city": "USERS ADDRESS CITY",
+                    "state": "USERS ADDRESS STATE",
+                    "zipcode": "USERS ADDRESS ZIPCODE",
+                    "phone": "USERS CELL PHONE NUMBER",
+                    "lastlogin": "USERS LAST LOGIN",
+                    "ip": "USERS IP",
+                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/user/info1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/user/info
+      tags:
+      - User Management
+      operationId: https://api.rest.sh/api/user/info
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1inforequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1inforesponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              uid: Users UID
+              apiuid: API SIDE USER ID
+              verified: RETURNS TRUE IF USER IS VERIFIED
+              id: TRANSACTION ID
+              info:
+                realname: USERS REAL NAME
+                displayname: USERS USERNAME
+                avatar: USER AVATAR URL
+                email: USERS EMAIL
+                address: USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS
+                address1: USERS ADDRESS LINE ONE
+                address2: USERS ADDRESS LINE TWO
+                city: USERS ADDRESS CITY
+                state: USERS ADDRESS STATE
+                zipcode: USERS ADDRESS ZIPCODE
+                phone: USERS CELL PHONE NUMBER
+                lastlogin: USERS LAST LOGIN
+                ip: USERS IP
+                2fa: RETURNS TRUE IF 2FA IS ENABLED
+                iplock: RETURNS TRUE IF IP LOCK IS ENABLED
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /user/info
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS EMAIL OR USERNAME",
+
+              "apiuid": "USERS API SIDE USER ID"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "uid": "Users UID",
+                "apiuid": "API SIDE USER ID",
+                "verified": "RETURNS TRUE IF USER IS VERIFIED",
+                "id": "TRANSACTION ID",
+                "info": {
+                    "realname": "USERS REAL NAME",
+                    "displayname": "USERS USERNAME",
+                    "avatar": "USER AVATAR URL",
+                    "email": "USERS EMAIL",
+                    "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+                    "address1": "USERS ADDRESS LINE ONE",
+                    "address2": "USERS ADDRESS LINE TWO",
+                    "city": "USERS ADDRESS CITY",
+                    "state": "USERS ADDRESS STATE",
+                    "zipcode": "USERS ADDRESS ZIPCODE",
+                    "phone": "USERS CELL PHONE NUMBER",
+                    "lastlogin": "USERS LAST LOGIN",
+                    "ip": "USERS IP",
+                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
+                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/user/info
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /user/delete:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/user/delete
+      tags:
+      - User Management
+      operationId: https://api.rest.sh/api/user/delete1
+      produces:
+      - application/json
+      parameters:
+      - name: api
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: user
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: apiuid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1deleteresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              deleted: RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /user/delete?api=API&uid=UID&user=UID&apiuid=apiUID
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/user/delete1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/user/delete
+      tags:
+      - User Management
+      operationId: https://api.rest.sh/api/user/delete
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1deleterequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1deleteresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              deleted: RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /user/delete
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS EMAIL OR USERNAME",
+
+              "apiuid": "USERS API SIDE USER ID"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/user/delete
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /2fa:
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/verify
+      tags:
+      - Verification
+      operationId: https://api.rest.sh/api/verify
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verifyrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verifyresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              to: USER BEING VERIFIED
+              verified: RETURNS TRUE OR FALSE
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /2fa
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "to": "USERS UID"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers:
+            Accept-Ranges: bytes
+            Connection: keep-alive
+            Content-Length: 57
+            Content-Type: application/json; charset=utf-8
+            Date: Wed, 01 Nov 2017 22:38:42 GMT
+            Server: nginx
+            Vary: X-HTTP-Method-Override, Accept-Encoding, Authorization, Cookie
+            Via: 1.1 varnish
+            X-Cache: MISS
+            X-Cache-Hits: 0
+            X-Served-By: cache-den6026-DEN
+            X-Timer: S1509575913.139081,VS0,VE9297
+            access-control-allow-origin: '*'
+            cache-control: private
+            etag: W/"39-/Uq7JVts9Z0DW2A8HCd/mHAMZx0"
+            function-execution-id: 5at6n190lken
+            strict-transport-security: max-age=15552000; includeSubDomains
+            x-cloud-trace-context: 87d5c606647bdcb494caafb92a85cb73;o=1
+            x-content-type-options: nosniff
+            x-dns-prefetch-control: off
+            x-download-options: noopen
+            x-frame-options: SAMEORIGIN
+            x-powered-by: Fatality-Web-Server
+            x-xss-protection: 1; mode=block
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "to": "USER BEING VERIFIED",
+                "verified": "RETURNS TRUE OR FALSE",
+                "id": "TRANSACTION ID"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/verify
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /verify:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/2fa
+      tags:
+      - Two Factor Authentication API
+      operationId: https://api.rest.sh/api/2fa1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: to
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12faresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              to: USER BEING VERIFIED
+              verified: RETURNS TRUE OR FALSE
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /verify?key=API&uid=UID&to=UID
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers:
+            Accept-Ranges: bytes
+            Connection: keep-alive
+            Content-Length: 57
+            Content-Type: application/json; charset=utf-8
+            Date: Wed, 01 Nov 2017 22:38:42 GMT
+            Server: nginx
+            Vary: X-HTTP-Method-Override, Accept-Encoding, Authorization, Cookie
+            Via: 1.1 varnish
+            X-Cache: MISS
+            X-Cache-Hits: 0
+            X-Served-By: cache-den6026-DEN
+            X-Timer: S1509575913.139081,VS0,VE9297
+            access-control-allow-origin: '*'
+            cache-control: private
+            etag: W/"39-/Uq7JVts9Z0DW2A8HCd/mHAMZx0"
+            function-execution-id: 5at6n190lken
+            strict-transport-security: max-age=15552000; includeSubDomains
+            x-cloud-trace-context: 87d5c606647bdcb494caafb92a85cb73;o=1
+            x-content-type-options: nosniff
+            x-dns-prefetch-control: off
+            x-download-options: noopen
+            x-frame-options: SAMEORIGIN
+            x-powered-by: Fatality-Web-Server
+            x-xss-protection: 1; mode=block
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "to": "USER BEING VERIFIED",
+                "verified": "RETURNS TRUE OR FALSE",
+                "id": "TRANSACTION ID"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/2fa1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/2fa
+      tags:
+      - Two Factor Authentication API
+      operationId: https://api.rest.sh/api/2fa
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12farequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12faresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              to: USER BEING VERIFIED
+              verified: RETURNS TRUE OR FALSE
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /verify
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "to": "USERS UID"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers:
+            Accept-Ranges: bytes
+            Connection: keep-alive
+            Content-Length: 57
+            Content-Type: application/json; charset=utf-8
+            Date: Wed, 01 Nov 2017 22:38:42 GMT
+            Server: nginx
+            Vary: X-HTTP-Method-Override, Accept-Encoding, Authorization, Cookie
+            Via: 1.1 varnish
+            X-Cache: MISS
+            X-Cache-Hits: 0
+            X-Served-By: cache-den6026-DEN
+            X-Timer: S1509575913.139081,VS0,VE9297
+            access-control-allow-origin: '*'
+            cache-control: private
+            etag: W/"39-/Uq7JVts9Z0DW2A8HCd/mHAMZx0"
+            function-execution-id: 5at6n190lken
+            strict-transport-security: max-age=15552000; includeSubDomains
+            x-cloud-trace-context: 87d5c606647bdcb494caafb92a85cb73;o=1
+            x-content-type-options: nosniff
+            x-dns-prefetch-control: off
+            x-download-options: noopen
+            x-frame-options: SAMEORIGIN
+            x-powered-by: Fatality-Web-Server
+            x-xss-protection: 1; mode=block
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "to": "USER BEING VERIFIED",
+                "verified": "RETURNS TRUE OR FALSE",
+                "id": "TRANSACTION ID"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/2fa
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /verify/user:
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/verify/user
+      tags:
+      - Verification
+      operationId: https://api.rest.sh/api/verify/user
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1userrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1userresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              correct: RETURNS IF 2FA TOKEN IS CORRECT
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /verify/user
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS UID",
+
+              "code": "USER INPUTTED TOKEN"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/verify/user
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /verify/2fa:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/2fa/token
+      tags:
+      - Two Factor Authentication API
+      operationId: https://api.rest.sh/api/2fa/token1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: user
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: code
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12fa~1tokenresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              correct: RETURNS IF 2FA TOKEN IS CORRECT
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /verify/2fa?key=API&uid=UID&user=UID&code=CODE
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/2fa/token1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/2fa/token
+      tags:
+      - Two Factor Authentication API
+      operationId: https://api.rest.sh/api/2fa/token
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12fa~1tokenrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12fa~1tokenresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              correct: RETURNS IF 2FA TOKEN IS CORRECT
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /verify/2fa
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS UID",
+
+              "code": "USER INPUTTED TOKEN"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/2fa/token
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /verify/address:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/verify/address
+      tags:
+      - Verification
+      operationId: https://api.rest.sh/api/verify/address1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: user
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: a
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: sa
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: c
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: s
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: z
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1addressresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              active: RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /verify/address?key=API&uid=UID&user=UID&a=3301 South Greenfield Rd&sa=Address Line Two&c=Gilbert&s=AZ&z=85297
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/verify/address1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/verify/address
+      tags:
+      - Verification
+      operationId: https://api.rest.sh/api/verify/address
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1addressrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1addressresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              active: RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /verify/address
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS UID",
+
+              "address": "ADDRESS IN ONE LINE SEPERATED BY COMMAS",
+
+              "a": "ADDRESS LINE ONE",
+
+              "sa": "ADDRESS LINE TWO",
+
+              "c": "CITY OR PROVINCE",
+
+              "s": "STATE OR REGION",
+
+              "z": "ZIPCODE"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/verify/address
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /image:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/image
+      tags:
+      - Image Manipulation and Moderation API
+      operationId: https://api.rest.sh/api/image1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: image
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: transform
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1imageresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              url: RETURNED IMAGE URL AND DATA
+              success: RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL
+              moderated: RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /image?key=API&uid=UID&image=https://img.yourdomain.tld/image.type&transform=x:flip,y:flip,grayscale:true,compress:true;80,convert:png
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED IMAGE URL AND DATA",
+                "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
+                "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
+                "id": "TRANSACTION ID"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/image1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/image
+      tags:
+      - Image Manipulation and Moderation API
+      operationId: https://api.rest.sh/api/image
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1imagerequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1imageresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              url: RETURNED IMAGE URL AND DATA
+              success: RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL
+              moderated: RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /image
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "image": "DIRECT IMAGE URL OR CLIENT UPLOAD",
+
+              "transform": "IMAGE MANIPULATION DIRECTIVES",
+
+              "moderate": "SET TO TRUE IF YOU WISH TO AUTOMATICALLT CENSOR GRAPHIC IMAGES"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED IMAGE URL AND DATA",
+                "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
+                "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
+                "id": "TRANSACTION ID"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/image
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /data:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/data
+      tags:
+      - Data Manipulation, Conversion, Sorting, and Compression API
+      operationId: https://api.rest.sh/api/data1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: user
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: apiuid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: data
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1dataresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              url: RETURNED DATA URL
+              success: RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /data?key=API&uid=UID&user=UID&apiuid=apiUID&data=https://static.yourcdn.com/data.file
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED DATA URL",
+                "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
+                "id": "TRANSACTION ID"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/data1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/data
+      tags:
+      - Data Manipulation, Conversion, Sorting, and Compression API
+      operationId: https://api.rest.sh/api/data
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1datarequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1dataresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              url: RETURNED DATA URL
+              success: RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /data
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "user": "USERS EMAIL OR USERNAME",
+
+              "apiuid": "USERS API SIDE USER ID",
+
+              "url": "DATA URL OR DIRECT FILE UPLOAD FROM CLIENT",
+
+              "manipulation": "DATA MANIPULATION DIRECTIVES",
+
+              "conversion": "CONVERT DATA TYPE TO (JSON, XML, HTML, RAW, BINARY, TEXT)",
+
+              "sorting": "SORT BY (NAME, DATE, TYPE, SIZE)",
+
+              "compression": "COMPRESS DATA IF SET TO TRUE (TYPES = GZIP, ZIP, 7Z, MINIFICATION, REWRITE)"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "request": "REQUEST TYPE",
+                "url": "RETURNED DATA URL",
+                "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
+                "id": "TRANSACTION ID"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/data
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /service/hosting:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/hosting
+      tags:
+      - Hosting
+      operationId: https://api.rest.sh/api/service/hosting1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: app
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: domain
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1hostingresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              url: RETURNED APP HOSTING URL
+              success: RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /service/hosting?key=API&uid=UID&app=git://app.git&domain=yourdomain.tld,seconddomain.tld
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "url": "RETURNED APP HOSTING URL",
+
+              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/hosting1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/hosting
+      tags:
+      - Hosting
+      operationId: https://api.rest.sh/api/service/hosting
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1hostingrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1hostingresponse'
+          examples:
+            application/json:
+              request: REQUEST TYPE
+              url: RETURNED APP HOSTING URL
+              success: RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED
+              id: TRANSACTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /service/hosting
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "app": "APP GIT URL OR URL CONTAINING YOUR APP IN A ZIP FILE",
+
+              "domain": "ALLOWED DOMAIN NAMES SEPERATED BY A COMMA TO CNAME WITH ACCESS TO HOSTED APP"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "request": "REQUEST TYPE",
+
+              "url": "RETURNED APP HOSTING URL",
+
+              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
+
+              "id": "TRANSACTION ID"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/hosting
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /service/dns/add:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/dns/add
+      tags:
+      - DNS
+      operationId: https://api.rest.sh/api/service/dns/add1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: domain
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1addresponse'
+          examples:
+            application/json:
+              domain: LIST OF DOMAINS ADDED
+              nameservers:
+                ns1: NAME SERVER ONE TO POINT YOUR DOMAIN AT
+                ns2: NAME SERVER TWO TO POINT YOUR DOMAIN AT
+                ns3: NAME SERVER THREE TO POINT YOUR DOMAIN AT
+                ns4: NAME SERVER FOUR TO POINT YOUR DOMAIN AT
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /service/dns/add?key=API&uid=UID&domain=yourdomain.tld,seconddomain.tld
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "domain": "LIST OF DOMAINS ADDED",
+                "nameservers": {
+                    "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
+                    "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
+                    "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
+                    "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/dns/add1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/dns/add
+      tags:
+      - DNS
+      operationId: https://api.rest.sh/api/service/dns/add
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1addrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1addresponse'
+          examples:
+            application/json:
+              domain: LIST OF DOMAINS ADDED
+              nameservers:
+                ns1: NAME SERVER ONE TO POINT YOUR DOMAIN AT
+                ns2: NAME SERVER TWO TO POINT YOUR DOMAIN AT
+                ns3: NAME SERVER THREE TO POINT YOUR DOMAIN AT
+                ns4: NAME SERVER FOUR TO POINT YOUR DOMAIN AT
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /service/dns/add
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "domain": "DOMAINS SEPERATED BY A COMMA TO ADD TO DNS"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "domain": "LIST OF DOMAINS ADDED",
+                "nameservers": {
+                    "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
+                    "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
+                    "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
+                    "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/dns/add
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /service/dns/configure:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/dns/configure
+      tags:
+      - DNS
+      operationId: https://api.rest.sh/api/service/dns/configure1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: domain
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: records
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1configureresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET
+              domain: DOMAIN
+              records: RECORDS SET TO DOMAIN
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /service/dns/configure?key=API&uid=UID&domain=yourdomain.tld&records=set:root:a:127.0.0.1,set:www:a:127.0.0.1,set:cdn:cname:cname.domain.com
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
+                "domain": "DOMAIN",
+                "records": "RECORDS SET TO DOMAIN"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/dns/configure1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/dns/configure
+      tags:
+      - DNS
+      operationId: https://api.rest.sh/api/service/dns/configure
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1configurerequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1configureresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET
+              domain: DOMAIN
+              records: RECORDS SET TO DOMAIN
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /service/dns/configure
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "domain": "DOMAINS TO SET DNS RECORDS",
+
+              "records": "RECORDS TO SET TO DOMAIN"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
+                "domain": "DOMAIN",
+                "records": "RECORDS SET TO DOMAIN"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/dns/configure
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /service/cdn/pull:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/cdn/pull
+      tags:
+      - CDN
+      operationId: https://api.rest.sh/api/service/cdn/pull1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: origin
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: cname
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pullresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY
+              cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /service/cdn/pull?key=API&uid=UID&origin=origin.yourdomain.tld&cname=cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
+
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/cdn/pull1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/cdn/pull
+      tags:
+      - CDN
+      operationId: https://api.rest.sh/api/service/cdn/pull
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pullrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pullresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY
+              cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /service/cdn/pull
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "origin": "ORIGIN DOMAIN TO PULL ASSETS FROM",
+
+              "cname": "DOMAIN OR DOMAINS YOU WISH TO ALLOW CNAME ACCESS SEPERATED BY A COMMA"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
+
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/cdn/pull
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /service/cdn/push:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/cdn/push
+      tags:
+      - CDN
+      operationId: https://api.rest.sh/api/service/cdn/push1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: cname
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: file
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pushresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY
+              upload: LIST OF FILES UPLOADED TO YOUR PUSH ZONE
+              cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /service/cdn/push?key=API&uid=UID&cname=cdn.yourdomain.tld,cdn1.yourdomain.tld,cdn2.yourdomain.tld&file=static.yourdomain.tld/file.type
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
+
+              "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
+
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/cdn/push1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/cdn/push
+      tags:
+      - CDN
+      operationId: https://api.rest.sh/api/service/cdn/push
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pushrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pushresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY
+              upload: LIST OF FILES UPLOADED TO YOUR PUSH ZONE
+              cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /service/cdn/push
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "cname": "DOMAIN OR DOMAINS YOU WISH TO ALLOW CNAME ACCESS SEPERATED BY A COMMA",
+
+              "file": "FILE OR FILES YOU WISH TO UPLOAD SEPERATED BY A COMMA"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
+
+              "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
+
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/cdn/push
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /security/encryption:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/encryption
+      tags:
+      - Encryption
+      operationId: https://api.rest.sh/api/security/encryption1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: data
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: method
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: bit
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1encryptionresponse'
+          examples:
+            application/json:
+              data: RETURNED ENCRYPTED DATA URL
+              file: RETURNED ENCRYPTED FILE URL
+              success: SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL
+              public: PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES
+              private: PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /security/encryption?key=API&uid=UID&data=DATA&method=DES,RSA&bit=4096
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "data": "RETURNED ENCRYPTED DATA URL",
+                "file": "RETURNED ENCRYPTED FILE URL",
+                "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
+                "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
+                "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/encryption1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/encryption
+      tags:
+      - Encryption
+      operationId: https://api.rest.sh/api/security/encryption
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1encryptionrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1encryptionresponse'
+          examples:
+            application/json:
+              data: RETURNED ENCRYPTED DATA URL
+              file: RETURNED ENCRYPTED FILE URL
+              success: SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL
+              public: PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES
+              private: PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /security/encryption
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+              "key": "YOUR API KEY",
+              "uid": "YOUR USER ID",
+              "data": "DATA YOU WISH TO ENCRYPT",
+              "file": "FILE YOU WISH TO ENCRYPT",
+              "method": "SINGLE OR MULTIPLE ENCRYPTION TYPES TO APPLY TO DATA OR FILES SEPERATED BY A COMMA (DES, RSA, BLOWFISH, TWOFISH, AES, IDEA, PGP)",
+              "bit": "SIZE OF ENCRYPTION KEY"
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "data": "RETURNED ENCRYPTED DATA URL",
+                "file": "RETURNED ENCRYPTED FILE URL",
+                "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
+                "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
+                "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/encryption
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /service/obfuscation:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/obfuscation
+      tags:
+      - Code Obfuscation
+      operationId: https://api.rest.sh/api/service/obfuscation1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: app
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1obfuscationresponse'
+          examples:
+            application/json:
+              success: RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED
+              app: OBFUSCATED APP URL
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /service/obfuscation?key=API&uid=UID&app=git://app.git
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
+
+              "app": "OBFUSCATED APP URL"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/obfuscation1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/service/obfuscation
+      tags:
+      - Code Obfuscation
+      operationId: https://api.rest.sh/api/service/obfuscation
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1obfuscationrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1obfuscationresponse'
+          examples:
+            application/json:
+              success: RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED
+              app: OBFUSCATED APP URL
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /service/obfuscation
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "app": "APP GIT URL or URL CONTAINING YOUR APP IN A ZIP FILE"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
+
+              "app": "OBFUSCATED APP URL"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/service/obfuscation
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /security/waf:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/waf
+      tags:
+      - WAF & DDOS Protection
+      operationId: https://api.rest.sh/api/security/waf1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: origin
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: cname
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1wafresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
+              cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /security/waf?key=API&uid=UID&origin=origin.yourdomain.tld&cname=yourdomain.tld,www.yourdomain.tld
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/waf1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/waf
+      tags:
+      - WAF & DDOS Protection
+      operationId: https://api.rest.sh/api/security/waf
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1wafrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1wafresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
+              cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /security/waf
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "origin": "ORIGIN YOU WISH TO PROTECT",
+
+              "cname": "CNAMES YOU WISH TO USE WITH YOUR WAF"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+
+              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/waf
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /security/waf/configure:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/waf/configure
+      tags:
+      - WAF & DDOS Protection
+      operationId: https://api.rest.sh/api/security/waf/configure1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: name
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: origin
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: rule
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf~1configureresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
+              rule: RULES APPLIED TO WAF
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /security/waf/configure?key=API&uid=UID&name=origin-name&origin=origin.yourdomain.tld&rule=header:Access-Control-Allow-Origin;yourdomain.tld;seconddomain.tld,match:ip;127.0.0.1;does
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+
+              "rule": "RULES APPLIED TO WAF"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/waf/configure1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/waf/configure
+      tags:
+      - WAF & DDOS Protection
+      operationId: https://api.rest.sh/api/security/waf/configure
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf~1configurerequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf~1configureresponse'
+          examples:
+            application/json:
+              success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
+              rule: RULES APPLIED TO WAF
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /security/waf/configure
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+              "key": "YOUR API KEY",
+              "uid": "YOUR USER ID",
+              "name": "WHAT YOU WISH TO NAME YOUR WAF",
+              "origin": "ORIGIN YOU WISH TO PROTECT",
+              "cname": "CNAMES YOU WISH TO USE WITH YOUR WAF"
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
+
+              "rule": "RULES APPLIED TO WAF"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/waf/configure
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /security/logging:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/logging
+      tags:
+      - Advanced Logging
+      operationId: https://api.rest.sh/api/security/logging1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: name
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: origin
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: activate
+        in: query
+        required: true
+        type: boolean
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1loggingresponse'
+          examples:
+            application/json:
+              success: RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /security/logging?key=API&uid=UID&name=origin-name&origin=origin.yourdomain.tld&activate=true
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/logging1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/logging
+      tags:
+      - Advanced Logging
+      operationId: https://api.rest.sh/api/security/logging
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1loggingrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1loggingresponse'
+          examples:
+            application/json:
+              success: RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /security/logging
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "name": "YOUR WAF'S NAME",
+
+              "origin": "ORIGIN URL",
+
+              "activate": "TRUE OR FALSE IF YOU WANT ADVANCED LOGGING ACTIVATED"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+
+              "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
+
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/logging
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /security/logging/info:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/logging/info
+      tags:
+      - Advanced Logging
+      operationId: https://api.rest.sh/api/security/logging/info1
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: uid
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: name
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: origin
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: time
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging~1inforesponse'
+          examples:
+            application/json:
+              log:
+                01010101245901:
+                  data:
+                    result: INFO
+                    content: 'LOG: CONTENT AND ACTIONS PERFORMED'
+                    id: FUNCTION ID
+                01010101245902:
+                  data:
+                    result: ERROR
+                    content: 'LOG: ERROR CONTENT AND ACTIONS PERFORMED'
+                    id: FUNCTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /security/logging/info?key=API&uid=UID&name=origin-name&origin=origin.yourdomain.tld&time=01/01/0101;24:59:01
+          headers:
+            Content-Type: application/json
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "log": {
+                    "01010101245901": {
+                        "data": {
+                            "result": "INFO",
+                            "content": "LOG: CONTENT AND ACTIONS PERFORMED",
+                            "id": "FUNCTION ID"
+                        }
+                    },
+                    "01010101245902": {
+                        "data": {
+                            "result": "ERROR",
+                            "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
+                            "id": "FUNCTION ID"
+                        }
+                    }
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/logging/info1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api.rest.sh/api/security/logging/info
+      tags:
+      - Advanced Logging
+      operationId: https://api.rest.sh/api/security/logging/info
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging~1inforequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging~1inforesponse'
+          examples:
+            application/json:
+              log:
+                01010101245901:
+                  data:
+                    result: INFO
+                    content: 'LOG: CONTENT AND ACTIONS PERFORMED'
+                    id: FUNCTION ID
+                01010101245902:
+                  data:
+                    result: ERROR
+                    content: 'LOG: ERROR CONTENT AND ACTIONS PERFORMED'
+                    id: FUNCTION ID
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /security/logging/info
+          headers:
+            Content-Type: application/json
+          body: >-
+            {
+
+              "key": "YOUR API KEY",
+
+              "uid": "YOUR USER ID",
+
+              "name": "YOUR WAF'S NAME",
+
+              "origin": "ORIGIN URL",
+
+              "time": "LOOKUP SPECIFIC TIMES IN LOG (MM/DD/YYYY;HH:MM:SS) SEPERATED BY A COMMA OR ('*' / ALL)"
+
+            }
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+          body: >-
+            {
+                "log": {
+                    "01010101245901": {
+                        "data": {
+                            "result": "INFO",
+                            "content": "LOG: CONTENT AND ACTIONS PERFORMED",
+                            "id": "FUNCTION ID"
+                        }
+                    },
+                    "01010101245902": {
+                        "data": {
+                            "result": "ERROR",
+                            "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
+                            "id": "FUNCTION ID"
+                        }
+                    }
+                }
+            }
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api.rest.sh/api/security/logging/info
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+definitions:
+  Https://api.rest.sh/api/auth/user/loginrequest:
+    title: https://api.rest.sh/api/auth/user/loginRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS EMAIL OR USERNAME
+      password: SEND A ENCRYPTED VERSION OF YOUR USERS PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      password:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - password
+  Https://api.rest.sh/api/auth/user/loginresponse:
+    title: https://api.rest.sh/api/auth/user/loginResponse
+    example:
+      request: REQUEST TYPE
+      uid: Users UID
+      valid: RETURNS TRUE IF USER LOGIN DETAILS ARE VALID
+      id: TRANSACTION ID
+      info:
+        uid: USERS ID
+        apiuid: API SIDE USER ID
+        realname: USERS REAL NAME
+        displayname: USERS USERNAME
+        avatar: USER AVATAR URL
+        email: USERS EMAIL
+        address: USERS ADDRESS
+        phone: USERS CELL PHONE NUMBER
+        lastlogin: USERS LAST LOGIN
+        ip: USERS IP
+        2fa: RETURNS TRUE IF 2FA IS ENABLED
+        iplock: RETURNS TRUE IF IP LOCK IS ENABLED
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      valid:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+      info:
+        $ref: '#/definitions/Info'
+    required:
+    - request
+    - uid
+    - valid
+    - id
+    - info
+  Info:
+    title: Info
+    type: object
+    properties:
+      uid:
+        description: ''
+        type: string
+      apiuid:
+        description: ''
+        type: string
+      realname:
+        description: ''
+        type: string
+      displayname:
+        description: ''
+        type: string
+      avatar:
+        description: ''
+        type: string
+      email:
+        description: ''
+        type: string
+      address:
+        description: ''
+        type: string
+      phone:
+        description: ''
+        type: string
+      lastlogin:
+        description: ''
+        type: string
+      ip:
+        description: ''
+        type: string
+      2fa:
+        description: ''
+        type: string
+      iplock:
+        description: ''
+        type: string
+    required:
+    - uid
+    - apiuid
+    - realname
+    - displayname
+    - avatar
+    - email
+    - address
+    - phone
+    - lastlogin
+    - ip
+    - 2fa
+    - iplock
+  Https://api.rest.sh/api/auth/user/registerrequest:
+    title: https://api.rest.sh/api/auth/user/registerRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS EMAIL OR USERNAME
+      password: SEND A ENCRYPTED VERSION OF YOUR USERS PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD
+      name: USERS REAL NAME
+      email: USERS EMAIL
+      phone: USERS CELL PHONE NUMBER
+      countrycode: USERS CELL PHONE COUNTRY CODE
+      address: ADDRESS IN ONE LINE SEPERATED BY COMMAS
+      a: ADDRESS LINE ONE
+      sa: ADDRESS LINE TWO
+      c: CITY OR PROVINCE
+      s: STATE OR REGION
+      z: ZIPCODE
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      password:
+        description: ''
+        type: string
+      name:
+        description: ''
+        type: string
+      email:
+        description: ''
+        type: string
+      phone:
+        description: ''
+        type: string
+      countrycode:
+        description: ''
+        type: string
+      address:
+        description: ''
+        type: string
+      a:
+        description: ''
+        type: string
+      sa:
+        description: ''
+        type: string
+      c:
+        description: ''
+        type: string
+      s:
+        description: ''
+        type: string
+      z:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - password
+    - name
+    - email
+    - phone
+    - countrycode
+    - address
+    - a
+    - sa
+    - c
+    - s
+    - z
+  Https://api.rest.sh/api/auth/user/registerresponse:
+    title: https://api.rest.sh/api/auth/user/registerResponse
+    example:
+      request: REQUEST TYPE
+      active: RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED
+      id: TRANSACTION ID
+      info:
+        uid: USERS ID
+        apiuid: API SIDE USER ID
+        realname: USERS REAL NAME
+        displayname: USERS USERNAME
+        email: USERS EMAIL
+        address: USERS ADDRESS
+        phone: USERS CELL PHONE NUMBER
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      active:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+      info:
+        $ref: '#/definitions/Info7'
+    required:
+    - request
+    - active
+    - id
+    - info
+  Info7:
+    title: Info7
+    type: object
+    properties:
+      uid:
+        description: ''
+        type: string
+      apiuid:
+        description: ''
+        type: string
+      realname:
+        description: ''
+        type: string
+      displayname:
+        description: ''
+        type: string
+      email:
+        description: ''
+        type: string
+      address:
+        description: ''
+        type: string
+      phone:
+        description: ''
+        type: string
+    required:
+    - uid
+    - apiuid
+    - realname
+    - displayname
+    - email
+    - address
+    - phone
+  Https://api.rest.sh/api/user/updaterequest:
+    title: https://api.rest.sh/api/user/updateRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS EMAIL OR USERNAME
+      apiuid: USERS API SIDE USER ID
+      oldpassword: SEND A ENCRYPTED VERSION OF YOUR USERS CURRENT PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD
+      newpassword: SEND A ENCRYPTED VERSION OF YOUR USERS NEW PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD
+      name: USERS REAL NAME
+      email: USERS EMAIL
+      phone: USERS CELL PHONE NUMBER
+      avatar: UPDATE USER AVATAR
+      countrycode: USERS CELL PHONE COUNTRY CODE
+      address: ADDRESS IN ONE LINE SEPERATED BY COMMAS
+      a: ADDRESS LINE ONE
+      sa: ADDRESS LINE TWO
+      c: CITY OR PROVINCE
+      s: STATE OR REGION
+      z: ZIPCODE
+      custom-input: ADD CUSTOM DATA/INPUTS TO YOUR USERS PROFILE
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      apiuid:
+        description: ''
+        type: string
+      oldpassword:
+        description: ''
+        type: string
+      newpassword:
+        description: ''
+        type: string
+      name:
+        description: ''
+        type: string
+      email:
+        description: ''
+        type: string
+      phone:
+        description: ''
+        type: string
+      avatar:
+        description: ''
+        type: string
+      countrycode:
+        description: ''
+        type: string
+      address:
+        description: ''
+        type: string
+      a:
+        description: ''
+        type: string
+      sa:
+        description: ''
+        type: string
+      c:
+        description: ''
+        type: string
+      s:
+        description: ''
+        type: string
+      z:
+        description: ''
+        type: string
+      custom-input:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - apiuid
+    - oldpassword
+    - newpassword
+    - name
+    - email
+    - phone
+    - avatar
+    - countrycode
+    - address
+    - a
+    - sa
+    - c
+    - s
+    - z
+    - custom-input
+  Https://api.rest.sh/api/user/updateresponse:
+    title: https://api.rest.sh/api/user/updateResponse
+    example:
+      request: REQUEST TYPE
+      updated: RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED
+      id: TRANSACTION ID
+      info:
+        uid: USERS ID
+        apiuid: API SIDE USER ID
+        avatar: INPUTTED AVATAR URL
+        custom-input: CUSTOM INPUTTED PROFILE DATA
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      updated:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+      info:
+        $ref: '#/definitions/Info12'
+    required:
+    - request
+    - updated
+    - id
+    - info
+  Info12:
+    title: Info12
+    type: object
+    properties:
+      uid:
+        description: ''
+        type: string
+      apiuid:
+        description: ''
+        type: string
+      avatar:
+        description: ''
+        type: string
+      custom-input:
+        description: ''
+        type: string
+    required:
+    - uid
+    - apiuid
+    - avatar
+    - custom-input
+  Https://api.rest.sh/api/user/inforequest:
+    title: https://api.rest.sh/api/user/infoRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS EMAIL OR USERNAME
+      apiuid: USERS API SIDE USER ID
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      apiuid:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - apiuid
+  Https://api.rest.sh/api/user/inforesponse:
+    title: https://api.rest.sh/api/user/infoResponse
+    example:
+      request: REQUEST TYPE
+      uid: Users UID
+      apiuid: API SIDE USER ID
+      verified: RETURNS TRUE IF USER IS VERIFIED
+      id: TRANSACTION ID
+      info:
+        realname: USERS REAL NAME
+        displayname: USERS USERNAME
+        avatar: USER AVATAR URL
+        email: USERS EMAIL
+        address: USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS
+        address1: USERS ADDRESS LINE ONE
+        address2: USERS ADDRESS LINE TWO
+        city: USERS ADDRESS CITY
+        state: USERS ADDRESS STATE
+        zipcode: USERS ADDRESS ZIPCODE
+        phone: USERS CELL PHONE NUMBER
+        lastlogin: USERS LAST LOGIN
+        ip: USERS IP
+        2fa: RETURNS TRUE IF 2FA IS ENABLED
+        iplock: RETURNS TRUE IF IP LOCK IS ENABLED
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      apiuid:
+        description: ''
+        type: string
+      verified:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+      info:
+        $ref: '#/definitions/Info17'
+    required:
+    - request
+    - uid
+    - apiuid
+    - verified
+    - id
+    - info
+  Info17:
+    title: Info17
+    type: object
+    properties:
+      realname:
+        description: ''
+        type: string
+      displayname:
+        description: ''
+        type: string
+      avatar:
+        description: ''
+        type: string
+      email:
+        description: ''
+        type: string
+      address:
+        description: ''
+        type: string
+      address1:
+        description: ''
+        type: string
+      address2:
+        description: ''
+        type: string
+      city:
+        description: ''
+        type: string
+      state:
+        description: ''
+        type: string
+      zipcode:
+        description: ''
+        type: string
+      phone:
+        description: ''
+        type: string
+      lastlogin:
+        description: ''
+        type: string
+      ip:
+        description: ''
+        type: string
+      2fa:
+        description: ''
+        type: string
+      iplock:
+        description: ''
+        type: string
+    required:
+    - realname
+    - displayname
+    - avatar
+    - email
+    - address
+    - address1
+    - address2
+    - city
+    - state
+    - zipcode
+    - phone
+    - lastlogin
+    - ip
+    - 2fa
+    - iplock
+  Https://api.rest.sh/api/user/deleterequest:
+    title: https://api.rest.sh/api/user/deleteRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS EMAIL OR USERNAME
+      apiuid: USERS API SIDE USER ID
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      apiuid:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - apiuid
+  Https://api.rest.sh/api/user/deleteresponse:
+    title: https://api.rest.sh/api/user/deleteResponse
+    example:
+      request: REQUEST TYPE
+      deleted: RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      deleted:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - deleted
+    - id
+  Https://api.rest.sh/api/verifyrequest:
+    title: https://api.rest.sh/api/verifyRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      to: USERS UID
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      to:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - to
+  Https://api.rest.sh/api/verifyresponse:
+    title: https://api.rest.sh/api/verifyResponse
+    example:
+      request: REQUEST TYPE
+      to: USER BEING VERIFIED
+      verified: RETURNS TRUE OR FALSE
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      to:
+        description: ''
+        type: string
+      verified:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - to
+    - verified
+    - id
+  Https://api.rest.sh/api/verify/userrequest:
+    title: https://api.rest.sh/api/verify/userRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS UID
+      code: USER INPUTTED TOKEN
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      code:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - code
+  Https://api.rest.sh/api/verify/userresponse:
+    title: https://api.rest.sh/api/verify/userResponse
+    example:
+      request: REQUEST TYPE
+      correct: RETURNS IF 2FA TOKEN IS CORRECT
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      correct:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - correct
+    - id
+  Https://api.rest.sh/api/verify/addressrequest:
+    title: https://api.rest.sh/api/verify/addressRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS UID
+      address: ADDRESS IN ONE LINE SEPERATED BY COMMAS
+      a: ADDRESS LINE ONE
+      sa: ADDRESS LINE TWO
+      c: CITY OR PROVINCE
+      s: STATE OR REGION
+      z: ZIPCODE
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      address:
+        description: ''
+        type: string
+      a:
+        description: ''
+        type: string
+      sa:
+        description: ''
+        type: string
+      c:
+        description: ''
+        type: string
+      s:
+        description: ''
+        type: string
+      z:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - address
+    - a
+    - sa
+    - c
+    - s
+    - z
+  Https://api.rest.sh/api/verify/addressresponse:
+    title: https://api.rest.sh/api/verify/addressResponse
+    example:
+      request: REQUEST TYPE
+      active: RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      active:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - active
+    - id
+  Https://api.rest.sh/api/2farequest:
+    title: https://api.rest.sh/api/2faRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      to: USERS UID
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      to:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - to
+  Https://api.rest.sh/api/2faresponse:
+    title: https://api.rest.sh/api/2faResponse
+    example:
+      request: REQUEST TYPE
+      to: USER BEING VERIFIED
+      verified: RETURNS TRUE OR FALSE
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      to:
+        description: ''
+        type: string
+      verified:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - to
+    - verified
+    - id
+  Https://api.rest.sh/api/2fa/tokenrequest:
+    title: https://api.rest.sh/api/2fa/tokenRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS UID
+      code: USER INPUTTED TOKEN
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      code:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - code
+  Https://api.rest.sh/api/2fa/tokenresponse:
+    title: https://api.rest.sh/api/2fa/tokenResponse
+    example:
+      request: REQUEST TYPE
+      correct: RETURNS IF 2FA TOKEN IS CORRECT
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      correct:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - correct
+    - id
+  Https://api.rest.sh/api/imagerequest:
+    title: https://api.rest.sh/api/imageRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      image: DIRECT IMAGE URL OR CLIENT UPLOAD
+      transform: IMAGE MANIPULATION DIRECTIVES
+      moderate: SET TO TRUE IF YOU WISH TO AUTOMATICALLT CENSOR GRAPHIC IMAGES
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      image:
+        description: ''
+        type: string
+      transform:
+        description: ''
+        type: string
+      moderate:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - image
+    - transform
+    - moderate
+  Https://api.rest.sh/api/imageresponse:
+    title: https://api.rest.sh/api/imageResponse
+    example:
+      request: REQUEST TYPE
+      url: RETURNED IMAGE URL AND DATA
+      success: RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL
+      moderated: RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      url:
+        description: ''
+        type: string
+      success:
+        description: ''
+        type: string
+      moderated:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - url
+    - success
+    - moderated
+    - id
+  Https://api.rest.sh/api/datarequest:
+    title: https://api.rest.sh/api/dataRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      user: USERS EMAIL OR USERNAME
+      apiuid: USERS API SIDE USER ID
+      url: DATA URL OR DIRECT FILE UPLOAD FROM CLIENT
+      manipulation: DATA MANIPULATION DIRECTIVES
+      conversion: CONVERT DATA TYPE TO (JSON, XML, HTML, RAW, BINARY, TEXT)
+      sorting: SORT BY (NAME, DATE, TYPE, SIZE)
+      compression: COMPRESS DATA IF SET TO TRUE (TYPES = GZIP, ZIP, 7Z, MINIFICATION, REWRITE)
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      user:
+        description: ''
+        type: string
+      apiuid:
+        description: ''
+        type: string
+      url:
+        description: ''
+        type: string
+      manipulation:
+        description: ''
+        type: string
+      conversion:
+        description: ''
+        type: string
+      sorting:
+        description: ''
+        type: string
+      compression:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - user
+    - apiuid
+    - url
+    - manipulation
+    - conversion
+    - sorting
+    - compression
+  Https://api.rest.sh/api/dataresponse:
+    title: https://api.rest.sh/api/dataResponse
+    example:
+      request: REQUEST TYPE
+      url: RETURNED DATA URL
+      success: RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      url:
+        description: ''
+        type: string
+      success:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - url
+    - success
+    - id
+  Https://api.rest.sh/api/service/hostingrequest:
+    title: https://api.rest.sh/api/service/hostingRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      app: APP GIT URL OR URL CONTAINING YOUR APP IN A ZIP FILE
+      domain: ALLOWED DOMAIN NAMES SEPERATED BY A COMMA TO CNAME WITH ACCESS TO HOSTED APP
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      app:
+        description: ''
+        type: string
+      domain:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - app
+    - domain
+  Https://api.rest.sh/api/service/hostingresponse:
+    title: https://api.rest.sh/api/service/hostingResponse
+    example:
+      request: REQUEST TYPE
+      url: RETURNED APP HOSTING URL
+      success: RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        type: string
+      url:
+        description: ''
+        type: string
+      success:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - request
+    - url
+    - success
+    - id
+  Https://api.rest.sh/api/service/dns/addrequest:
+    title: https://api.rest.sh/api/service/dns/addRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      domain: DOMAINS SEPERATED BY A COMMA TO ADD TO DNS
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      domain:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - domain
+  Https://api.rest.sh/api/service/dns/addresponse:
+    title: https://api.rest.sh/api/service/dns/addResponse
+    example:
+      domain: LIST OF DOMAINS ADDED
+      nameservers:
+        ns1: NAME SERVER ONE TO POINT YOUR DOMAIN AT
+        ns2: NAME SERVER TWO TO POINT YOUR DOMAIN AT
+        ns3: NAME SERVER THREE TO POINT YOUR DOMAIN AT
+        ns4: NAME SERVER FOUR TO POINT YOUR DOMAIN AT
+    type: object
+    properties:
+      domain:
+        description: ''
+        type: string
+      nameservers:
+        $ref: '#/definitions/Nameservers'
+    required:
+    - domain
+    - nameservers
+  Nameservers:
+    title: Nameservers
+    type: object
+    properties:
+      ns1:
+        description: ''
+        type: string
+      ns2:
+        description: ''
+        type: string
+      ns3:
+        description: ''
+        type: string
+      ns4:
+        description: ''
+        type: string
+    required:
+    - ns1
+    - ns2
+    - ns3
+    - ns4
+  Https://api.rest.sh/api/service/dns/configurerequest:
+    title: https://api.rest.sh/api/service/dns/configureRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      domain: DOMAINS TO SET DNS RECORDS
+      records: RECORDS TO SET TO DOMAIN
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      domain:
+        description: ''
+        type: string
+      records:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - domain
+    - records
+  Https://api.rest.sh/api/service/dns/configureresponse:
+    title: https://api.rest.sh/api/service/dns/configureResponse
+    example:
+      success: SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET
+      domain: DOMAIN
+      records: RECORDS SET TO DOMAIN
+    type: object
+    properties:
+      success:
+        description: ''
+        type: string
+      domain:
+        description: ''
+        type: string
+      records:
+        description: ''
+        type: string
+    required:
+    - success
+    - domain
+    - records
+  Https://api.rest.sh/api/service/cdn/pullrequest:
+    title: https://api.rest.sh/api/service/cdn/pullRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      origin: ORIGIN DOMAIN TO PULL ASSETS FROM
+      cname: DOMAIN OR DOMAINS YOU WISH TO ALLOW CNAME ACCESS SEPERATED BY A COMMA
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      origin:
+        description: ''
+        type: string
+      cname:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - origin
+    - cname
+  Https://api.rest.sh/api/service/cdn/pullresponse:
+    title: https://api.rest.sh/api/service/cdn/pullResponse
+    example:
+      success: SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY
+      cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+    type: object
+    properties:
+      success:
+        description: ''
+        type: string
+      cname:
+        description: ''
+        type: string
+    required:
+    - success
+    - cname
+  Https://api.rest.sh/api/service/cdn/pushrequest:
+    title: https://api.rest.sh/api/service/cdn/pushRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      cname: DOMAIN OR DOMAINS YOU WISH TO ALLOW CNAME ACCESS SEPERATED BY A COMMA
+      file: FILE OR FILES YOU WISH TO UPLOAD SEPERATED BY A COMMA
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      cname:
+        description: ''
+        type: string
+      file:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - cname
+    - file
+  Https://api.rest.sh/api/service/cdn/pushresponse:
+    title: https://api.rest.sh/api/service/cdn/pushResponse
+    example:
+      success: SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY
+      upload: LIST OF FILES UPLOADED TO YOUR PUSH ZONE
+      cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+    type: object
+    properties:
+      success:
+        description: ''
+        type: string
+      upload:
+        description: ''
+        type: string
+      cname:
+        description: ''
+        type: string
+    required:
+    - success
+    - upload
+    - cname
+  Https://api.rest.sh/api/security/encryptionrequest:
+    title: https://api.rest.sh/api/security/encryptionRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      data: DATA YOU WISH TO ENCRYPT
+      file: FILE YOU WISH TO ENCRYPT
+      method: SINGLE OR MULTIPLE ENCRYPTION TYPES TO APPLY TO DATA OR FILES SEPERATED BY A COMMA (DES, RSA, BLOWFISH, TWOFISH, AES, IDEA, PGP)
+      bit: SIZE OF ENCRYPTION KEY
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      data:
+        description: ''
+        type: string
+      file:
+        description: ''
+        type: string
+      method:
+        description: ''
+        type: string
+      bit:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - data
+    - file
+    - method
+    - bit
+  Https://api.rest.sh/api/security/encryptionresponse:
+    title: https://api.rest.sh/api/security/encryptionResponse
+    example:
+      data: RETURNED ENCRYPTED DATA URL
+      file: RETURNED ENCRYPTED FILE URL
+      success: SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL
+      public: PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES
+      private: PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES
+    type: object
+    properties:
+      data:
+        description: ''
+        type: string
+      file:
+        description: ''
+        type: string
+      success:
+        description: ''
+        type: string
+      public:
+        description: ''
+        type: string
+      private:
+        description: ''
+        type: string
+    required:
+    - data
+    - file
+    - success
+    - public
+    - private
+  Https://api.rest.sh/api/service/obfuscationrequest:
+    title: https://api.rest.sh/api/service/obfuscationRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      app: APP GIT URL or URL CONTAINING YOUR APP IN A ZIP FILE
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      app:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - app
+  Https://api.rest.sh/api/service/obfuscationresponse:
+    title: https://api.rest.sh/api/service/obfuscationResponse
+    example:
+      success: RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED
+      app: OBFUSCATED APP URL
+    type: object
+    properties:
+      success:
+        description: ''
+        type: string
+      app:
+        description: ''
+        type: string
+    required:
+    - success
+    - app
+  Https://api.rest.sh/api/security/wafrequest:
+    title: https://api.rest.sh/api/security/wafRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      origin: ORIGIN YOU WISH TO PROTECT
+      cname: CNAMES YOU WISH TO USE WITH YOUR WAF
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      origin:
+        description: ''
+        type: string
+      cname:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - origin
+    - cname
+  Https://api.rest.sh/api/security/wafresponse:
+    title: https://api.rest.sh/api/security/wafResponse
+    example:
+      success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
+      cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
+    type: object
+    properties:
+      success:
+        description: ''
+        type: string
+      cname:
+        description: ''
+        type: string
+    required:
+    - success
+    - cname
+  Https://api.rest.sh/api/security/waf/configurerequest:
+    title: https://api.rest.sh/api/security/waf/configureRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      name: WHAT YOU WISH TO NAME YOUR WAF
+      origin: ORIGIN YOU WISH TO PROTECT
+      cname: CNAMES YOU WISH TO USE WITH YOUR WAF
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      name:
+        description: ''
+        type: string
+      origin:
+        description: ''
+        type: string
+      cname:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - name
+    - origin
+    - cname
+  Https://api.rest.sh/api/security/waf/configureresponse:
+    title: https://api.rest.sh/api/security/waf/configureResponse
+    example:
+      success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
+      rule: RULES APPLIED TO WAF
+    type: object
+    properties:
+      success:
+        description: ''
+        type: string
+      rule:
+        description: ''
+        type: string
+    required:
+    - success
+    - rule
+  Https://api.rest.sh/api/security/loggingrequest:
+    title: https://api.rest.sh/api/security/loggingRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      name: YOUR WAF'S NAME
+      origin: ORIGIN URL
+      activate: TRUE OR FALSE IF YOU WANT ADVANCED LOGGING ACTIVATED
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      name:
+        description: ''
+        type: string
+      origin:
+        description: ''
+        type: string
+      activate:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - name
+    - origin
+    - activate
+  Https://api.rest.sh/api/security/loggingresponse:
+    title: https://api.rest.sh/api/security/loggingResponse
+    example:
+      success: RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED
+    type: object
+    properties:
+      success:
+        description: ''
+        type: string
+    required:
+    - success
+  Https://api.rest.sh/api/security/logging/inforequest:
+    title: https://api.rest.sh/api/security/logging/infoRequest
+    example:
+      key: YOUR API KEY
+      uid: YOUR USER ID
+      name: YOUR WAF'S NAME
+      origin: ORIGIN URL
+      time: LOOKUP SPECIFIC TIMES IN LOG (MM/DD/YYYY;HH:MM:SS) SEPERATED BY A COMMA OR ('*' / ALL)
+    type: object
+    properties:
+      key:
+        description: ''
+        type: string
+      uid:
+        description: ''
+        type: string
+      name:
+        description: ''
+        type: string
+      origin:
+        description: ''
+        type: string
+      time:
+        description: ''
+        type: string
+    required:
+    - key
+    - uid
+    - name
+    - origin
+    - time
+  Https://api.rest.sh/api/security/logging/inforesponse:
+    title: https://api.rest.sh/api/security/logging/infoResponse
+    example:
+      log:
+        01010101245901:
+          data:
+            result: INFO
+            content: 'LOG: CONTENT AND ACTIONS PERFORMED'
+            id: FUNCTION ID
+        01010101245902:
+          data:
+            result: ERROR
+            content: 'LOG: ERROR CONTENT AND ACTIONS PERFORMED'
+            id: FUNCTION ID
+    type: object
+    properties:
+      log:
+        $ref: '#/definitions/Log'
+    required:
+    - log
+  Log:
+    title: Log
+    type: object
+    properties:
+      01010101245901:
+        $ref: '#/definitions/01010101245901'
+      01010101245902:
+        $ref: '#/definitions/01010101245901'
+    required:
+    - 01010101245901
+    - 01010101245902
+  01010101245901:
+    title: 01010101245901
+    type: object
+    properties:
+      data:
+        $ref: '#/definitions/Data'
+    required:
+    - data
+  Data:
+    title: Data
+    type: object
+    properties:
+      result:
+        description: ''
+        type: string
+      content:
+        description: ''
+        type: string
+      id:
+        description: ''
+        type: string
+    required:
+    - result
+    - content
+    - id
