@@ -1742,7 +1742,7 @@ paths:
         IsMultiContentStreaming: false
   /image:
     get:
-      description: 'TODO: Add Description'
+      description: ''
       summary: https://api.rest.sh/api/image
       tags:
       - Image Manipulation and Moderation API
@@ -1812,14 +1812,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/image1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: ''
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: ''
       summary: https://api.rest.sh/api/image
       tags:
       - Image Manipulation and Moderation API
@@ -1889,7 +1889,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/image
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: ''
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -1897,7 +1897,7 @@ paths:
         IsMultiContentStreaming: false
   /data:
     get:
-      description: 'TODO: Add Description'
+      description: ''
       summary: https://api.rest.sh/api/data
       tags:
       - Data Manipulation, Conversion, Sorting, and Compression API
@@ -1970,14 +1970,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/data1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: ''
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: ''
       summary: https://api.rest.sh/api/data
       tags:
       - Data Manipulation, Conversion, Sorting, and Compression API
@@ -2053,7 +2053,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/data
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: ''
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -2061,7 +2061,7 @@ paths:
         IsMultiContentStreaming: false
   /service/hosting:
     get:
-      description: 'TODO: Add Description'
+      description: ''
       summary: https://api.rest.sh/api/service/hosting
       tags:
       - Hosting
@@ -2134,14 +2134,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/hosting1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: ''
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: ''
       summary: https://api.rest.sh/api/service/hosting
       tags:
       - Hosting
@@ -2212,7 +2212,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/hosting
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: ''
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -2220,7 +2220,7 @@ paths:
         IsMultiContentStreaming: false
   /service/dns/add:
     get:
-      description: 'TODO: Add Description'
+      description: Add Domain To DNS Service
       summary: https://api.rest.sh/api/service/dns/add
       tags:
       - DNS
@@ -2288,14 +2288,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/dns/add1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Add Domain To DNS Service
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: Add Domain To DNS Service
       summary: https://api.rest.sh/api/service/dns/add
       tags:
       - DNS
@@ -2364,7 +2364,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/dns/add
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Add Domain To DNS Service
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -2372,7 +2372,7 @@ paths:
         IsMultiContentStreaming: false
   /service/dns/configure:
     get:
-      description: 'TODO: Add Description'
+      description: Configure Domain DNS Records
       summary: https://api.rest.sh/api/service/dns/configure
       tags:
       - DNS
@@ -2438,14 +2438,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/dns/configure1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Configure Domain DNS Records
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: Configure Domain DNS Records
       summary: https://api.rest.sh/api/service/dns/configure
       tags:
       - DNS
@@ -2509,7 +2509,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/dns/configure
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Configure Domain DNS Records
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -2517,7 +2517,7 @@ paths:
         IsMultiContentStreaming: false
   /service/cdn/pull:
     get:
-      description: 'TODO: Add Description'
+      description: CDN Pull Zone
       summary: https://api.rest.sh/api/service/cdn/pull
       tags:
       - CDN
@@ -2584,14 +2584,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/cdn/pull1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: CDN Pull Zone
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: CDN Pull Zone
       summary: https://api.rest.sh/api/service/cdn/pull
       tags:
       - CDN
@@ -2656,7 +2656,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/cdn/pull
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: CDN Pull Zone
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -2664,7 +2664,7 @@ paths:
         IsMultiContentStreaming: false
   /service/cdn/push:
     get:
-      description: 'TODO: Add Description'
+      description: CDN Push Zone
       summary: https://api.rest.sh/api/service/cdn/push
       tags:
       - CDN
@@ -2734,14 +2734,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/cdn/push1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: CDN Push Zone
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: CDN Push Zone
       summary: https://api.rest.sh/api/service/cdn/push
       tags:
       - CDN
@@ -2809,7 +2809,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/cdn/push
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: CDN Push Zone
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -2817,7 +2817,7 @@ paths:
         IsMultiContentStreaming: false
   /security/encryption:
     get:
-      description: 'TODO: Add Description'
+      description: Data and File Encryption API
       summary: https://api.rest.sh/api/security/encryption
       tags:
       - Encryption
@@ -2893,14 +2893,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/encryption1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Data and File Encryption API
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: Data and File Encryption API
       summary: https://api.rest.sh/api/security/encryption
       tags:
       - Encryption
@@ -2965,7 +2965,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/encryption
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Data and File Encryption API
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -2973,7 +2973,7 @@ paths:
         IsMultiContentStreaming: false
   /service/obfuscation:
     get:
-      description: 'TODO: Add Description'
+      description: Code Obfuscation and Anti-tampering Protection
       summary: https://api.rest.sh/api/service/obfuscation
       tags:
       - Code Obfuscation
@@ -3035,14 +3035,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/obfuscation1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Code Obfuscation and Anti-tampering Protection
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: Code Obfuscation and Anti-tampering Protection
       summary: https://api.rest.sh/api/service/obfuscation
       tags:
       - Code Obfuscation
@@ -3105,7 +3105,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/obfuscation
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Code Obfuscation and Anti-tampering Protection
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -3113,7 +3113,7 @@ paths:
         IsMultiContentStreaming: false
   /security/waf:
     get:
-      description: 'TODO: Add Description'
+      description: WAF (Web Application Firewall), and DDOS Protection API
       summary: https://api.rest.sh/api/security/waf
       tags:
       - WAF & DDOS Protection
@@ -3180,14 +3180,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/waf1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: WAF (Web Application Firewall), and DDOS Protection API
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: WAF (Web Application Firewall), and DDOS Protection API
       summary: https://api.rest.sh/api/security/waf
       tags:
       - WAF & DDOS Protection
@@ -3252,7 +3252,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/waf
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: WAF (Web Application Firewall), and DDOS Protection API
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -3260,7 +3260,7 @@ paths:
         IsMultiContentStreaming: false
   /security/waf/configure:
     get:
-      description: 'TODO: Add Description'
+      description: WAF (Web Application Firewall) Configuration API
       summary: https://api.rest.sh/api/security/waf/configure
       tags:
       - WAF & DDOS Protection
@@ -3332,14 +3332,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/waf/configure1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: WAF (Web Application Firewall) Configuration API
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: WAF (Web Application Firewall) Configuration API
       summary: https://api.rest.sh/api/security/waf/configure
       tags:
       - WAF & DDOS Protection
@@ -3400,7 +3400,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/waf/configure
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: WAF (Web Application Firewall) Configuration API
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -3408,7 +3408,7 @@ paths:
         IsMultiContentStreaming: false
   /security/logging:
     get:
-      description: 'TODO: Add Description'
+      description: Activate Advanced Application, Security, User, and Platform monitoring
       summary: https://api.rest.sh/api/security/logging
       tags:
       - Advanced Logging
@@ -3477,14 +3477,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/logging1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Activate Advanced Application, Security, User, and Platform monitoring
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: Activate Advanced Application, Security, User, and Platform monitoring
       summary: https://api.rest.sh/api/security/logging
       tags:
       - Advanced Logging
@@ -3548,7 +3548,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/logging
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Activate Advanced Application, Security, User, and Platform monitoring
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -3556,7 +3556,7 @@ paths:
         IsMultiContentStreaming: false
   /security/logging/info:
     get:
-      description: 'TODO: Add Description'
+      description: Advanced Logging Data Return and Information
       summary: https://api.rest.sh/api/security/logging/info
       tags:
       - Advanced Logging
@@ -3648,14 +3648,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/logging/info1
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Advanced Logging Data Return and Information
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: 'TODO: Add Description'
+      description: Advanced Logging Data Return and Information
       summary: https://api.rest.sh/api/security/logging/info
       tags:
       - Advanced Logging
@@ -3742,7 +3742,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/logging/info
-        x-testDescription: 'TODO: Add Description'
+        x-testDescription: Advanced Logging Data Return and Information
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
