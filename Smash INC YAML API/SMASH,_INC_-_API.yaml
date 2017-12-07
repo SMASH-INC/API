@@ -21,7 +21,7 @@ paths:
       summary: https://api.rest.sh/api/auth/user/login
       tags:
       - Login and Registration
-      operationId: https://api.rest.sh/api/auth/user/login1
+      operationId: AuthUserLoginGet
       produces:
       - application/json
       parameters:
@@ -123,7 +123,7 @@ paths:
       summary: https://api.rest.sh/api/auth/user/login
       tags:
       - Login and Registration
-      operationId: https://api.rest.sh/api/auth/user/login
+      operationId: AuthUserLoginPost
       produces:
       - application/json
       parameters:
@@ -224,7 +224,7 @@ paths:
       summary: https://api.rest.sh/api/auth/user/register
       tags:
       - Login and Registration
-      operationId: https://api.rest.sh/api/auth/user/register1
+      operationId: AuthUserRegisterGet
       produces:
       - application/json
       parameters:
@@ -341,7 +341,7 @@ paths:
       summary: https://api.rest.sh/api/auth/user/register
       tags:
       - Login and Registration
-      operationId: https://api.rest.sh/api/auth/user/register
+      operationId: AuthUserRegisterPost
       produces:
       - application/json
       parameters:
@@ -450,7 +450,7 @@ paths:
       summary: https://api.rest.sh/api/user/update
       tags:
       - User Management
-      operationId: https://api.rest.sh/api/user/update1
+      operationId: UserUpdateGet
       produces:
       - application/json
       parameters:
@@ -554,7 +554,7 @@ paths:
       summary: https://api.rest.sh/api/user/update
       tags:
       - User Management
-      operationId: https://api.rest.sh/api/user/update
+      operationId: UserUpdatePost
       produces:
       - application/json
       parameters:
@@ -675,7 +675,7 @@ paths:
       summary: https://api.rest.sh/api/user/info
       tags:
       - User Management
-      operationId: https://api.rest.sh/api/user/info1
+      operationId: UserInfoGet
       produces:
       - application/json
       parameters:
@@ -785,7 +785,7 @@ paths:
       summary: https://api.rest.sh/api/user/info
       tags:
       - User Management
-      operationId: https://api.rest.sh/api/user/info
+      operationId: UserInfoPost
       produces:
       - application/json
       parameters:
@@ -894,7 +894,7 @@ paths:
       summary: https://api.rest.sh/api/user/delete
       tags:
       - User Management
-      operationId: https://api.rest.sh/api/user/delete1
+      operationId: UserDeleteGet
       produces:
       - application/json
       parameters:
@@ -971,7 +971,7 @@ paths:
       summary: https://api.rest.sh/api/user/delete
       tags:
       - User Management
-      operationId: https://api.rest.sh/api/user/delete
+      operationId: UserDeletePost
       produces:
       - application/json
       parameters:
@@ -1047,7 +1047,7 @@ paths:
       summary: https://api.rest.sh/api/verify
       tags:
       - Verification
-      operationId: https://api.rest.sh/api/verify
+      operationId: 2faPost
       produces:
       - application/json
       parameters:
@@ -1143,7 +1143,7 @@ paths:
       summary: https://api.rest.sh/api/2fa
       tags:
       - Two Factor Authentication API
-      operationId: https://api.rest.sh/api/2fa1
+      operationId: VerifyGet2
       produces:
       - application/json
       parameters:
@@ -1237,7 +1237,7 @@ paths:
       summary: https://api.rest.sh/api/2fa
       tags:
       - Two Factor Authentication API
-      operationId: https://api.rest.sh/api/2fa
+      operationId: VerifyPost
       produces:
       - application/json
       parameters:
@@ -1333,7 +1333,7 @@ paths:
       summary: https://api.rest.sh/api/verify/user
       tags:
       - Verification
-      operationId: https://api.rest.sh/api/verify/user
+      operationId: VerifyUserPost
       produces:
       - application/json
       parameters:
@@ -1409,7 +1409,7 @@ paths:
       summary: https://api.rest.sh/api/2fa/token
       tags:
       - Two Factor Authentication API
-      operationId: https://api.rest.sh/api/2fa/token1
+      operationId: Verify2faGet2
       produces:
       - application/json
       parameters:
@@ -1486,7 +1486,7 @@ paths:
       summary: https://api.rest.sh/api/2fa/token
       tags:
       - Two Factor Authentication API
-      operationId: https://api.rest.sh/api/2fa/token
+      operationId: Verify2faPost
       produces:
       - application/json
       parameters:
@@ -1562,7 +1562,7 @@ paths:
       summary: https://api.rest.sh/api/verify/address
       tags:
       - Verification
-      operationId: https://api.rest.sh/api/verify/address1
+      operationId: VerifyAddressGet
       produces:
       - application/json
       parameters:
@@ -1660,7 +1660,7 @@ paths:
       summary: https://api.rest.sh/api/verify/address
       tags:
       - Verification
-      operationId: https://api.rest.sh/api/verify/address
+      operationId: VerifyAddressPost
       produces:
       - application/json
       parameters:
@@ -1746,7 +1746,7 @@ paths:
       summary: https://api.rest.sh/api/image
       tags:
       - Image Manipulation and Moderation API
-      operationId: https://api.rest.sh/api/image1
+      operationId: ImageGet
       produces:
       - application/json
       parameters:
@@ -1823,7 +1823,7 @@ paths:
       summary: https://api.rest.sh/api/image
       tags:
       - Image Manipulation and Moderation API
-      operationId: https://api.rest.sh/api/image
+      operationId: ImagePost
       produces:
       - application/json
       parameters:
@@ -1901,7 +1901,7 @@ paths:
       summary: https://api.rest.sh/api/data
       tags:
       - Data Manipulation, Conversion, Sorting, and Compression API
-      operationId: https://api.rest.sh/api/data1
+      operationId: DataGet
       produces:
       - application/json
       parameters:
@@ -1981,7 +1981,7 @@ paths:
       summary: https://api.rest.sh/api/data
       tags:
       - Data Manipulation, Conversion, Sorting, and Compression API
-      operationId: https://api.rest.sh/api/data
+      operationId: DataPost
       produces:
       - application/json
       parameters:
@@ -2065,7 +2065,7 @@ paths:
       summary: https://api.rest.sh/api/service/hosting
       tags:
       - Hosting
-      operationId: https://api.rest.sh/api/service/hosting1
+      operationId: ServiceHostingGet
       produces:
       - application/json
       parameters:
@@ -2145,7 +2145,7 @@ paths:
       summary: https://api.rest.sh/api/service/hosting
       tags:
       - Hosting
-      operationId: https://api.rest.sh/api/service/hosting
+      operationId: ServiceHostingPost
       produces:
       - application/json
       parameters:
@@ -2224,7 +2224,7 @@ paths:
       summary: https://api.rest.sh/api/service/dns/add
       tags:
       - DNS
-      operationId: https://api.rest.sh/api/service/dns/add1
+      operationId: ServiceDnsAddGet
       produces:
       - application/json
       parameters:
@@ -2299,7 +2299,7 @@ paths:
       summary: https://api.rest.sh/api/service/dns/add
       tags:
       - DNS
-      operationId: https://api.rest.sh/api/service/dns/add
+      operationId: ServiceDnsAddPost
       produces:
       - application/json
       parameters:
@@ -2376,7 +2376,7 @@ paths:
       summary: https://api.rest.sh/api/service/dns/configure
       tags:
       - DNS
-      operationId: https://api.rest.sh/api/service/dns/configure1
+      operationId: ServiceDnsConfigureGet
       produces:
       - application/json
       parameters:
@@ -2449,7 +2449,7 @@ paths:
       summary: https://api.rest.sh/api/service/dns/configure
       tags:
       - DNS
-      operationId: https://api.rest.sh/api/service/dns/configure
+      operationId: ServiceDnsConfigurePost
       produces:
       - application/json
       parameters:
@@ -2521,7 +2521,7 @@ paths:
       summary: https://api.rest.sh/api/service/cdn/pull
       tags:
       - CDN
-      operationId: https://api.rest.sh/api/service/cdn/pull1
+      operationId: ServiceCdnPullGet
       produces:
       - application/json
       parameters:
@@ -2595,7 +2595,7 @@ paths:
       summary: https://api.rest.sh/api/service/cdn/pull
       tags:
       - CDN
-      operationId: https://api.rest.sh/api/service/cdn/pull
+      operationId: ServiceCdnPullPost
       produces:
       - application/json
       parameters:
@@ -2668,7 +2668,7 @@ paths:
       summary: https://api.rest.sh/api/service/cdn/push
       tags:
       - CDN
-      operationId: https://api.rest.sh/api/service/cdn/push1
+      operationId: ServiceCdnPushGet
       produces:
       - application/json
       parameters:
@@ -2745,7 +2745,7 @@ paths:
       summary: https://api.rest.sh/api/service/cdn/push
       tags:
       - CDN
-      operationId: https://api.rest.sh/api/service/cdn/push
+      operationId: ServiceCdnPushPost
       produces:
       - application/json
       parameters:
@@ -2821,7 +2821,7 @@ paths:
       summary: https://api.rest.sh/api/security/encryption
       tags:
       - Encryption
-      operationId: https://api.rest.sh/api/security/encryption1
+      operationId: SecurityEncryptionGet
       produces:
       - application/json
       parameters:
@@ -2904,7 +2904,7 @@ paths:
       summary: https://api.rest.sh/api/security/encryption
       tags:
       - Encryption
-      operationId: https://api.rest.sh/api/security/encryption
+      operationId: SecurityEncryptionPost
       produces:
       - application/json
       parameters:
@@ -2977,7 +2977,7 @@ paths:
       summary: https://api.rest.sh/api/service/obfuscation
       tags:
       - Code Obfuscation
-      operationId: https://api.rest.sh/api/service/obfuscation1
+      operationId: ServiceObfuscationGet
       produces:
       - application/json
       parameters:
@@ -3046,7 +3046,7 @@ paths:
       summary: https://api.rest.sh/api/service/obfuscation
       tags:
       - Code Obfuscation
-      operationId: https://api.rest.sh/api/service/obfuscation
+      operationId: ServiceObfuscationPost
       produces:
       - application/json
       parameters:
@@ -3117,7 +3117,7 @@ paths:
       summary: https://api.rest.sh/api/security/waf
       tags:
       - WAF & DDOS Protection
-      operationId: https://api.rest.sh/api/security/waf1
+      operationId: SecurityWafGet
       produces:
       - application/json
       parameters:
@@ -3191,7 +3191,7 @@ paths:
       summary: https://api.rest.sh/api/security/waf
       tags:
       - WAF & DDOS Protection
-      operationId: https://api.rest.sh/api/security/waf
+      operationId: SecurityWafPost
       produces:
       - application/json
       parameters:
@@ -3264,7 +3264,7 @@ paths:
       summary: https://api.rest.sh/api/security/waf/configure
       tags:
       - WAF & DDOS Protection
-      operationId: https://api.rest.sh/api/security/waf/configure1
+      operationId: SecurityWafConfigureGet
       produces:
       - application/json
       parameters:
@@ -3343,7 +3343,7 @@ paths:
       summary: https://api.rest.sh/api/security/waf/configure
       tags:
       - WAF & DDOS Protection
-      operationId: https://api.rest.sh/api/security/waf/configure
+      operationId: SecurityWafConfigurePost
       produces:
       - application/json
       parameters:
@@ -3412,7 +3412,7 @@ paths:
       summary: https://api.rest.sh/api/security/logging
       tags:
       - Advanced Logging
-      operationId: https://api.rest.sh/api/security/logging1
+      operationId: SecurityLoggingGet
       produces:
       - application/json
       parameters:
@@ -3488,7 +3488,7 @@ paths:
       summary: https://api.rest.sh/api/security/logging
       tags:
       - Advanced Logging
-      operationId: https://api.rest.sh/api/security/logging
+      operationId: SecurityLoggingPost
       produces:
       - application/json
       parameters:
@@ -3560,7 +3560,7 @@ paths:
       summary: https://api.rest.sh/api/security/logging/info
       tags:
       - Advanced Logging
-      operationId: https://api.rest.sh/api/security/logging/info1
+      operationId: SecurityLoggingInfoGet
       produces:
       - application/json
       parameters:
@@ -3659,7 +3659,7 @@ paths:
       summary: https://api.rest.sh/api/security/logging/info
       tags:
       - Advanced Logging
-      operationId: https://api.rest.sh/api/security/logging/info
+      operationId: SecurityLoggingInfoPost
       produces:
       - application/json
       parameters:
