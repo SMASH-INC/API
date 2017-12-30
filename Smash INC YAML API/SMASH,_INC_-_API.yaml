@@ -3819,19 +3819,6 @@ definitions:
         type: string
       info:
         $ref: '#/definitions/Info'
-        example:
-          uid: USERS ID
-          apiuid: API SIDE USER ID
-          realname: USERS REAL NAME
-          displayname: USERS USERNAME
-          avatar: USER AVATAR URL
-          email: USERS EMAIL
-          address: USERS ADDRESS
-          phone: USERS CELL PHONE NUMBER
-          lastlogin: USERS LAST LOGIN
-          ip: USERS IP
-          2fa: RETURNS TRUE IF 2FA IS ENABLED
-          iplock: RETURNS TRUE IF IP LOCK IS ENABLED
     required:
     - request
     - uid
@@ -4036,14 +4023,6 @@ definitions:
         type: string
       info:
         $ref: '#/definitions/Info7'
-        example:
-          uid: USERS ID
-          apiuid: API SIDE USER ID
-          realname: USERS REAL NAME
-          displayname: USERS USERNAME
-          email: USERS EMAIL
-          address: USERS ADDRESS
-          phone: USERS CELL PHONE NUMBER
     required:
     - request
     - active
@@ -4238,11 +4217,6 @@ definitions:
         type: string
       info:
         $ref: '#/definitions/Info12'
-        example:
-          uid: USERS ID
-          apiuid: API SIDE USER ID
-          avatar: INPUTTED AVATAR URL
-          custom-input: CUSTOM INPUTTED PROFILE DATA
     required:
     - request
     - updated
@@ -4356,22 +4330,6 @@ definitions:
         type: string
       info:
         $ref: '#/definitions/Info17'
-        example:
-          realname: USERS REAL NAME
-          displayname: USERS USERNAME
-          avatar: USER AVATAR URL
-          email: USERS EMAIL
-          address: USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS
-          address1: USERS ADDRESS LINE ONE
-          address2: USERS ADDRESS LINE TWO
-          city: USERS ADDRESS CITY
-          state: USERS ADDRESS STATE
-          zipcode: USERS ADDRESS ZIPCODE
-          phone: USERS CELL PHONE NUMBER
-          lastlogin: USERS LAST LOGIN
-          ip: USERS IP
-          2fa: RETURNS TRUE IF 2FA IS ENABLED
-          iplock: RETURNS TRUE IF IP LOCK IS ENABLED
     required:
     - request
     - uid
@@ -5092,11 +5050,6 @@ definitions:
         type: string
       nameservers:
         $ref: '#/definitions/Nameservers'
-        example:
-          ns1: NAME SERVER ONE TO POINT YOUR DOMAIN AT
-          ns2: NAME SERVER TWO TO POINT YOUR DOMAIN AT
-          ns3: NAME SERVER THREE TO POINT YOUR DOMAIN AT
-          ns4: NAME SERVER FOUR TO POINT YOUR DOMAIN AT
     required:
     - domain
     - nameservers
@@ -5610,17 +5563,6 @@ definitions:
     properties:
       log:
         $ref: '#/definitions/Log'
-        example:
-          01010101245901:
-            data:
-              result: INFO
-              content: 'LOG: CONTENT AND ACTIONS PERFORMED'
-              id: FUNCTION ID
-          01010101245902:
-            data:
-              result: ERROR
-              content: 'LOG: ERROR CONTENT AND ACTIONS PERFORMED'
-              id: FUNCTION ID
     required:
     - log
   Log:
@@ -5640,18 +5582,8 @@ definitions:
     properties:
       01010101245901:
         $ref: '#/definitions/01010101245901'
-        example:
-          data:
-            result: INFO
-            content: 'LOG: CONTENT AND ACTIONS PERFORMED'
-            id: FUNCTION ID
       01010101245902:
         $ref: '#/definitions/01010101245901'
-        example:
-          data:
-            result: ERROR
-            content: 'LOG: ERROR CONTENT AND ACTIONS PERFORMED'
-            id: FUNCTION ID
     required:
     - 01010101245901
     - 01010101245902
@@ -5666,10 +5598,6 @@ definitions:
     properties:
       data:
         $ref: '#/definitions/Data'
-        example:
-          result: INFO
-          content: 'LOG: CONTENT AND ACTIONS PERFORMED'
-          id: FUNCTION ID
     required:
     - data
   Data:
