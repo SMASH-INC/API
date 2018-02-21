@@ -51,7 +51,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1loginresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1login'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -139,7 +139,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1loginresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1login'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -281,7 +281,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1registerresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1register'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -357,7 +357,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1registerresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1auth~1user~1register'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -490,7 +490,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1updateresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1update'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -570,7 +570,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1updateresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1update'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -705,7 +705,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1inforesponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1info'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -801,7 +801,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1inforesponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1info'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -924,7 +924,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1deleteresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1delete'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -987,7 +987,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1deleteresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1user~1delete'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1063,7 +1063,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verifyresponse'
+            $ref: '#/definitions/Https:~1~1api.fatality.io~1api~1verify'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1168,7 +1168,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12faresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1253,7 +1253,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12faresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1349,7 +1349,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1userresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1user'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1439,7 +1439,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12fa~1tokenresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~12fa'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1502,7 +1502,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~12fa~1tokenresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~12fa'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1613,7 +1613,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1addressresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1address'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1676,7 +1676,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1addressresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1verify~1address'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1776,7 +1776,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1imageresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1image~1avatar?key=api&uid=uid&user=uid&apiuid=apiuid&img=https:~1~1img.yourcdn.com'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1839,7 +1839,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1imageresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1image~1avatar?key=api&uid=uid&user=uid&apiuid=apiuid&img=https:~1~1img.yourcdn.com'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1936,7 +1936,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1dataresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1data?key=api&uid=uid&user=uid&apiuid=apiuid&data=https:~1~1static.yourcdn.com~1data.file'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -1997,7 +1997,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1dataresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1data?key=api&uid=uid&user=uid&apiuid=apiuid&data=https:~1~1static.yourcdn.com~1data.file'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -2095,7 +2095,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1hostingresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1hosting'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -2161,7 +2161,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1hostingresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1hosting'
           examples:
             application/json:
               request: REQUEST TYPE
@@ -2249,7 +2249,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1addresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1add'
           examples:
             application/json:
               domain: LIST OF DOMAINS ADDED
@@ -2315,7 +2315,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1addresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1add'
           examples:
             application/json:
               domain: LIST OF DOMAINS ADDED
@@ -2406,7 +2406,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1configureresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1configure'
           examples:
             application/json:
               success: SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET
@@ -2465,7 +2465,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1configureresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1dns~1configure'
           examples:
             application/json:
               success: SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET
@@ -2551,7 +2551,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pullresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pull'
           examples:
             application/json:
               success: SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY
@@ -2611,7 +2611,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pullresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pull'
           examples:
             application/json:
               success: SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY
@@ -2698,7 +2698,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pushresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1push'
           examples:
             application/json:
               success: SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY
@@ -2761,7 +2761,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1pushresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1cdn~1push'
           examples:
             application/json:
               success: SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY
@@ -2857,7 +2857,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1encryptionresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1encryption'
           examples:
             application/json:
               data: RETURNED ENCRYPTED DATA URL
@@ -2920,7 +2920,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1encryptionresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1encryption'
           examples:
             application/json:
               data: RETURNED ENCRYPTED DATA URL
@@ -3002,7 +3002,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1obfuscationresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1obfuscation'
           examples:
             application/json:
               success: RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED
@@ -3062,7 +3062,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1obfuscationresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1service~1obfuscation'
           examples:
             application/json:
               success: RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED
@@ -3147,7 +3147,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1wafresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf'
           examples:
             application/json:
               success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
@@ -3207,7 +3207,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1wafresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf'
           examples:
             application/json:
               success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
@@ -3299,7 +3299,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf~1configureresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf~1configure'
           examples:
             application/json:
               success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
@@ -3359,7 +3359,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf~1configureresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1waf~1configure'
           examples:
             application/json:
               success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
@@ -3447,7 +3447,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1loggingresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging'
           examples:
             application/json:
               success: RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED
@@ -3504,7 +3504,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1loggingresponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging'
           examples:
             application/json:
               success: RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED
@@ -3595,7 +3595,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging~1inforesponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging~1info'
           examples:
             application/json:
               log:
@@ -3675,7 +3675,7 @@ paths:
         200:
           description: ''
           schema:
-            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging~1inforesponse'
+            $ref: '#/definitions/Https:~1~1api.rest.sh~1api~1security~1logging~1info'
           examples:
             application/json:
               log:
@@ -3776,8 +3776,8 @@ definitions:
     - uid
     - user
     - password
-  Https://api.rest.sh/api/auth/user/loginresponse:
-    title: https://api.rest.sh/api/auth/user/loginResponse
+  Https://api.rest.sh/api/auth/user/login:
+    title: https://api.rest.sh/api/auth/user/login
     example:
       request: REQUEST TYPE
       uid: Users UID
@@ -3990,8 +3990,8 @@ definitions:
     - c
     - s
     - z
-  Https://api.rest.sh/api/auth/user/registerresponse:
-    title: https://api.rest.sh/api/auth/user/registerResponse
+  Https://api.rest.sh/api/auth/user/register:
+    title: https://api.rest.sh/api/auth/user/register
     example:
       request: REQUEST TYPE
       active: RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED
@@ -4187,8 +4187,8 @@ definitions:
     - s
     - z
     - custom-input
-  Https://api.rest.sh/api/user/updateresponse:
-    title: https://api.rest.sh/api/user/updateResponse
+  Https://api.rest.sh/api/user/update:
+    title: https://api.rest.sh/api/user/update
     example:
       request: REQUEST TYPE
       updated: RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED
@@ -4279,8 +4279,8 @@ definitions:
     - uid
     - user
     - apiuid
-  Https://api.rest.sh/api/user/inforesponse:
-    title: https://api.rest.sh/api/user/infoResponse
+  Https://api.rest.sh/api/user/info:
+    title: https://api.rest.sh/api/user/info
     example:
       request: REQUEST TYPE
       uid: Users UID
@@ -4460,8 +4460,8 @@ definitions:
     - uid
     - user
     - apiuid
-  Https://api.rest.sh/api/user/deleteresponse:
-    title: https://api.rest.sh/api/user/deleteResponse
+  Https://api.rest.sh/api/user/delete:
+    title: https://api.rest.sh/api/user/delete
     example:
       request: REQUEST TYPE
       deleted: RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED
@@ -4508,8 +4508,38 @@ definitions:
     - key
     - uid
     - to
-  Https://api.rest.sh/api/verifyresponse:
-    title: https://api.rest.sh/api/verifyResponse
+  Https://api.fatality.io/api/verify:
+    title: https://api.fatality.io/api/verify
+    example:
+      request: REQUEST TYPE
+      to: USER BEING VERIFIED
+      verified: RETURNS TRUE OR FALSE
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        example: REQUEST TYPE
+        type: string
+      to:
+        description: ''
+        example: USER BEING VERIFIED
+        type: string
+      verified:
+        description: ''
+        example: RETURNS TRUE OR FALSE
+        type: string
+      id:
+        description: ''
+        example: TRANSACTION ID
+        type: string
+    required:
+    - request
+    - to
+    - verified
+    - id
+  Https://api.rest.sh/api/verify:
+    title: https://api.rest.sh/api/verify
     example:
       request: REQUEST TYPE
       to: USER BEING VERIFIED
@@ -4568,8 +4598,32 @@ definitions:
     - uid
     - user
     - code
-  Https://api.rest.sh/api/verify/userresponse:
-    title: https://api.rest.sh/api/verify/userResponse
+  Https://api.rest.sh/api/verify/user:
+    title: https://api.rest.sh/api/verify/user
+    example:
+      request: REQUEST TYPE
+      correct: RETURNS IF 2FA TOKEN IS CORRECT
+      id: TRANSACTION ID
+    type: object
+    properties:
+      request:
+        description: ''
+        example: REQUEST TYPE
+        type: string
+      correct:
+        description: ''
+        example: RETURNS IF 2FA TOKEN IS CORRECT
+        type: string
+      id:
+        description: ''
+        example: TRANSACTION ID
+        type: string
+    required:
+    - request
+    - correct
+    - id
+  Https://api.rest.sh/api/verify/2fa:
+    title: https://api.rest.sh/api/verify/2fa
     example:
       request: REQUEST TYPE
       correct: RETURNS IF 2FA TOKEN IS CORRECT
@@ -4652,8 +4706,8 @@ definitions:
     - c
     - s
     - z
-  Https://api.rest.sh/api/verify/addressresponse:
-    title: https://api.rest.sh/api/verify/addressResponse
+  Https://api.rest.sh/api/verify/address:
+    title: https://api.rest.sh/api/verify/address
     example:
       request: REQUEST TYPE
       active: RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE
@@ -4700,36 +4754,6 @@ definitions:
     - key
     - uid
     - to
-  Https://api.rest.sh/api/2faresponse:
-    title: https://api.rest.sh/api/2faResponse
-    example:
-      request: REQUEST TYPE
-      to: USER BEING VERIFIED
-      verified: RETURNS TRUE OR FALSE
-      id: TRANSACTION ID
-    type: object
-    properties:
-      request:
-        description: ''
-        example: REQUEST TYPE
-        type: string
-      to:
-        description: ''
-        example: USER BEING VERIFIED
-        type: string
-      verified:
-        description: ''
-        example: RETURNS TRUE OR FALSE
-        type: string
-      id:
-        description: ''
-        example: TRANSACTION ID
-        type: string
-    required:
-    - request
-    - to
-    - verified
-    - id
   Https://api.rest.sh/api/2fa/tokenrequest:
     title: https://api.rest.sh/api/2fa/tokenRequest
     example:
@@ -4760,30 +4784,6 @@ definitions:
     - uid
     - user
     - code
-  Https://api.rest.sh/api/2fa/tokenresponse:
-    title: https://api.rest.sh/api/2fa/tokenResponse
-    example:
-      request: REQUEST TYPE
-      correct: RETURNS IF 2FA TOKEN IS CORRECT
-      id: TRANSACTION ID
-    type: object
-    properties:
-      request:
-        description: ''
-        example: REQUEST TYPE
-        type: string
-      correct:
-        description: ''
-        example: RETURNS IF 2FA TOKEN IS CORRECT
-        type: string
-      id:
-        description: ''
-        example: TRANSACTION ID
-        type: string
-    required:
-    - request
-    - correct
-    - id
   Https://api.rest.sh/api/imagerequest:
     title: https://api.rest.sh/api/imageRequest
     example:
@@ -4820,8 +4820,8 @@ definitions:
     - image
     - transform
     - moderate
-  Https://api.rest.sh/api/imageresponse:
-    title: https://api.rest.sh/api/imageResponse
+  Https://api.rest.sh/api/image/avatar?key=api&uid=uid&user=uid&apiuid=apiuid&img=https://img.yourcdn.com:
+    title: https://api.rest.sh/api/image/avatar?key=API&uid=UID&user=UID&apiuid=apiUID&img=https://img.yourcdn.com
     example:
       request: REQUEST TYPE
       url: RETURNED IMAGE URL AND DATA
@@ -4916,8 +4916,8 @@ definitions:
     - conversion
     - sorting
     - compression
-  Https://api.rest.sh/api/dataresponse:
-    title: https://api.rest.sh/api/dataResponse
+  Https://api.rest.sh/api/data?key=api&uid=uid&user=uid&apiuid=apiuid&data=https://static.yourcdn.com/data.file:
+    title: https://api.rest.sh/api/data?key=API&uid=UID&user=UID&apiuid=apiUID&data=https://static.yourcdn.com/data.file
     example:
       request: REQUEST TYPE
       url: RETURNED DATA URL
@@ -4976,8 +4976,8 @@ definitions:
     - uid
     - app
     - domain
-  Https://api.rest.sh/api/service/hostingresponse:
-    title: https://api.rest.sh/api/service/hostingResponse
+  Https://api.rest.sh/api/service/hosting:
+    title: https://api.rest.sh/api/service/hosting
     example:
       request: REQUEST TYPE
       url: RETURNED APP HOSTING URL
@@ -5030,8 +5030,8 @@ definitions:
     - key
     - uid
     - domain
-  Https://api.rest.sh/api/service/dns/addresponse:
-    title: https://api.rest.sh/api/service/dns/addResponse
+  Https://api.rest.sh/api/service/dns/add:
+    title: https://api.rest.sh/api/service/dns/add
     example:
       domain: LIST OF DOMAINS ADDED
       nameservers:
@@ -5110,8 +5110,8 @@ definitions:
     - uid
     - domain
     - records
-  Https://api.rest.sh/api/service/dns/configureresponse:
-    title: https://api.rest.sh/api/service/dns/configureResponse
+  Https://api.rest.sh/api/service/dns/configure:
+    title: https://api.rest.sh/api/service/dns/configure
     example:
       success: SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET
       domain: DOMAIN
@@ -5164,8 +5164,8 @@ definitions:
     - uid
     - origin
     - cname
-  Https://api.rest.sh/api/service/cdn/pullresponse:
-    title: https://api.rest.sh/api/service/cdn/pullResponse
+  Https://api.rest.sh/api/service/cdn/pull:
+    title: https://api.rest.sh/api/service/cdn/pull
     example:
       success: SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY
       cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
@@ -5212,8 +5212,8 @@ definitions:
     - uid
     - cname
     - file
-  Https://api.rest.sh/api/service/cdn/pushresponse:
-    title: https://api.rest.sh/api/service/cdn/pushResponse
+  Https://api.rest.sh/api/service/cdn/push:
+    title: https://api.rest.sh/api/service/cdn/push
     example:
       success: SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY
       upload: LIST OF FILES UPLOADED TO YOUR PUSH ZONE
@@ -5278,8 +5278,8 @@ definitions:
     - file
     - method
     - bit
-  Https://api.rest.sh/api/security/encryptionresponse:
-    title: https://api.rest.sh/api/security/encryptionResponse
+  Https://api.rest.sh/api/security/encryption:
+    title: https://api.rest.sh/api/security/encryption
     example:
       data: RETURNED ENCRYPTED DATA URL
       file: RETURNED ENCRYPTED FILE URL
@@ -5338,8 +5338,8 @@ definitions:
     - key
     - uid
     - app
-  Https://api.rest.sh/api/service/obfuscationresponse:
-    title: https://api.rest.sh/api/service/obfuscationResponse
+  Https://api.rest.sh/api/service/obfuscation:
+    title: https://api.rest.sh/api/service/obfuscation
     example:
       success: RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED
       app: OBFUSCATED APP URL
@@ -5386,8 +5386,8 @@ definitions:
     - uid
     - origin
     - cname
-  Https://api.rest.sh/api/security/wafresponse:
-    title: https://api.rest.sh/api/security/wafResponse
+  Https://api.rest.sh/api/security/waf:
+    title: https://api.rest.sh/api/security/waf
     example:
       success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
       cname: RECORD TO APPEND YOUR URLS TO VIA A CNAME
@@ -5440,8 +5440,8 @@ definitions:
     - name
     - origin
     - cname
-  Https://api.rest.sh/api/security/waf/configureresponse:
-    title: https://api.rest.sh/api/security/waf/configureResponse
+  Https://api.rest.sh/api/security/waf/configure:
+    title: https://api.rest.sh/api/security/waf/configure
     example:
       success: SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY
       rule: RULES APPLIED TO WAF
@@ -5494,8 +5494,8 @@ definitions:
     - name
     - origin
     - activate
-  Https://api.rest.sh/api/security/loggingresponse:
-    title: https://api.rest.sh/api/security/loggingResponse
+  Https://api.rest.sh/api/security/logging:
+    title: https://api.rest.sh/api/security/logging
     example:
       success: RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED
     type: object
@@ -5542,8 +5542,8 @@ definitions:
     - name
     - origin
     - time
-  Https://api.rest.sh/api/security/logging/inforesponse:
-    title: https://api.rest.sh/api/security/logging/infoResponse
+  Https://api.rest.sh/api/security/logging/info:
+    title: https://api.rest.sh/api/security/logging/info
     example:
       log:
         01010101245901:
