@@ -1739,7 +1739,7 @@ paths:
         IsMultiContentStreaming: false
   /image:
     get:
-      description: ''
+      description: 'TODO: Add Description'
       summary: https://api.rest.sh/api/image
       tags:
       - Image Manipulation and Moderation API
@@ -1809,14 +1809,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/image1
-        x-testDescription: ''
+        x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: ''
+      description: 'TODO: Add Description'
       summary: https://api.rest.sh/api/image
       tags:
       - Image Manipulation and Moderation API
@@ -1886,7 +1886,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/image
-        x-testDescription: ''
+        x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -1894,7 +1894,7 @@ paths:
         IsMultiContentStreaming: false
   /data:
     get:
-      description: ''
+      description: 'TODO: Add Description'
       summary: https://api.rest.sh/api/data
       tags:
       - Data Manipulation, Conversion, Sorting, and Compression API
@@ -1967,14 +1967,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/data1
-        x-testDescription: ''
+        x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: ''
+      description: 'TODO: Add Description'
       summary: https://api.rest.sh/api/data
       tags:
       - Data Manipulation, Conversion, Sorting, and Compression API
@@ -2050,7 +2050,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/data
-        x-testDescription: ''
+        x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -2058,7 +2058,7 @@ paths:
         IsMultiContentStreaming: false
   /service/hosting:
     get:
-      description: ''
+      description: 'TODO: Add Description'
       summary: https://api.rest.sh/api/service/hosting
       tags:
       - Hosting
@@ -2131,14 +2131,14 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/hosting1
-        x-testDescription: ''
+        x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
     post:
-      description: ''
+      description: 'TODO: Add Description'
       summary: https://api.rest.sh/api/service/hosting
       tags:
       - Hosting
@@ -2209,7 +2209,7 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/hosting
-        x-testDescription: ''
+        x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
