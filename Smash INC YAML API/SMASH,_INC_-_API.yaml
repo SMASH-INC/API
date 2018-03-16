@@ -85,27 +85,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "uid": "Users UID",
-                "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
-                "id": "TRANSACTION ID",
-                "info": {
-                	"uid": "USERS ID",
-                	"apiuid": "API SIDE USER ID",
-                    "realname": "USERS REAL NAME",
-                    "displayname": "USERS USERNAME",
-                    "avatar": "USER AVATAR URL",
-                    "email": "USERS EMAIL",
-                    "address": "USERS ADDRESS",
-                    "phone": "USERS CELL PHONE NUMBER",
-                    "lastlogin": "USERS LAST LOGIN",
-                    "ip": "USERS IP",
-                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
-                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
-                }
-            }
+          body: '{"request":"REQUEST TYPE","uid":"Users UID","valid":"RETURNS TRUE IF USER LOGIN DETAILS ARE VALID","id":"TRANSACTION ID","info":{"uid":"USERS ID","apiuid":"API SIDE USER ID","realname":"USERS REAL NAME","displayname":"USERS USERNAME","avatar":"USER AVATAR URL","email":"USERS EMAIL","address":"USERS ADDRESS","phone":"USERS CELL PHONE NUMBER","lastlogin":"USERS LAST LOGIN","ip":"USERS IP","2fa":"RETURNS TRUE IF 2FA IS ENABLED","iplock":"RETURNS TRUE IF IP LOCK IS ENABLED"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/auth/user/login1
@@ -166,18 +146,7 @@ paths:
           uri: /auth/user/login
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS EMAIL OR USERNAME",
-
-              "password": "SEND A ENCRYPTED VERSION OF YOUR USERS PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS EMAIL OR USERNAME","password":"SEND A ENCRYPTED VERSION OF YOUR USERS PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -185,27 +154,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "uid": "Users UID",
-                "valid": "RETURNS TRUE IF USER LOGIN DETAILS ARE VALID",
-                "id": "TRANSACTION ID",
-                "info": {
-                	"uid": "USERS ID",
-                	"apiuid": "API SIDE USER ID",
-                    "realname": "USERS REAL NAME",
-                    "displayname": "USERS USERNAME",
-                    "avatar": "USER AVATAR URL",
-                    "email": "USERS EMAIL",
-                    "address": "USERS ADDRESS",
-                    "phone": "USERS CELL PHONE NUMBER",
-                    "lastlogin": "USERS LAST LOGIN",
-                    "ip": "USERS IP",
-                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
-                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
-                }
-            }
+          body: '{"request":"REQUEST TYPE","uid":"Users UID","valid":"RETURNS TRUE IF USER LOGIN DETAILS ARE VALID","id":"TRANSACTION ID","info":{"uid":"USERS ID","apiuid":"API SIDE USER ID","realname":"USERS REAL NAME","displayname":"USERS USERNAME","avatar":"USER AVATAR URL","email":"USERS EMAIL","address":"USERS ADDRESS","phone":"USERS CELL PHONE NUMBER","lastlogin":"USERS LAST LOGIN","ip":"USERS IP","2fa":"RETURNS TRUE IF 2FA IS ENABLED","iplock":"RETURNS TRUE IF IP LOCK IS ENABLED"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/auth/user/login
@@ -309,21 +258,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
-                "id": "TRANSACTION ID",
-                "info": {
-                    "uid": "USERS ID",
-                    "apiuid": "API SIDE USER ID",
-                    "realname": "USERS REAL NAME",
-                    "displayname": "USERS USERNAME",
-                    "email": "USERS EMAIL",
-                    "address": "USERS ADDRESS",
-                    "phone": "USERS CELL PHONE NUMBER"
-                }
-            }
+          body: '{"request":"REQUEST TYPE","active":"RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED","id":"TRANSACTION ID","info":{"uid":"USERS ID","apiuid":"API SIDE USER ID","realname":"USERS REAL NAME","displayname":"USERS USERNAME","email":"USERS EMAIL","address":"USERS ADDRESS","phone":"USERS CELL PHONE NUMBER"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/auth/user/register1
@@ -378,38 +313,7 @@ paths:
           uri: /auth/user/register
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS EMAIL OR USERNAME",
-
-              "password": "SEND A ENCRYPTED VERSION OF YOUR USERS PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD",
-
-              "name": "USERS REAL NAME",
-
-              "email": "USERS EMAIL",
-
-              "phone": "USERS CELL PHONE NUMBER",
-
-              "countrycode": "USERS CELL PHONE COUNTRY CODE",
-
-              "address": "ADDRESS IN ONE LINE SEPERATED BY COMMAS",
-
-              "a": "ADDRESS LINE ONE",
-
-              "sa": "ADDRESS LINE TWO",
-
-              "c": "CITY OR PROVINCE",
-
-              "s": "STATE OR REGION",
-
-              "z": "ZIPCODE"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS EMAIL OR USERNAME","password":"SEND A ENCRYPTED VERSION OF YOUR USERS PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD","name":"USERS REAL NAME","email":"USERS EMAIL","phone":"USERS CELL PHONE NUMBER","countrycode":"USERS CELL PHONE COUNTRY CODE","address":"ADDRESS IN ONE LINE SEPERATED BY COMMAS","a":"ADDRESS LINE ONE","sa":"ADDRESS LINE TWO","c":"CITY OR PROVINCE","s":"STATE OR REGION","z":"ZIPCODE"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -417,21 +321,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "active": "RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED",
-                "id": "TRANSACTION ID",
-                "info": {
-                    "uid": "USERS ID",
-                    "apiuid": "API SIDE USER ID",
-                    "realname": "USERS REAL NAME",
-                    "displayname": "USERS USERNAME",
-                    "email": "USERS EMAIL",
-                    "address": "USERS ADDRESS",
-                    "phone": "USERS CELL PHONE NUMBER"
-                }
-            }
+          body: '{"request":"REQUEST TYPE","active":"RETURNS TRUE, IF USER WAS SUCCESSFULLY REGISTERED","id":"TRANSACTION ID","info":{"uid":"USERS ID","apiuid":"API SIDE USER ID","realname":"USERS REAL NAME","displayname":"USERS USERNAME","email":"USERS EMAIL","address":"USERS ADDRESS","phone":"USERS CELL PHONE NUMBER"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/auth/user/register
@@ -515,28 +405,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
-
-              "id": "TRANSACTION ID",
-
-              "info": {
-
-                "uid": "USERS ID",
-
-                "apiuid": "API SIDE USER ID",
-
-                "avatar": "INPUTTED AVATAR URL",
-
-                "custom-input": "CUSTOM INPUTTED PROFILE DATA"
-
-              }
-
-            }
+          body: '{"request":"REQUEST TYPE","updated":"RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED","id":"TRANSACTION ID","info":{"uid":"USERS ID","apiuid":"API SIDE USER ID","avatar":"INPUTTED AVATAR URL","custom-input":"CUSTOM INPUTTED PROFILE DATA"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/user/update1
@@ -588,46 +457,7 @@ paths:
           uri: /user/update
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS EMAIL OR USERNAME",
-
-              "apiuid": "USERS API SIDE USER ID",
-
-              "oldpassword": "SEND A ENCRYPTED VERSION OF YOUR USERS CURRENT PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD",
-
-              "newpassword": "SEND A ENCRYPTED VERSION OF YOUR USERS NEW PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD",
-
-              "name": "USERS REAL NAME",
-
-              "email": "USERS EMAIL",
-
-              "phone": "USERS CELL PHONE NUMBER",
-
-              "avatar": "UPDATE USER AVATAR",
-
-              "countrycode": "USERS CELL PHONE COUNTRY CODE",
-
-              "address": "ADDRESS IN ONE LINE SEPERATED BY COMMAS",
-
-              "a": "ADDRESS LINE ONE",
-
-              "sa": "ADDRESS LINE TWO",
-
-              "c": "CITY OR PROVINCE",
-
-              "s": "STATE OR REGION",
-
-              "z": "ZIPCODE",
-
-              "custom-input": "ADD CUSTOM DATA/INPUTS TO YOUR USERS PROFILE"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS EMAIL OR USERNAME","apiuid":"USERS API SIDE USER ID","oldpassword":"SEND A ENCRYPTED VERSION OF YOUR USERS CURRENT PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD","newpassword":"SEND A ENCRYPTED VERSION OF YOUR USERS NEW PASSWORD USING THE PRIVATE KEY ON YOUR DASHBOARD","name":"USERS REAL NAME","email":"USERS EMAIL","phone":"USERS CELL PHONE NUMBER","avatar":"UPDATE USER AVATAR","countrycode":"USERS CELL PHONE COUNTRY CODE","address":"ADDRESS IN ONE LINE SEPERATED BY COMMAS","a":"ADDRESS LINE ONE","sa":"ADDRESS LINE TWO","c":"CITY OR PROVINCE","s":"STATE OR REGION","z":"ZIPCODE","custom-input":"ADD CUSTOM DATA/INPUTS TO YOUR USERS PROFILE"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -635,28 +465,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "updated": "RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED",
-
-              "id": "TRANSACTION ID",
-
-              "info": {
-
-                "uid": "USERS ID",
-
-                "apiuid": "API SIDE USER ID",
-
-                "avatar": "INPUTTED AVATAR URL",
-
-                "custom-input": "CUSTOM INPUTTED PROFILE DATA"
-
-              }
-
-            }
+          body: '{"request":"REQUEST TYPE","updated":"RETURNS TRUE, IF USERS PROFILE WAS SUCCESSFULLY UPDATED","id":"TRANSACTION ID","info":{"uid":"USERS ID","apiuid":"API SIDE USER ID","avatar":"INPUTTED AVATAR URL","custom-input":"CUSTOM INPUTTED PROFILE DATA"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/user/update
@@ -743,31 +552,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "uid": "Users UID",
-                "apiuid": "API SIDE USER ID",
-                "verified": "RETURNS TRUE IF USER IS VERIFIED",
-                "id": "TRANSACTION ID",
-                "info": {
-                    "realname": "USERS REAL NAME",
-                    "displayname": "USERS USERNAME",
-                    "avatar": "USER AVATAR URL",
-                    "email": "USERS EMAIL",
-                    "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
-                    "address1": "USERS ADDRESS LINE ONE",
-                    "address2": "USERS ADDRESS LINE TWO",
-                    "city": "USERS ADDRESS CITY",
-                    "state": "USERS ADDRESS STATE",
-                    "zipcode": "USERS ADDRESS ZIPCODE",
-                    "phone": "USERS CELL PHONE NUMBER",
-                    "lastlogin": "USERS LAST LOGIN",
-                    "ip": "USERS IP",
-                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
-                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
-                }
-            }
+          body: '{"request":"REQUEST TYPE","uid":"Users UID","apiuid":"API SIDE USER ID","verified":"RETURNS TRUE IF USER IS VERIFIED","id":"TRANSACTION ID","info":{"realname":"USERS REAL NAME","displayname":"USERS USERNAME","avatar":"USER AVATAR URL","email":"USERS EMAIL","address":"USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS","address1":"USERS ADDRESS LINE ONE","address2":"USERS ADDRESS LINE TWO","city":"USERS ADDRESS CITY","state":"USERS ADDRESS STATE","zipcode":"USERS ADDRESS ZIPCODE","phone":"USERS CELL PHONE NUMBER","lastlogin":"USERS LAST LOGIN","ip":"USERS IP","2fa":"RETURNS TRUE IF 2FA IS ENABLED","iplock":"RETURNS TRUE IF IP LOCK IS ENABLED"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/user/info1
@@ -832,18 +617,7 @@ paths:
           uri: /user/info
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS EMAIL OR USERNAME",
-
-              "apiuid": "USERS API SIDE USER ID"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS EMAIL OR USERNAME","apiuid":"USERS API SIDE USER ID"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -851,31 +625,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "uid": "Users UID",
-                "apiuid": "API SIDE USER ID",
-                "verified": "RETURNS TRUE IF USER IS VERIFIED",
-                "id": "TRANSACTION ID",
-                "info": {
-                    "realname": "USERS REAL NAME",
-                    "displayname": "USERS USERNAME",
-                    "avatar": "USER AVATAR URL",
-                    "email": "USERS EMAIL",
-                    "address": "USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS",
-                    "address1": "USERS ADDRESS LINE ONE",
-                    "address2": "USERS ADDRESS LINE TWO",
-                    "city": "USERS ADDRESS CITY",
-                    "state": "USERS ADDRESS STATE",
-                    "zipcode": "USERS ADDRESS ZIPCODE",
-                    "phone": "USERS CELL PHONE NUMBER",
-                    "lastlogin": "USERS LAST LOGIN",
-                    "ip": "USERS IP",
-                    "2fa": "RETURNS TRUE IF 2FA IS ENABLED",
-                    "iplock": "RETURNS TRUE IF IP LOCK IS ENABLED"
-                }
-            }
+          body: '{"request":"REQUEST TYPE","uid":"Users UID","apiuid":"API SIDE USER ID","verified":"RETURNS TRUE IF USER IS VERIFIED","id":"TRANSACTION ID","info":{"realname":"USERS REAL NAME","displayname":"USERS USERNAME","avatar":"USER AVATAR URL","email":"USERS EMAIL","address":"USERS ADDRESS IN ONE LINE SEPERATED BY COMMAS","address1":"USERS ADDRESS LINE ONE","address2":"USERS ADDRESS LINE TWO","city":"USERS ADDRESS CITY","state":"USERS ADDRESS STATE","zipcode":"USERS ADDRESS ZIPCODE","phone":"USERS CELL PHONE NUMBER","lastlogin":"USERS LAST LOGIN","ip":"USERS IP","2fa":"RETURNS TRUE IF 2FA IS ENABLED","iplock":"RETURNS TRUE IF IP LOCK IS ENABLED"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/user/info
@@ -944,16 +694,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","deleted":"RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/user/delete1
@@ -1000,18 +741,7 @@ paths:
           uri: /user/delete
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS EMAIL OR USERNAME",
-
-              "apiuid": "USERS API SIDE USER ID"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS EMAIL OR USERNAME","apiuid":"USERS API SIDE USER ID"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -1019,16 +749,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "deleted": "RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","deleted":"RETURNS TRUE, IF USERS ACCOUNT WAS SUCCESSFULLY DELETED","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/user/delete
@@ -1077,16 +798,7 @@ paths:
           uri: /2fa
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "to": "USERS UID"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","to":"USERS UID"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -1118,13 +830,7 @@ paths:
             x-frame-options: SAMEORIGIN
             x-powered-by: Fatality-Web-Server
             x-xss-protection: 1; mode=block
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "to": "USER BEING VERIFIED",
-                "verified": "RETURNS TRUE OR FALSE",
-                "id": "TRANSACTION ID"
-            }
+          body: '{"request":"REQUEST TYPE","to":"USER BEING VERIFIED","verified":"RETURNS TRUE OR FALSE","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/verify
@@ -1213,13 +919,7 @@ paths:
             x-frame-options: SAMEORIGIN
             x-powered-by: Fatality-Web-Server
             x-xss-protection: 1; mode=block
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "to": "USER BEING VERIFIED",
-                "verified": "RETURNS TRUE OR FALSE",
-                "id": "TRANSACTION ID"
-            }
+          body: '{"request":"REQUEST TYPE","to":"USER BEING VERIFIED","verified":"RETURNS TRUE OR FALSE","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/2fa1
@@ -1267,16 +967,7 @@ paths:
           uri: /verify
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "to": "USERS UID"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","to":"USERS UID"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -1308,13 +999,7 @@ paths:
             x-frame-options: SAMEORIGIN
             x-powered-by: Fatality-Web-Server
             x-xss-protection: 1; mode=block
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "to": "USER BEING VERIFIED",
-                "verified": "RETURNS TRUE OR FALSE",
-                "id": "TRANSACTION ID"
-            }
+          body: '{"request":"REQUEST TYPE","to":"USER BEING VERIFIED","verified":"RETURNS TRUE OR FALSE","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/2fa
@@ -1362,18 +1047,7 @@ paths:
           uri: /verify/user
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS UID",
-
-              "code": "USER INPUTTED TOKEN"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS UID","code":"USER INPUTTED TOKEN"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -1381,16 +1055,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","correct":"RETURNS IF 2FA TOKEN IS CORRECT","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/verify/user
@@ -1459,16 +1124,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","correct":"RETURNS IF 2FA TOKEN IS CORRECT","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/2fa/token1
@@ -1515,18 +1171,7 @@ paths:
           uri: /verify/2fa
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS UID",
-
-              "code": "USER INPUTTED TOKEN"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS UID","code":"USER INPUTTED TOKEN"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -1534,16 +1179,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "correct": "RETURNS IF 2FA TOKEN IS CORRECT",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","correct":"RETURNS IF 2FA TOKEN IS CORRECT","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/2fa/token
@@ -1633,16 +1269,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","active":"RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/verify/address1
@@ -1689,28 +1316,7 @@ paths:
           uri: /verify/address
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS UID",
-
-              "address": "ADDRESS IN ONE LINE SEPERATED BY COMMAS",
-
-              "a": "ADDRESS LINE ONE",
-
-              "sa": "ADDRESS LINE TWO",
-
-              "c": "CITY OR PROVINCE",
-
-              "s": "STATE OR REGION",
-
-              "z": "ZIPCODE"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS UID","address":"ADDRESS IN ONE LINE SEPERATED BY COMMAS","a":"ADDRESS LINE ONE","sa":"ADDRESS LINE TWO","c":"CITY OR PROVINCE","s":"STATE OR REGION","z":"ZIPCODE"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -1718,16 +1324,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "active": "RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","active":"RETURNS TRUE, IF ADDRESS IS ACTIVE AND IF USER IS CURRENTLY THERE","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/verify/address
@@ -1798,14 +1395,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "url": "RETURNED IMAGE URL AND DATA",
-                "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
-                "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
-                "id": "TRANSACTION ID"
-            }
+          body: '{"request":"REQUEST TYPE","url":"RETURNED IMAGE URL AND DATA","success":"RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL","moderated":"RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/image1
@@ -1854,20 +1444,7 @@ paths:
           uri: /image
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "image": "DIRECT IMAGE URL OR CLIENT UPLOAD",
-
-              "transform": "IMAGE MANIPULATION DIRECTIVES",
-
-              "moderate": "SET TO TRUE IF YOU WISH TO AUTOMATICALLT CENSOR GRAPHIC IMAGES"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","image":"DIRECT IMAGE URL OR CLIENT UPLOAD","transform":"IMAGE MANIPULATION DIRECTIVES","moderate":"SET TO TRUE IF YOU WISH TO AUTOMATICALLT CENSOR GRAPHIC IMAGES"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -1875,14 +1452,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "url": "RETURNED IMAGE URL AND DATA",
-                "success": "RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL",
-                "moderated": "RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY",
-                "id": "TRANSACTION ID"
-            }
+          body: '{"request":"REQUEST TYPE","url":"RETURNED IMAGE URL AND DATA","success":"RETURNS TRUE IF IMAGE MANIPULATION WAS SUCCESSFULL","moderated":"RETURNS TRUE IF IMAGE CONTAINED GRAPHIC IMAGERY","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/image
@@ -1957,13 +1527,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "url": "RETURNED DATA URL",
-                "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
-                "id": "TRANSACTION ID"
-            }
+          body: '{"request":"REQUEST TYPE","url":"RETURNED DATA URL","success":"RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/data1
@@ -2011,28 +1575,7 @@ paths:
           uri: /data
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "user": "USERS EMAIL OR USERNAME",
-
-              "apiuid": "USERS API SIDE USER ID",
-
-              "url": "DATA URL OR DIRECT FILE UPLOAD FROM CLIENT",
-
-              "manipulation": "DATA MANIPULATION DIRECTIVES",
-
-              "conversion": "CONVERT DATA TYPE TO (JSON, XML, HTML, RAW, BINARY, TEXT)",
-
-              "sorting": "SORT BY (NAME, DATE, TYPE, SIZE)",
-
-              "compression": "COMPRESS DATA IF SET TO TRUE (TYPES = GZIP, ZIP, 7Z, MINIFICATION, REWRITE)"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","user":"USERS EMAIL OR USERNAME","apiuid":"USERS API SIDE USER ID","url":"DATA URL OR DIRECT FILE UPLOAD FROM CLIENT","manipulation":"DATA MANIPULATION DIRECTIVES","conversion":"CONVERT DATA TYPE TO (JSON, XML, HTML, RAW, BINARY, TEXT)","sorting":"SORT BY (NAME, DATE, TYPE, SIZE)","compression":"COMPRESS DATA IF SET TO TRUE (TYPES = GZIP, ZIP, 7Z, MINIFICATION, REWRITE)"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -2040,13 +1583,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "request": "REQUEST TYPE",
-                "url": "RETURNED DATA URL",
-                "success": "RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL",
-                "id": "TRANSACTION ID"
-            }
+          body: '{"request":"REQUEST TYPE","url":"RETURNED DATA URL","success":"RETURNS TRUE IF DATA MANIPULATION WAS SUCCESSFULL","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/data
@@ -2116,18 +1653,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "url": "RETURNED APP HOSTING URL",
-
-              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","url":"RETURNED APP HOSTING URL","success":"RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/hosting1
@@ -2175,18 +1701,7 @@ paths:
           uri: /service/hosting
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "app": "APP GIT URL OR URL CONTAINING YOUR APP IN A ZIP FILE",
-
-              "domain": "ALLOWED DOMAIN NAMES SEPERATED BY A COMMA TO CNAME WITH ACCESS TO HOSTED APP"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","app":"APP GIT URL OR URL CONTAINING YOUR APP IN A ZIP FILE","domain":"ALLOWED DOMAIN NAMES SEPERATED BY A COMMA TO CNAME WITH ACCESS TO HOSTED APP"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -2194,18 +1709,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "request": "REQUEST TYPE",
-
-              "url": "RETURNED APP HOSTING URL",
-
-              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED",
-
-              "id": "TRANSACTION ID"
-
-            }
+          body: '{"request":"REQUEST TYPE","url":"RETURNED APP HOSTING URL","success":"RETURNS TRUE IF APP WAS SUCCESSFULLY DEPLOYED","id":"TRANSACTION ID"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/hosting
@@ -2272,16 +1776,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "domain": "LIST OF DOMAINS ADDED",
-                "nameservers": {
-                    "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
-                    "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
-                    "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
-                    "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
-                }
-            }
+          body: '{"domain":"LIST OF DOMAINS ADDED","nameservers":{"ns1":"NAME SERVER ONE TO POINT YOUR DOMAIN AT","ns2":"NAME SERVER TWO TO POINT YOUR DOMAIN AT","ns3":"NAME SERVER THREE TO POINT YOUR DOMAIN AT","ns4":"NAME SERVER FOUR TO POINT YOUR DOMAIN AT"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/dns/add1
@@ -2331,16 +1826,7 @@ paths:
           uri: /service/dns/add
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "domain": "DOMAINS SEPERATED BY A COMMA TO ADD TO DNS"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","domain":"DOMAINS SEPERATED BY A COMMA TO ADD TO DNS"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -2348,16 +1834,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "domain": "LIST OF DOMAINS ADDED",
-                "nameservers": {
-                    "ns1": "NAME SERVER ONE TO POINT YOUR DOMAIN AT",
-                    "ns2": "NAME SERVER TWO TO POINT YOUR DOMAIN AT",
-                    "ns3": "NAME SERVER THREE TO POINT YOUR DOMAIN AT",
-                    "ns4": "NAME SERVER FOUR TO POINT YOUR DOMAIN AT"
-                }
-            }
+          body: '{"domain":"LIST OF DOMAINS ADDED","nameservers":{"ns1":"NAME SERVER ONE TO POINT YOUR DOMAIN AT","ns2":"NAME SERVER TWO TO POINT YOUR DOMAIN AT","ns3":"NAME SERVER THREE TO POINT YOUR DOMAIN AT","ns4":"NAME SERVER FOUR TO POINT YOUR DOMAIN AT"}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/dns/add
@@ -2426,12 +1903,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
-                "domain": "DOMAIN",
-                "records": "RECORDS SET TO DOMAIN"
-            }
+          body: '{"success":"SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET","domain":"DOMAIN","records":"RECORDS SET TO DOMAIN"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/dns/configure1
@@ -2478,18 +1950,7 @@ paths:
           uri: /service/dns/configure
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "domain": "DOMAINS TO SET DNS RECORDS",
-
-              "records": "RECORDS TO SET TO DOMAIN"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","domain":"DOMAINS TO SET DNS RECORDS","records":"RECORDS TO SET TO DOMAIN"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -2497,12 +1958,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "success": "SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET",
-                "domain": "DOMAIN",
-                "records": "RECORDS SET TO DOMAIN"
-            }
+          body: '{"success":"SHOWS TRUE IF RECORDS WERE SUCCESSFULLY SET","domain":"DOMAIN","records":"RECORDS SET TO DOMAIN"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/dns/configure
@@ -2570,14 +2026,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
-
-              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
-
-            }
+          body: '{"success":"SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY","cname":"RECORD TO APPEND YOUR URLS TO VIA A CNAME"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/cdn/pull1
@@ -2623,18 +2072,7 @@ paths:
           uri: /service/cdn/pull
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "origin": "ORIGIN DOMAIN TO PULL ASSETS FROM",
-
-              "cname": "DOMAIN OR DOMAINS YOU WISH TO ALLOW CNAME ACCESS SEPERATED BY A COMMA"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","origin":"ORIGIN DOMAIN TO PULL ASSETS FROM","cname":"DOMAIN OR DOMAINS YOU WISH TO ALLOW CNAME ACCESS SEPERATED BY A COMMA"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -2642,14 +2080,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY",
-
-              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
-
-            }
+          body: '{"success":"SHOWS TRUE WHEN PULL ZONE IS DEPLOYED SUCCESSFULLY","cname":"RECORD TO APPEND YOUR URLS TO VIA A CNAME"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/cdn/pull
@@ -2718,16 +2149,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
-
-              "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
-
-              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
-
-            }
+          body: '{"success":"SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY","upload":"LIST OF FILES UPLOADED TO YOUR PUSH ZONE","cname":"RECORD TO APPEND YOUR URLS TO VIA A CNAME"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/cdn/push1
@@ -2774,18 +2196,7 @@ paths:
           uri: /service/cdn/push
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "cname": "DOMAIN OR DOMAINS YOU WISH TO ALLOW CNAME ACCESS SEPERATED BY A COMMA",
-
-              "file": "FILE OR FILES YOU WISH TO UPLOAD SEPERATED BY A COMMA"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","cname":"DOMAIN OR DOMAINS YOU WISH TO ALLOW CNAME ACCESS SEPERATED BY A COMMA","file":"FILE OR FILES YOU WISH TO UPLOAD SEPERATED BY A COMMA"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -2793,16 +2204,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY",
-
-              "upload": "LIST OF FILES UPLOADED TO YOUR PUSH ZONE",
-
-              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
-
-            }
+          body: '{"success":"SHOWS TRUE WHEN PUSH ZONE IS DEPLOYED SUCCESSFULLY","upload":"LIST OF FILES UPLOADED TO YOUR PUSH ZONE","cname":"RECORD TO APPEND YOUR URLS TO VIA A CNAME"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/cdn/push
@@ -2879,14 +2281,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "data": "RETURNED ENCRYPTED DATA URL",
-                "file": "RETURNED ENCRYPTED FILE URL",
-                "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
-                "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
-                "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
-            }
+          body: '{"data":"RETURNED ENCRYPTED DATA URL","file":"RETURNED ENCRYPTED FILE URL","success":"SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL","public":"PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES","private":"PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/encryption1
@@ -2935,15 +2330,7 @@ paths:
           uri: /security/encryption
           headers:
             Content-Type: application/json
-          body: >-
-            {
-              "key": "YOUR API KEY",
-              "uid": "YOUR USER ID",
-              "data": "DATA YOU WISH TO ENCRYPT",
-              "file": "FILE YOU WISH TO ENCRYPT",
-              "method": "SINGLE OR MULTIPLE ENCRYPTION TYPES TO APPLY TO DATA OR FILES SEPERATED BY A COMMA (DES, RSA, BLOWFISH, TWOFISH, AES, IDEA, PGP)",
-              "bit": "SIZE OF ENCRYPTION KEY"
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","data":"DATA YOU WISH TO ENCRYPT","file":"FILE YOU WISH TO ENCRYPT","method":"SINGLE OR MULTIPLE ENCRYPTION TYPES TO APPLY TO DATA OR FILES SEPERATED BY A COMMA (DES, RSA, BLOWFISH, TWOFISH, AES, IDEA, PGP)","bit":"SIZE OF ENCRYPTION KEY"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -2951,14 +2338,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "data": "RETURNED ENCRYPTED DATA URL",
-                "file": "RETURNED ENCRYPTED FILE URL",
-                "success": "SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL",
-                "public": "PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES",
-                "private": "PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"
-            }
+          body: '{"data":"RETURNED ENCRYPTED DATA URL","file":"RETURNED ENCRYPTED FILE URL","success":"SHOWS TRUE IF ENCRYPTION WAS SUCCESSFULL","public":"PUBLIC ENCRYPTION KEY FOR YOUR DATA OR FILES","private":"PRIVATE ENCRYPTION KEY FOR YOUR DATA OR FILES"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/encryption
@@ -3021,14 +2401,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
-
-              "app": "OBFUSCATED APP URL"
-
-            }
+          body: '{"success":"RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED","app":"OBFUSCATED APP URL"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/obfuscation1
@@ -3074,16 +2447,7 @@ paths:
           uri: /service/obfuscation
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "app": "APP GIT URL or URL CONTAINING YOUR APP IN A ZIP FILE"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","app":"APP GIT URL or URL CONTAINING YOUR APP IN A ZIP FILE"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -3091,14 +2455,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED",
-
-              "app": "OBFUSCATED APP URL"
-
-            }
+          body: '{"success":"RETURNS TRUE IF APP WAS SUCCESSFULLY OBFUSCTATED AND PROTECTED","app":"OBFUSCATED APP URL"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/service/obfuscation
@@ -3166,14 +2523,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
-
-              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
-
-            }
+          body: '{"success":"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY","cname":"RECORD TO APPEND YOUR URLS TO VIA A CNAME"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/waf1
@@ -3219,18 +2569,7 @@ paths:
           uri: /security/waf
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "origin": "ORIGIN YOU WISH TO PROTECT",
-
-              "cname": "CNAMES YOU WISH TO USE WITH YOUR WAF"
-
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","origin":"ORIGIN YOU WISH TO PROTECT","cname":"CNAMES YOU WISH TO USE WITH YOUR WAF"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -3238,14 +2577,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
-
-              "cname": "RECORD TO APPEND YOUR URLS TO VIA A CNAME"
-
-            }
+          body: '{"success":"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY","cname":"RECORD TO APPEND YOUR URLS TO VIA A CNAME"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/waf
@@ -3318,14 +2650,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
-
-              "rule": "RULES APPLIED TO WAF"
-
-            }
+          body: '{"success":"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY","rule":"RULES APPLIED TO WAF"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/waf/configure1
@@ -3371,14 +2696,7 @@ paths:
           uri: /security/waf/configure
           headers:
             Content-Type: application/json
-          body: >-
-            {
-              "key": "YOUR API KEY",
-              "uid": "YOUR USER ID",
-              "name": "WHAT YOU WISH TO NAME YOUR WAF",
-              "origin": "ORIGIN YOU WISH TO PROTECT",
-              "cname": "CNAMES YOU WISH TO USE WITH YOUR WAF"
-            }
+          body: '{"key":"YOUR API KEY","uid":"YOUR USER ID","name":"WHAT YOU WISH TO NAME YOUR WAF","origin":"ORIGIN YOU WISH TO PROTECT","cname":"CNAMES YOU WISH TO USE WITH YOUR WAF"}'
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -3386,14 +2704,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY",
-
-              "rule": "RULES APPLIED TO WAF"
-
-            }
+          body: '{"success":"SHOWS TRUE WHEN THE WAF AND ORIGIN SHIELD (DDOS PROTECTION) IS DEPLOYED SUCCESSFULLY","rule":"RULES APPLIED TO WAF"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/waf/configure
@@ -3465,12 +2776,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
-
-            }
+          body: '{"success":"RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/logging1
@@ -3515,20 +2821,7 @@ paths:
           uri: /security/logging
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "name": "YOUR WAF'S NAME",
-
-              "origin": "ORIGIN URL",
-
-              "activate": "TRUE OR FALSE IF YOU WANT ADVANCED LOGGING ACTIVATED"
-
-            }
+          body: "{\"key\":\"YOUR API KEY\",\"uid\":\"YOUR USER ID\",\"name\":\"YOUR WAF'S NAME\",\"origin\":\"ORIGIN URL\",\"activate\":\"TRUE OR FALSE IF YOU WANT ADVANCED LOGGING ACTIVATED\"}"
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -3536,12 +2829,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-
-              "success": "RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"
-
-            }
+          body: '{"success":"RETURNS TRUE IF ADVANCED LOGGING IS ACTIVATED"}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/logging
@@ -3623,25 +2911,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "log": {
-                    "01010101245901": {
-                        "data": {
-                            "result": "INFO",
-                            "content": "LOG: CONTENT AND ACTIONS PERFORMED",
-                            "id": "FUNCTION ID"
-                        }
-                    },
-                    "01010101245902": {
-                        "data": {
-                            "result": "ERROR",
-                            "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
-                            "id": "FUNCTION ID"
-                        }
-                    }
-                }
-            }
+          body: '{"log":{"01010101245901":{"data":{"result":"INFO","content":"LOG: CONTENT AND ACTIONS PERFORMED","id":"FUNCTION ID"}},"01010101245902":{"data":{"result":"ERROR","content":"LOG: ERROR CONTENT AND ACTIONS PERFORMED","id":"FUNCTION ID"}}}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/logging/info1
@@ -3696,20 +2966,7 @@ paths:
           uri: /security/logging/info
           headers:
             Content-Type: application/json
-          body: >-
-            {
-
-              "key": "YOUR API KEY",
-
-              "uid": "YOUR USER ID",
-
-              "name": "YOUR WAF'S NAME",
-
-              "origin": "ORIGIN URL",
-
-              "time": "LOOKUP SPECIFIC TIMES IN LOG (MM/DD/YYYY;HH:MM:SS) SEPERATED BY A COMMA OR ('*' / ALL)"
-
-            }
+          body: "{\"key\":\"YOUR API KEY\",\"uid\":\"YOUR USER ID\",\"name\":\"YOUR WAF'S NAME\",\"origin\":\"ORIGIN URL\",\"time\":\"LOOKUP SPECIFIC TIMES IN LOG (MM/DD/YYYY;HH:MM:SS) SEPERATED BY A COMMA OR ('*' / ALL)\"}"
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: RAW
@@ -3717,25 +2974,7 @@ paths:
           x-arrayCheckCount: false
           x-matchResponseSchema: true
           headers: {}
-          body: >-
-            {
-                "log": {
-                    "01010101245901": {
-                        "data": {
-                            "result": "INFO",
-                            "content": "LOG: CONTENT AND ACTIONS PERFORMED",
-                            "id": "FUNCTION ID"
-                        }
-                    },
-                    "01010101245902": {
-                        "data": {
-                            "result": "ERROR",
-                            "content": "LOG: ERROR CONTENT AND ACTIONS PERFORMED",
-                            "id": "FUNCTION ID"
-                        }
-                    }
-                }
-            }
+          body: '{"log":{"01010101245901":{"data":{"result":"INFO","content":"LOG: CONTENT AND ACTIONS PERFORMED","id":"FUNCTION ID"}},"01010101245902":{"data":{"result":"ERROR","content":"LOG: ERROR CONTENT AND ACTIONS PERFORMED","id":"FUNCTION ID"}}}}'
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api.rest.sh/api/security/logging/info
